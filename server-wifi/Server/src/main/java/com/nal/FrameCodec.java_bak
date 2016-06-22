@@ -1,0 +1,113 @@
+package com.nal;
+
+//import com.lenovo.push.tcp.common.frame.Frame;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.*;
+import io.netty.handler.codec.ByteToMessageCodec;
+import java.util.List;
+import com.nal.msg.*;
+import java.math.BigInteger;
+import io.netty.channel.socket.SocketChannel;
+ 
+public class FrameCodec extends ByteToMessageCodec{
+
+    public static String binary(byte[] bytes, int radix){
+        return new BigInteger(1, bytes).toString(radix);// 这里的1代表正数  
+    }
+	ChannelFutureListener mLi = new ChannelFutureListener() {
+		public void operationComplete(ChannelFuture future) throws Exception {
+			if (future.isSuccess()) {
+				System.out.println("callback : su" );
+            } else {
+				System.out.println("callback: fail");
+            }
+        }
+    };
+	
+	static void log(String line) {
+        System.out.print(line);
+	}
+
+	protected void encode(ChannelHandlerContext channelHandlerContext, Object o, ByteBuf byteBuf) throws Exception
+	{
+	if (o!= null)
+		byteBuf.writeBytes((byte[])o);
+	}
+
+	protected void decode(ChannelHandlerContext ctx ,ByteBuf in ,List out) {
+        System.out.println("codec"+in.toString());
+		Channel c = ctx.channel();
+		//byte[] data = null;
+		//while(in.readable()) {	
+		byte[] h = new byte[in.readableBytes()];
+        in.readBytes(h);//, 0, in.capacity()); 
+		NettyChannelMap.add((SocketChannel)c,h);
+		while(true ){
+		byte[] ret = NettyChannelMap.getRes((SocketChannel)c);
+		if(ret == null) {
+			log("NettyChannelMap.getRes null");
+			return ;
+		}
+		out.add(ret);
+		}
+		//}
+/*
+        byte [] h = new byte[20];
+        ((io.netty.buffer.ByteBuf)in).readBytes(h, 0, 20); 
+        System.out.print("head:\n");
+        System.out.print(binary(h,16));
+        System.out.print("\n");
+        msgHead head = new msgHead(h);
+
+
+        byte[] body = new byte[head.len];
+        ((io.netty.buffer.ByteBuf)in).readBytes(body, 0, head.len); 
+        System.out.print("body:\n");
+        System.out.print(binary(body,16));
+        System.out.print("\n");
+   
+        if(head.command == 1) {
+            msgReg reg = new msgReg(body);
+            System.out.println("devName:"+reg.devName);
+            System.out.println("devPwd:"+reg.devPwd);
+            System.out.println("devId:"+reg.devId);
+            System.out.println("devType:"+reg.devType);
+            System.out.println("devFacId:"+reg.devFacId);
+            System.out.println("FacName:"+reg.FacName);
+            System.out.println("softVer:"+reg.softVer);
+			NettyChannelMap.add(reg.devId,(SocketChannel)ctx.channel());
+			byte[] ret = getRegRes();
+			out.add(ret);
+			//ByteBuf b = ctx.alloc().buffer();
+			//b.writeBytes(ret);
+			//ctx.channel().writeAndFlush(b).addListener(mLi);
+        }
+
+        if(head.command == 0x03) {
+            msgHeart heart = new msgHeart(body);
+            System.out.println("devName:"+heart.devId);
+			byte[] ret = getHeartRes();
+			out.add(ret);
+			//ByteBuf b = ctx.alloc().buffer();
+			//b.writeBytes(ret);
+			//ctx.channel().writeAndFlush(b).addListener(mLi);
+    
+        }
+*/
+/*
+        ByteBuf b = ctx.alloc().buffer();
+        b.writeBytes("aaa".getBytes());
+        ctx.channel().writeAndFlush(b).addListener(mLi);
+		out.add("aaa".getBytes());
+*/
+		//out.add(null);
+	}
+
+}
+
+/* Location:           /home/er/222/TcpServer/src/TcpServer-1.0.jar
+ * Qualified Name:     com.lenovo.push.tcp.server.FrameCodec
+ * JD-Core Version:    0.6.2
+ */

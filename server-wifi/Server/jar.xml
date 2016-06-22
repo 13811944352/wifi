@@ -1,0 +1,19 @@
+<project name="ant" default="release">
+	<property name="dest" value="build/classes"/>    
+	<property name="lib" value="build/lib"/>    
+	<target name="init">    
+		<mkdir dir="${dest}"/>    
+		<mkdir dir="${lib}"/>  
+	</target>
+	
+	<target name="class" depends="init">    
+		<javac  srcdir="src/main/java/" destdir="${dest}/" debug="on" debuglevel="lines,vars,source" verbose="no"/>    
+	</target>
+
+	<target name="jar" depends="class">    
+		<jar destfile="${lib}/wifi.jar" basedir="${dest}/"></jar>  
+	</target>
+
+	<target name="jars" depends="jar"></target>
+</project>
+
