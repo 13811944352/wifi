@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:id="@+id/widget32"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+	android:id="@+id/widget33"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+<TextView
+	android:id="@+id/widget35"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="NSRTU233333"
+	android:layout_gravity="center_horizontal" />
+</LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+<LinearLayout
+	android:id="@+id/widget36"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/widget38"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="40dp"
+	android:text="&#31995;&#32479;&#21517;&#31216;" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<TextView
+	android:id="@+id/widget39"
+	android:layout_width="80dp"
+	android:layout_height="wrap_content"
+	android:text="&#21517;&#31216;"
+	android:gravity="center"
+	android:layout_gravity="center_horizontal" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<TextView
+	android:id="@+id/widget40"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_marginRight="30dp"
+	android:text="&#24320;&#20851;" />
+</LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/widget42"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="40dp"
+	android:text="&#28201;&#25511;&#22120;1" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<EditText android:id="@+id/nodeName_0"
+	android.hint="请命名"
+	android:layout_width="80dp" 
+	android:layout_height="wrap_content"
+	android:textSize="18sp" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<CheckBox 
+	android:id="@+id/nodeCheck_0"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	/>
+</LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/widget42"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="40dp"
+	android:text="&#28201;&#25511;&#22120;2" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<EditText android:id="@+id/nodeName_1"
+	android.hint="请命名"
+	android:layout_width="80dp"
+	android:layout_height="wrap_content"
+	android:textSize="18sp" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<CheckBox android:id="@+id/nodeCheck_1"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	/>
+</LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/widget42"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="40dp"
+	android:text="&#28201;&#25511;&#22120;3" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<EditText android:id="@+id/nodeName_2"
+	android.hint="请命名"
+	android:layout_width="80dp"
+	android:layout_height="wrap_content"
+	android:textSize="18sp" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<CheckBox android:id="@+id/nodeCheck_2"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	/>
+</LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/widget42"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="40dp"
+	android:text="&#28201;&#25511;&#22120;4" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<EditText android:id="@+id/nodeName_3"
+	android.hint="aaaaaaaaaaaa"
+	android:layout_width="80dp"
+	android:layout_height="wrap_content"
+	android:textSize="18sp" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<CheckBox android:id="@+id/nodeCheck_3"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	/>
+</LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/widget42"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="40dp"
+	android:text="&#28201;&#25511;&#22120;5" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<EditText android:id="@+id/nodeName_4"
+	android.hint="请命名"
+	android:layout_width="80dp"
+	android:layout_height="wrap_content"
+	android:textSize="18sp" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<CheckBox android:id="@+id/nodeCheck_4"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	/>
+</LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/widget42"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="40dp"
+	android:text="&#28201;&#25511;&#22120;6" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<EditText android:id="@+id/nodeName_5"
+	android.hint="请命名"
+	android:layout_width="80dp"
+	android:layout_height="wrap_content"
+	android:textSize="18sp" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<CheckBox android:id="@+id/nodeCheck_5"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	/>
+</LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/widget42"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="40dp"
+	android:text="&#28201;&#25511;&#22120;7" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<EditText android:id="@+id/nodeName_6"
+	android.hint="请命名"
+	android:layout_width="80dp"
+	android:layout_height="wrap_content"
+	android:textSize="18sp" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<CheckBox android:id="@+id/nodeCheck_6"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	/>
+</LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/widget42"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="40dp"
+	android:text="&#28201;&#25511;&#22120;8" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<EditText android:id="@+id/nodeName_7"
+	android.hint="请命名"
+	android:layout_width="80dp"
+	android:layout_height="wrap_content"
+	android:textSize="18sp" />
+<View
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/line"
+    android:background="@color/gray" />
+<CheckBox android:id="@+id/nodeCheck_7"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	/>
+</LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<Button       
+	android:id="@+id/save"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="save"
+/>
+</LinearLayout>
+</LinearLayout>
+

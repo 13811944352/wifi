@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="home_type">
+        <item>卧室</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="direction">
+        <item>北</item>
+        <item>南 </item>
+        <item>东/西</item>
+        <item>东南/西南</item>
+    </string-array>
+    <string-array name="floor">
+        <item>一层</item>
+        <item>二/三层 </item>
+        <item>四层以上</item>
+    </string-array>
+    <string-array name="home_design">
+        <item>木地板</item>
+        <item>瓷砖</item>
+    </string-array>
+    <string-array name="work_select">
+        <item>工作日</item>
+        <item>休息日</item>
+    </string-array>
+    <string-array name="menu">
+        <item>主控界面</item>
+        <item>历史数据</item>
+        <item>设备共享</item>
+        <item>个人中心</item>
+    </string-array>
+    <string-array name="week">
+        <item>星期1</item>
+        <item>星期2</item>
+        <item>星期3</item>
+        <item>星期4</item>
+        <item>星期5</item>
+        <item>星期6</item>
+        <item>星期7</item>
+    </string-array>
+</resources>

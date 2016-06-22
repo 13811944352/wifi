@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+	android:gravity="bottom"
+    android:background="@color/snow" >
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/title"
+    android:layout_x="0dp"
+    android:layout_y="0dp">
+<Button
+    android:id="@+id/back"
+    android:background="@drawable/device_main_back"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1" />
+<TextView
+    android:id="@+id/widget36"
+    android:layout_width="wrap_content"
+    android:layout_height="39dp"
+    android:text="            nuoiss"
+	android:textColor="#000"  
+    android:textSize="25sp"
+    android:layout_gravity="center_horizontal"
+    android:layout_weight="5" />
+<com.android.nal.MySpinnerButton 
+    android:id="@+id/menu"
+    android:background="@drawable/device_main_menu"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right"
+    android:layout_weight="1" />
+</LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:layout_weight="4"
+        android:orientation="vertical" >
+		<android.support.v4.view.ViewPager
+			android:id="@+id/viewPager"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="3"
+		/>
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:background="@color/red"
+			android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/main_ctl"
+			android:background="@drawable/device_main_main_ctl"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+        />
+        <Button
+            android:id="@+id/his_data"
+			android:background="@drawable/device_main_his_data"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+        />
+        <Button
+            android:id="@+id/trans"
+            android:layout_weight="1"
+			android:text="分享"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+        />
+        <Button
+            android:id="@+id/default_ctl"
+			android:text="关于"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+        />
+		</LinearLayout>
+    </LinearLayout>
+    
+</LinearLayout>

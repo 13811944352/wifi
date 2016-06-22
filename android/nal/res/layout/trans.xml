@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:id="@+id/widget32"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background="@color/snow"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+	android:id="@+id/widget46"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+<TextView
+	android:id="@+id/deviceName"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="TextView" />
+</LinearLayout>
+<LinearLayout
+	android:id="@+id/widget48"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<EditText  
+	android:id="@+id/user"  
+    android:layout_width="200dp"  
+    android:layout_height="wrap_content"  
+    android:layout_centerVertical="true"  
+    android:layout_marginLeft="20dip"  
+    android:background="@null"  
+    android:hint="请输入共享的用户"  
+    android:textSize="15sp" />
+<CheckBox
+	android:id="@+id/widget51"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="&#35774;&#32622;" />
+<CheckBox
+	android:id="@+id/widget52"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="&#21482;&#30475;" />
+</LinearLayout>
+<LinearLayout
+	android:id="@+id/widget53"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<Button
+	android:id="@+id/ok"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="&#30830;&#23450;" />
+</LinearLayout>
+</LinearLayout>
+

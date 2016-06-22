@@ -1,0 +1,85 @@
+-- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: main
+-- ------------------------------------------------------
+-- Server version	5.5.37-0ubuntu0.13.10.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `marry`
+--
+
+DROP TABLE IF EXISTS `marry`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `marry` (
+  `id` int(11) NOT NULL,
+  `title` varchar(45) DEFAULT 'title',
+  `content` varchar(45) DEFAULT 'content',
+  `img` text,
+  `url` text,
+  `pos` int(11) DEFAULT '9',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `marry`
+--
+
+LOCK TABLES `marry` WRITE;
+/*!40000 ALTER TABLE `marry` DISABLE KEYS */;
+INSERT INTO `marry` VALUES (0,'title','content','static/img/1.png','http://url',0),(1,'title1','content1','static/img/1.png','22',0);
+/*!40000 ALTER TABLE `marry` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task`
+--
+
+DROP TABLE IF EXISTS `task`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `name` char(20) NOT NULL,
+  `url` text,
+  `type` varchar(45) DEFAULT NULL,
+  `pos` int(4) DEFAULT NULL,
+  `user` int(4) DEFAULT NULL,
+  `img` text,
+  `ishow` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task`
+--
+
+LOCK TABLES `task` WRITE;
+/*!40000 ALTER TABLE `task` DISABLE KEYS */;
+INSERT INTO `task` VALUES (2,'今日天气','http://m.tianqi.com/yuanqu/','web',1,0,'static/img/weather.png',0),(3,'租房买房','http://yuncheng.fang.com/','web',5,0,'static/img/house.png',1),(4,'二手市场','http://yuncheng.58.com/yuanqu/sale/','web',4,0,'static/img/ershou.png',1),(5,'征婚交友','static/marry.jsp','list',5,0,'static/img/marry.png',0),(6,'找工作','http://yuncheng.58.com/job.shtml?PGTID=14398282101300.045355083043350564&ClickID=3','web',6,0,'static/img/work.png',1),(7,'朋友圈','https://mp.weixin.qq.com/weiyuanqu','web',9,0,'static/img/wx.png',0),(8,'垣曲头条','http://sina.cn/?vt=4&pos=10','web',1,0,'static/img/news.png',1),(9,'搞笑视频','http://fun.tudou.com','web',14,0,'static/img/video.png',1),(10,'行政风','http://www.yuanqu.gov.cn','web',2,0,'static/img/news.png',1),(11,'论坛','http://tieba.baidu.com/f?kw=%D4%AB%C7%FA&fr=ala0&tpl=5','web',3,0,'static/img/news.png',1),(12,'二手车','http://yuncheng.58.com/ershouche/?PGTID=14412220128920.8087761886218059&ClickID=1','web',7,0,'static/img/news.png',1),(14,'家政服务','http://yuncheng.58.com/shenghuo/?key=%E5%AE%B6%E6%94%BF&cmcskey=&final=1&jump=1&specialtype=gls','web',8,0,'static/img/news.png',1),(15,'垣曲商城','http://192.168.1.109/tg/index.php','web',9,0,'static/img/news.png',1),(16,'今日特价','http://10.100.157.166/ECshop/upload/','web',10,0,'static/img/news.png',1),(17,'快递查询','http://www.kuaidi100.com','web',11,0,'static/img/news.png',1),(18,'水电费用','1','list',12,0,'static/img/news.png',1),(19,'周边服务','tel:18903487117#Intent;action=android.intent.action.DIAL;end','intent',13,0,'static/img/news.png',1);
+/*!40000 ALTER TABLE `task` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-09-14  0:47:59

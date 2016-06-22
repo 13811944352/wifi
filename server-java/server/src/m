@@ -1,0 +1,7 @@
+#!/bin/bash  -ex
+export CLASSPATH=/usr/share/tomcat7/lib/jsp-api.jar:/var/lib/tomcat7/webapps/nal/WEB-INF/lib/json-lib-2.4-jdk15.jar:/usr/share/tomcat7/lib/servlet-api.jar:$CLASSPATH
+javac  com/nal/*.java
+jar cvf nal.jar com/nal/*.class
+cp nal.jar /var/lib/tomcat7/webapps/nal/WEB-INF/lib
+/etc/init.d/tomcat7 restart
+

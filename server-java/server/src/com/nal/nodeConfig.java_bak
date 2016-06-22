@@ -1,0 +1,49 @@
+package com.nal;
+
+import net.sf.json.*;
+
+public final class nodeConfig{
+	public String		deviceId;
+	public String		nodeId;
+	public int			nodeType;
+	public int			nodeConfig;
+	public String		nodeName;
+	public int			nodeTemp;
+	public String		nodeDesc;
+
+
+	public static nodeConfig j2n(String json) {
+		try {
+			//JSONObject o = new JSONObject(json);
+			JSONObject o = JSONObject.fromObject(json);
+			nodeConfig n = new nodeConfig();
+			n.nodeType = o.getInt("nodeType");
+			n.nodeType = o.getInt("nodeConfig");
+			n.nodeId = o.getString("nodeId");
+			n.nodeName = o.getString("nodeName");
+			n.nodeTemp = o.getInt("nodeTemp");
+			n.nodeDesc = o.getString("nodeDescription");
+			n.deviceId = o.getString("deviceId");
+		}catch (Exception e) {
+			return null;
+		}
+		return null;
+	}
+
+	public static String n2j(nodeConfig n) {
+		try {
+			JSONObject jo = new JSONObject();
+			jo.put("nodeType",n.nodeType);
+			jo.put("nodeConfig",n.nodeConfig);
+			jo.put("nodeId",n.nodeId);
+			jo.put("nodeName",n.nodeName);
+			jo.put("nodeTemp",n.nodeTemp);
+			jo.put("nodeDesc",n.nodeDesc);
+			jo.put("deviceId",n.deviceId);
+			return jo.toString();
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
+}

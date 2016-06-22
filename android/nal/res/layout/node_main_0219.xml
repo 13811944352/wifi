@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:id="@+id/widget32"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background = "@color/skyblue"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+	android:id="@+id/widget33"
+    android:layout_x="0dp"
+    android:layout_y="0dp"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<Button
+    android:id="@+id/back"
+    android:background="@drawable/device_main_back"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1" />
+<TextView
+    android:id="@+id/widget36"
+    android:layout_width="wrap_content"
+    android:layout_height="39dp"
+    android:text="nuoiss"
+    android:layout_gravity="center_horizontal"
+    android:layout_weight="5" />
+<Button
+    android:id="@+id/menu"
+    android:text="保存"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right"
+    android:layout_weight="1" />
+</LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+
+<LinearLayout
+	android:orientation="horizontal"
+    android:layout_x="0dp"
+    android:layout_y="0dp"
+	android:layout_gravity="center_horizontal" 
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/nodename"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="&#21351;&#23460;"
+	android:layout_gravity="center_horizontal" />
+<Button
+	android:id="@+id/nodename_modify"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="改名"
+	android:layout_gravity="center_horizontal" />
+</LinearLayout>
+<Button
+	android:id="@+id/temp"
+    android:background="@drawable/node_main_temp_no"
+	android:text="26"
+	android:layout_width="120dp"
+	android:layout_height="120dp"
+	android:layout_marginTop="30dp"
+	android:layout_marginLeft="120dp" />
+<Spinner
+	android:id="@+id/nodetype"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="&#21351;&#23460;"
+	android:layout_gravity="center_horizontal" />
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+
+<Spinner
+    android:id="@+id/mode_select"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+/>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+
+
+<LinearLayout
+	android:id="@+id/nosmart"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<Button
+	android:id="@+id/input"
+	android.weight="1"
+	android:text="输入:"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" />
+<EditText
+	android:id="@+id/node_temp"
+	android.weight="1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:maxLength = "2"
+	android:numeric="integer"
+    android:textSize="18sp" />
+<Button
+	android:id="@+id/done"
+    android:background="@drawable/node_main_done"
+	android.weight="1"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" />
+</LinearLayout>
+
+<LinearLayout
+	android:id="@+id/smart"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+
+<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<Spinner
+    android:id="@+id/work_select"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+	android:entries="@array/work_select"
+/>
+<Button
+	android:id="@+id/work_set"
+	android:text="工作日设置"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" />
+</LinearLayout>
+
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+
+<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:text="模式设置"
+	android.weight="1"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" />
+<TextView
+	android:text="时间设置"
+	android.weight="1"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" />
+</LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/line"
+    android:background="@color/gray" />
+
+<LinearLayout
+	android:orientation="horizontal"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/safe"
+    android:background="@drawable/node_main_safe"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" />
+<Button
+    android:id="@+id/safe_start"  
+	android:text="开始时间"
+    android:layout_width="wrap_content"  
+    android:layout_height="wrap_content"/>  
+<Button
+    android:id="@+id/safe_end"  
+	android:text="结束时间"
+    android:layout_width="wrap_content"  
+    android:layout_height="wrap_content"/>  
+</LinearLayout>
+<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/jieneng"
+    android:background="@drawable/node_main_jieneng"
+	android.weight="1"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" />
+<Button
+    android:id="@+id/jieneng_start"  
+	android:text="开始时间"
+    android:layout_width="wrap_content"  
+    android:layout_height="wrap_content"/>  
+<Button
+    android:id="@+id/jieneng_end"  
+	android:text="结束时间"
+    android:layout_width="wrap_content"  
+    android:layout_height="wrap_content"/>  
+</LinearLayout>
+<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/fangdong"
+    android:background="@drawable/node_main_fangdong"
+	android.weight="1"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" />
+<Button
+    android:id="@+id/fangdong_start"  
+	android:text="开始时间"
+    android:layout_width="wrap_content"  
+    android:layout_height="wrap_content"/>  
+<Button
+    android:id="@+id/fangdong_end"  
+	android:text="结束时间"
+    android:layout_width="wrap_content"  
+    android:layout_height="wrap_content"/>  
+</LinearLayout>
+</LinearLayout>
+
+</LinearLayout>
+

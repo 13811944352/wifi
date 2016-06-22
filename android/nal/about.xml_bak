@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="25.0dip" android:layout_weight="2.0">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/image_about_backage" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+                <TextView android:textSize="15.0sp" android:textColor="@color/room_text" android:gravity="center_horizontal" android:id="@id/about_version" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="版本号：beta 0.0.0" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:onClick="SendEmail">
+                    <TextView android:textSize="15.0sp" android:textColor="@color/room_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="商务合作：" />
+                    <TextView android:textSize="15.0sp" android:textColor="@color/orange_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="13911944352" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:onClick="GoToIndex">
+                    <TextView android:textSize="15.0sp" android:textColor="@color/room_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="官方qq：" />
+                    <TextView android:textSize="15.0sp" android:textColor="@color/orange_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="26151826" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                    <TextView android:textSize="15.0sp" android:textColor="@color/orange_color" android:autoLink="web" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/sina_wb" android:onClick="GoToSinaWB" />
+                    <TextView android:textSize="15.0sp" android:textColor="@color/orange_color" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/tencent_wb" android:onClick="GoToTencentWB" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
