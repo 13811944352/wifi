@@ -11,6 +11,12 @@ public final class deviceConfig{
 	public String		deviceDesc;
 	public String		deviceAddr;
 	public int			devicePer;
+
+	public int          deviceTempIn,deviceTempOut;
+	public int          deviceSpec;
+	public int          deviceGap;
+	public int          deviceMaterial;
+
 	public String[]		nodeId;
 
 	public deviceConfig(){
@@ -20,6 +26,11 @@ public final class deviceConfig{
 		deviceDesc = "";
 		deviceAddr = "";
 		devicePer = 0;
+		deviceTempIn = 0;
+		deviceTempOut = 0;
+		deviceSpec = 0;
+		deviceGap = 0;
+		deviceMaterial = 0;
 		nodeId = new String[8];
 	}
 
@@ -36,6 +47,11 @@ public final class deviceConfig{
 			d.deviceAddr = o.getString("deviceAddr");
 			d.deviceName = o.getString("deviceName");
 			d.devicePer = o.getInt("devicePer");
+			d.deviceTempIn = o.getInt("deviceTempIn");
+			d.deviceTempOut = o.getInt("deviceTempOut");
+			d.deviceSpec= o.getInt("deviceSpec");
+			d.deviceGap= o.getInt("deviceGap");
+			d.deviceMaterial= o.getInt("deviceMaterial");
 			ja = o.getJSONArray("nodeList");
 			for(int i = 0;i < ja.length();i++) {
 				try {
@@ -61,6 +77,12 @@ public final class deviceConfig{
             jo.put("deviceAddr",d.deviceAddr);
             jo.put("deviceName",d.deviceName);
             jo.put("devicePer",d.devicePer);
+            jo.put("deviceTempIn",d.deviceTempIn);
+            jo.put("deviceTempOut",d.deviceTempOut);
+            jo.put("deviceSpec",d.deviceSpec);
+            jo.put("deviceGap",d.deviceGap);
+            jo.put("deviceMaterial",d.deviceMaterial);
+
 			JSONArray ja = new JSONArray();
 			for(int i = 0;i<8;i++) {
 				JSONObject o = new JSONObject();

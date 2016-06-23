@@ -17,7 +17,6 @@ public class netConfig {
 	private Context mC = null;
     private static netConfig mLc;
 
-    //public static synchronized netConfig getInstance(Context c) {
     public static synchronized netConfig getInstance() {
         if (mLc == null) {
             mLc = new netConfig();
@@ -34,10 +33,9 @@ public class netConfig {
 	public ArrayList<temp_historyConfig> getHistory(String did,String time) {
 		String ret = HttpUtil.httpGet(UURL.history+"did="+did+"&date="+time);
 		log("http history result:"+ret);
-		JSONObject json = null;// = JSONObject.fromObject(ret)
+		JSONObject json = null;
 		JSONArray ja = null;
 		try {
-			//json = JSONObject.fromObject(ret);
 			json = new JSONObject(ret);
 			String err = json.getString("error");
 			if(!err.equals("no error"))
@@ -86,7 +84,24 @@ public class netConfig {
 		return token;
 	}
 
-
+	public String reg(String uname,String pwd,String capt) {
+		String token = null;
+		String md5 = MD5.md5String(pwd);
+		log("md5:"+md5);
+		String result = HttpUtil.httpGet(UURL.reg+"uname="+uname+"&hash="+md5.toLowerCase()+"capt="+capt);
+		log("http reg result:"+result);
+		JSONObject json = null;  
+		try {
+			json = new JSONObject(result);
+			String err = json.getString("err");
+			if(!err.equals("no error"))
+				return null;
+			token  = json.getString("token");
+		} catch (Exception e) {
+			return null;
+		}
+		return token;
+	}
 
 	public String reg(String uname,String pwd) {
 		String token = null;
@@ -94,7 +109,7 @@ public class netConfig {
 		log("md5:"+md5);
 		String result = HttpUtil.httpGet(UURL.reg+"uname="+uname+"&hash="+md5.toLowerCase());
 		log("http reg result:"+result);
-		JSONObject json = null;// = JSONObject.fromObject(ret)
+		JSONObject json = null; 
 		try {
 			json = new JSONObject(result);
 			String err = json.getString("err");
@@ -142,15 +157,12 @@ public class netConfig {
 			}
 		}
 		return list;
-
-		//return null;
 	}
 
 	public boolean regDeviceConfig(deviceConfig d) {
 		String json = d.d2j(d);
 		String result = HttpUtil.httpGetT(UURL.regDev+"json="+json);
 		log("http reg result:"+result);
-		//JSONObject jo = null;// = JSONObject.fromObject(ret)
 		try {
 			JSONObject jo = new JSONObject(result);
 			String err = jo.getString("err");
@@ -162,20 +174,15 @@ public class netConfig {
 		
 		return false;
 	}
-/*
-    public deviceConfig getDeviceConfig() {
-		return null;
-	}
-*/
+
 	public boolean setNodeConfig(nodeConfig n) {
-		String ret = HttpUtil.httpGetT(UURL.setNode+"node="+n.n2j(n));//+"&nid="+nid);//+"token="+localConfig.getInstance().getToken());
+		String ret = HttpUtil.httpGetT(UURL.setNode+"node="+n.n2j(n));
 		log(ret);
-		JSONObject json = null;// = JSONObject.fromObject(ret)
-		JSONObject jo = null;// = JSONObject.fromObject(ret)
+		JSONObject json = null;
+		JSONObject jo = null;
 		try {
 			json = new JSONObject(ret);
 			String o = json.getString("err");
-			//return nodeConfig.j2n(o.toString());
 			if(o.equals("no err"))
 				return true;
 			return false;
@@ -197,35 +204,7 @@ public class netConfig {
 			return null;
 		}
 	}
-/*	
-	public ArrayList<nodeConfig> getNodeList(String did) {
-		String ret = HttpUtil.httpGetT(UURL.nodeConfig+"did="+did);//+"token="+localConfig.getInstance().getToken());
-		log(ret);
-		JSONObject json = null;// = JSONObject.fromObject(ret)
-		JSONArray ja = null;
-		try {
-			json = new JSONObject(ret);
-			ja = json.getJSONArray("node");
-		} catch (Exception e) {
-			return null;
-		}
-		if(ja == null)
-			return null;
-		ArrayList<nodeConfig> list = new ArrayList<nodeConfig>();
-		for(int i = 0;i < ja.length();i++) {
-			try {
-				JSONObject o = ja.getJSONObject(i);
-				log("getNodeList node:"+o.toString());
-				nodeConfig dc = nodeConfig.j2n(o.toString());
-				log("getNodeList nodeConfig:"+dc.n2j(dc));
-				list.add(dc);
-			}catch(Exception e) {
-				continue;
-			}
-		}
-		return list;
-	}
-*/
+
 	static void log(String line) {
         if(line == null)
             l.d("log null");

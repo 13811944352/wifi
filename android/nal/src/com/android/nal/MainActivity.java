@@ -1,28 +1,5 @@
 package com.android.nal;
-/*
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-import android.content.res.Configuration;
-import android.net.Uri;
-import android.text.Editable;
-import android.text.InputType;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.util.Log;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.LinearLayout;
-import android.webkit.WebView;  
-import android.webkit.WebViewClient;
-*/
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -45,57 +22,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Handler;
 import android.os.Message;
-/*
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter.ViewBinder;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import java.util.List;
-import java.util.ArrayList;
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.TextView;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.DisplayMetrics;
-import android.graphics.Matrix;
-import android.widget.ImageView;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-*/
 import android.widget.Toast;
 import com.android.nal.utils.l;
 import com.android.nal.local.localConfig;
 import com.android.nal.net.netConfig;
 import com.android.nal.service.MainService;
 
-//public class MainActivity extends ListActivity {
 public class MainActivity extends Activity {
 	Context mC = null;
 	Activity mA = null;
@@ -106,8 +39,6 @@ public class MainActivity extends Activity {
 		@Override
 		public void onChange() {
 			log("onChange");
-			//if(adapter != null)
-			//	adapter.notifyDataSetChanged();
 		}
 
 	};
@@ -129,29 +60,22 @@ public class MainActivity extends Activity {
 					log("Handler 0");
 					if(mS != null)
 						mS.start();
-                    //onRegSucess();
                     break;
 				case(2):
 					log("Handler 2");
 					if(mS != null) {
 						getDevice();
 					}
-			//Message m = new Message();
-            //m.what = 1;
-            //mH.sendMessage(m);
-			//}
                 case(1):
 					log("Handler 1");
 					adapter.notifyDataSetChanged();  
 					break;
                 default:
-                    //onRegFail();
                     break;
             }
         }
 
     };
-
 
 	void initView() {
 		setContentView(R.layout.main);
@@ -163,7 +87,6 @@ public class MainActivity extends Activity {
 				Intent i = new Intent();
 				i.setClass(MainActivity.this,CustomizedActivity.class);
 				mC.startActivity(i);
-				//mA.finish();
 			}
 		});
 		Button logout = (Button)findViewById(R.id.logout);
@@ -186,9 +109,12 @@ public class MainActivity extends Activity {
 			}
 		});
         //adapter = new SimpleAdapter(this,getDevice(),R.layout.ll,
+        //adapter = new SimpleAdapter(this,mData,R.layout.ll,
+        //        new String[]{"title","info","img","del"},
+        //        new int[]{R.id.title,R.id.info,R.id.ll_dev,R.id.ll_del});
         adapter = new SimpleAdapter(this,mData,R.layout.ll,
-                new String[]{"title","info","img"},
-                new int[]{R.id.title,R.id.info,R.id.ll_dev});
+                new String[]{"title","info","img","del"},
+                new int[]{R.id.title,R.id.info,R.id.ll_dev,R.id.ll_del});
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,int pos, long id) {
@@ -226,8 +152,6 @@ public class MainActivity extends Activity {
 	}
 
 	private List<Map<String, Object>> getDevice() {
-		//List<Map<String, Object>> m = new ArrayList<Map<String, Object>>();
-		//mData = new ArrayList<Map<String, Object>>();
 		List<deviceConfig> device = mS.getDeviceList();//netConfig.getInstance().getDeviceList();
 		if(device == null) {
 			log("devie == null");
@@ -239,10 +163,6 @@ public class MainActivity extends Activity {
 			log("now add one");
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("title", d.deviceName);
-			//String temp1 = mS.doQuery(d.deviceId,"temp1");
-			//int set = mS.doSet(d.deviceId,"settemp1",0,"28");
-			//int set = mS.doSet(d.deviceId,"setright1",0,"false");
-			//log("now set :"+set);
 			String temp1 = mS.doQuery(d.deviceId,"temp1");
 			
 			if(temp1 == null)
@@ -251,6 +171,7 @@ public class MainActivity extends Activity {
 			else
 				map.put("info", "online");
 			map.put("img", R.drawable.ll_dev);
+			map.put("del", R.drawable.ll_del);
 			map.put(d.deviceName,d);
 			mData.add(map);
         } 

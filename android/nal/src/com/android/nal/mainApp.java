@@ -18,8 +18,6 @@ public class mainApp extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		//Thread.setDefaultUncaughtExceptionHandler(UncaughtExceptionHandler.getIntance(this));
-		
 		mContext = this;
 
 		if (!isStartVersionUpdateFlag) {
@@ -30,24 +28,6 @@ public class mainApp extends Application {
 		}
 }
 
-/*
-		try{
-			ApplicationInfo aInfo = getPackageManager().getApplicationInfo(getPackageName(),PackageManager.GET_META_DATA);
-			if(aInfo.metaData.containsKey("address")){
-				Constant.severAddr = aInfo.metaData.getString("address");
-			}
-			if(aInfo.metaData.containsKey("BeBo")){
-				boolean on = aInfo.metaData.getBoolean("BeBo");
-				LogUtil.setDebug(on);
-				LogUtil.i("debug on");
-			}else {
-				LogUtil.setDebug(false);
-			}
-		} catch(NameNotFoundException e){
-			e.printStackTrace();
-			LogUtil.setDebug(false);
-		}
-*/		
 	}
 	
 }

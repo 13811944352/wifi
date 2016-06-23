@@ -17,18 +17,20 @@ import android.widget.ImageView;
 import android.widget.EditText;
 
 import com.android.nal.utils.l;
+import com.android.nal.utils.util;
 import com.android.nal.service.MainService;
 import com.android.nal.local.localConfig;
 import com.android.nal.net.netConfig;
 import android.widget.Toast;
+import java.util.regex.Matcher;  
+import java.util.regex.Pattern;  
 
 public class regActivity extends Activity {
 	Context mC = null;
 	MainService mS = null;
 	regActivity mA = null;
 
-	Button enroll;//  = (Button)findViewById(R.id.login);
-	//Button enroll = (Button)findViewById(R.id.enroll);
+	Button enroll; 
 	Button captButton;
 
 
@@ -40,6 +42,23 @@ public class regActivity extends Activity {
     private View.OnClickListener getCapt = new View.OnClickListener(){
         @Override
         public void onClick(View arg0) {
+			EditText uname = (EditText)findViewById(R.id.uname);
+			EditText pwd = (EditText)findViewById(R.id.pwd);
+			EditText pwda = (EditText)findViewById(R.id.pwda);
+			final String n = uname.getText().toString().trim();
+			final String p = pwd.getText().toString().trim();
+			if(n == null) {
+				showToast("plz input uname");
+				return ;
+			}
+			if(n.trim().equals("")){
+				showToast("plz input name");
+				return ;
+			}
+			if(!util.isMobileNO(n)) {
+				showToast("plz input phoneNo");
+				return ;
+			}
 			new Thread() {
 				@Override
 				public void run() {
@@ -51,11 +70,14 @@ public class regActivity extends Activity {
 							;
 						}
 						i--;
-						if(i <= 0) {
+						if(i > 0) {
+							captButton.setOnClickListener(null);
+						}else {
 							captButton.setOnClickListener(getCapt);
 							Message m = new Message();
 							m.what = 3;
 							mH.sendMessage(m);
+							break;
 						}
 						String s = "剩余点击时间:"+i;
 						Message m = new Message();
@@ -82,12 +104,11 @@ public class regActivity extends Activity {
 			new View.OnClickListener() {
 				public void onClick(View v) {
 					EditText uname = (EditText)findViewById(R.id.uname);
-					//EditText mail = (EditText)findViewById(R.id.email);
 					EditText pwd = (EditText)findViewById(R.id.pwd);
 					EditText pwda = (EditText)findViewById(R.id.pwda);
 					final String n = uname.getText().toString();
-					//String m = mail.getText().toString();
 					final String p = pwd.getText().toString();
+					final String capt = ((EditText)findViewById(R.id.capt)).getText().toString().trim();
 					String pa = pwda.getText().toString();
 					if(n == null) {
 						showToast("plz input uname");
@@ -105,9 +126,21 @@ public class regActivity extends Activity {
 						showToast("plz input same password");
 						return ;
 					}
+/*
+					if(capt == null) {
+						showToast("plz input capt");
+						return ;
+					}
+
+					if(capt.equals("")){
+						showToast("plz input capt");
+						return ;
+					}
+*/
 					new Thread() {
 						@Override
 						public void run() {
+							//String token = netConfig.getInstance().reg(n,p,capt);
 							String token = netConfig.getInstance().reg(n,p);
 							if(token == null) {
 								Message m = new Message();

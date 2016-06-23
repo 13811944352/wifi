@@ -29,19 +29,44 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.LinearLayout;
 
 public class deviceAdd extends Activity {
 	Context mC = null;
 	deviceAdd mA = null;
 
-	Button enroll;//  = (Button)findViewById(R.id.login);
+	Button enroll;   
 
-	private static final String[] m={"设备A","设备B"};
+	private static final String[] m={"带温控器","不带温控器"};
 	int deviceType = 0;
 	Spinner type = null;
+
 	EditText id = null;
 	EditText name = null;
 	EditText desc = null;
+
+	EditText tempIn= null;
+	EditText tempOut= null;
+
+	Spinner specifications_select , gap_select , material_select;
+	int specifications_v = 0,gap_v = 0,material_v = 0;
+	LinearLayout tempset,specifications,gap,material;
+
+
+	private void setTempSet(boolean set) {
+		if(!set) {
+			tempset.setVisibility(View.GONE);  
+			specifications.setVisibility(View.GONE);  
+			gap.setVisibility(View.GONE);  
+			material.setVisibility(View.GONE);  
+		} else {
+			tempset.setVisibility(View.VISIBLE);  
+			specifications.setVisibility(View.VISIBLE);  
+			gap.setVisibility(View.VISIBLE);  
+			material.setVisibility(View.VISIBLE);  
+		}
+
+	}
 
 	private void showToast(String msg){
 		Toast toast=Toast.makeText(mC, msg ,Toast.LENGTH_SHORT); 
@@ -59,22 +84,60 @@ public class deviceAdd extends Activity {
 		id = (EditText)findViewById(R.id.device_id);
 		name = (EditText)findViewById(R.id.device_name);
 		desc = (EditText)findViewById(R.id.device_desc);
+		tempIn = (EditText)findViewById(R.id.device_temp_in);
+		tempOut = (EditText)findViewById(R.id.device_temp_out);
 		type = (Spinner)findViewById(R.id.device_type);
+		specifications_select = (Spinner)findViewById(R.id.specifications_select);
+		gap_select = (Spinner)findViewById(R.id.gap_select);
+		material_select = (Spinner)findViewById(R.id.material_select);
+
+		tempset = (LinearLayout)findViewById(R.id.tempset);
+		specifications= (LinearLayout)findViewById(R.id.specifications);
+		gap= (LinearLayout)findViewById(R.id.gap);
+		material= (LinearLayout)findViewById(R.id.material);
+
+		setTempSet(true);
+
+
+		material_select.setOnItemSelectedListener(new OnItemSelectedListener() {
+			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+				material_v = arg2;			
+			}
+			public void onNothingSelected(AdapterView<?> arg0) {
+			}
+		});
+		gap_select.setOnItemSelectedListener(new OnItemSelectedListener() {
+			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+				gap_v= arg2;			
+			}
+			public void onNothingSelected(AdapterView<?> arg0) {
+			}
+		});
+		specifications_select.setOnItemSelectedListener(new OnItemSelectedListener() {
+			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+				specifications_v= arg2;			
+			}
+			public void onNothingSelected(AdapterView<?> arg0) {
+			}
+		});
+
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,m);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         type.setAdapter(adapter);
         type.setOnItemSelectedListener(new OnItemSelectedListener() {
-			   public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
-					log("deviceType =="+arg2);
-					deviceType = arg2;
-					log("deviceType =="+deviceType);
-				}
- 
-				public void onNothingSelected(AdapterView<?> arg0) {
-					//deviceType = -1;
-				}
+			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+				log("deviceType =="+arg2);
+				deviceType = arg2;
+				log("deviceType =="+deviceType);
+				if(arg2 == 0)
+					setTempSet(false);
+				if(arg2 == 1)
+					setTempSet(true);
 			}
-		);
+ 
+			public void onNothingSelected(AdapterView<?> arg0) {
+			}
+		});
         type.setVisibility(View.VISIBLE);
 		
         add.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +155,15 @@ public class deviceAdd extends Activity {
 						d.deviceId=id.getText().toString();
 						d.deviceName=name.getText().toString();
 						d.deviceDesc=desc.getText().toString();
+						try {
+							d.deviceTempIn = Integer.parseInt(tempIn.getText().toString().trim());//tempIn.getText().toString();
+							d.deviceTempOut = Integer.parseInt(tempOut.getText().toString().trim());//tempOut.getText().toString();
+						}catch(java.lang.NumberFormatException e) {
+							;
+						}
+						d.deviceSpec=specifications_v;
+						d.deviceGap=gap_v;
+						d.deviceMaterial=material_v;
 						String json = d.d2j(d);
 						log("json:"+json);
 						boolean ret = netConfig.getInstance().regDeviceConfig(d);
