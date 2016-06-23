@@ -33,7 +33,7 @@ public class device extends base{
 
 
 		if(old == null)
-            sql = String.format("INSERT INTO device (type,deviceID,deviceName,deviceDesc,deviceAddr) VALUES(%d,'%s','%s','%s','%s');",d.deviceType,d.deviceId,d.deviceName,d.deviceDesc,d.deviceAddr);
+            sql = String.format("INSERT INTO device (type,deviceID,deviceName,deviceDesc,deviceAddr,deviceTempIn,deviceTempOut,deviceSpec,deviceGap,deviceMaterial) VALUES(%d,'%s','%s','%s','%s',%d,%d,%d,%d,%d);",d.deviceType,d.deviceId,d.deviceName,d.deviceDesc,d.deviceAddr,d.deviceTempIn,d.deviceTempOut,d.deviceSpec,d.deviceGap,d.deviceMaterial);
 		//if(old.equals(d))
         //    return "deviceConfig is in";
         Statement mStat = null;//conn.createStatement();
@@ -45,11 +45,9 @@ public class device extends base{
 			return ""+e;
 		} finally {
 			close(mStat);
-			//close(conn);
 		}
         HttpServletRequest hr = (HttpServletRequest)mPC.getRequest();
         String token = hr.getHeader("tt");
-        //oo("token:"+hr.getHeader("tt"));
         String uname = new use_info(mPC).getUname(token);
         oo("writeDevice name:"+uname);
 		String ret = new user_per(mPC).add(uname,d.deviceId,1);
@@ -72,29 +70,19 @@ public class device extends base{
 			if(rs.next()){
 				d = new deviceConfig();
 				d.deviceType = rs.getInt("type");
+				d.deviceTempIn= rs.getInt("deviceTempIn");
+				d.deviceTempOut= rs.getInt("deviceTempOut");
+				d.deviceSpec= rs.getInt("deviceSpec");
+				d.deviceGap= rs.getInt("deviceGap");
+				d.deviceMaterial= rs.getInt("deviceMaterial");
+				
 				d.deviceId = rs.getString("deviceID").trim();
 				d.deviceName = rs.getString("deviceName").trim();
 				d.deviceDesc = rs.getString("deviceDesc").trim();
 				d.deviceAddr= rs.getString("deviceAddr").trim();
-				//jo = new JSONObject();
-				//JSONArray ja = new JSONArray();
-				//node = new String[8];
 				for(int i = 0;i<8;i++) {
 					String tag = "n"+(i+1);
-					//oo(tag);
 					d.nodeId[i] = rs.getString(tag).trim();
-					//oo(node[i]+"");
-					//JSONObject tmp = getNodeInfo(did,node[i]);
-					//if(tmp != null) {
-					//	ja.add(tmp);
-					//}
-				//}
-				//jo.put("deviceType",type);
-				//jo.put("deviceID",deviceID);
-				//jo.put("deviceName",deviceName);
-				//jo.put("deviceDescription",deviceDescription);
-				//jo.put("deviceAddress",deviceAddress);
-				//jo.put("nodeList",ja);
 				}
 				return d; 
 			}
