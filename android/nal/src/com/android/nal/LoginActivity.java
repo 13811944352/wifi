@@ -141,14 +141,14 @@ public class LoginActivity extends Activity {
     };
 
     private void onRegSucess() {
-        showToast("reg sucess");
+        showToast("login sucess");
         Intent i = new Intent();
         i.setClass(LoginActivity.this,MainActivity.class);
         mC.startActivity(i);
         mA.finish();
     }
     private void onRegFail() {
-        showToast("reg Fail");
+        showToast("login Fail");
     }
 
 }

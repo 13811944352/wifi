@@ -21,7 +21,10 @@ public final class nodeConfig{
 	public int			nodeTempS[] = new int[7];
 	public int			nodeTempE[] = new int[7];
 
-
+	public int			homeType;
+	public int			homeDire;
+	public int			homeFloor;
+	public int			homeFitment;
 
 	public nodeConfig() {
 		deviceId = null;
@@ -32,6 +35,10 @@ public final class nodeConfig{
 		nodeType = 0;
 		nodeTime = 0;
 		nodeTemp = 5;
+		homeType = 0;
+		homeDire = 0;
+		homeFloor = 0;
+		homeFitment = 0;
 	}
 
 	public static nodeConfig j2n(String json) {
@@ -48,6 +55,10 @@ public final class nodeConfig{
 			n.nodeType = o.getInt("nodeType");
 			n.nodeTime = o.getInt("nodeTime");
 			n.nodeTemp = o.getInt("nodeTemp");
+			n.homeType = o.getInt("homeType");
+			n.homeDire= o.getInt("homeDire");
+			n.homeFloor = o.getInt("homeFloor");
+			n.homeFitment = o.getInt("homeFitment");
 			for(int i = 0;i<7;i++) {
 				n.nodeStart[i] = o.getInt("nodeStart"+i);
 				n.nodeEnd[i] = o.getInt("nodeEnd"+i);
@@ -71,6 +82,10 @@ public final class nodeConfig{
 			jo.put("nodeType",n.nodeType);
 			jo.put("nodeTime",n.nodeTime);
 			jo.put("nodeTemp",n.nodeTemp);
+			jo.put("homeType",n.homeType );
+			jo.put("homeDire",n.homeDire);
+			jo.put("homeFloor",n.homeFloor );
+			jo.put("homeFitment",n.homeFitment );
 			for(int i = 0;i<7;i++) {
 				jo.put("nodeStart"+i,n.nodeStart[i]);
 				jo.put("nodeEnd"+i,n.nodeEnd[i]);

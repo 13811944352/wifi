@@ -2,6 +2,9 @@ package com.android.nal;
 
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.content.DialogInterface;
+import android.app.AlertDialog;
 import android.widget.Button;
 import android.widget.ListView;
 import android.app.Activity;
@@ -118,13 +121,10 @@ public class MainActivity extends Activity {
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,int pos, long id) {
-				//List<deviceConfig> device = localConfig.getInstance().getAllDevice();
 				Map<String, Object> m = mData.get(pos);
 				String name = (String)m.get("title");
 				deviceConfig d = (deviceConfig)m.get(name);
 				String stat = (String)m.get("info");
-				//log("did:"+d.deviceId);
-				//String stat = mS.doQuery(d.deviceId,"temp1");
 				if(stat.equals("offline")) {
 					log("no temp1");
 					showToast("device offline");
@@ -142,7 +142,69 @@ public class MainActivity extends Activity {
 			}
 		});
 
+		listView.setOnItemLongClickListener(new OnItemLongClickListener() {  
+            @Override  
+            public boolean onItemLongClick(AdapterView<?> parent, View view,int pos,long id){
+/*
+				Map<String, Object> m = mData.get(pos);
+				String name = (String)m.get("title");
+				deviceConfig d = (deviceConfig)m.get(name);
+				String stat = (String)m.get("info");
+                index = arg2;  
+                return false;  
+*/
+				showDelDialog(pos);
+				return true;
+
+            }  
+        }); 
 	}
+
+	void delDev(final deviceConfig d) {
+        new Thread() {
+                    @Override
+                    public void run() {
+                        boolean ret = netConfig.getInstance().delDeviceConfig(d);
+						if(mS != null)
+							freshMdata();
+/*
+                        if(ret == true ) { 
+                            Message m = new Message();
+                            m.what = 0;
+                            mH.sendMessage(m);
+                        } else {
+                            Message m = new Message();
+                            m.what = 1;
+                            mH.sendMessage(m);
+                        }
+*/
+                    }
+                }.start();
+	}
+
+	void showDelDialog(final int pos) {
+		new AlertDialog.Builder(mC).setTitle("确认删除该设备")
+			.setPositiveButton("确定",new DialogInterface.OnClickListener() {//添加确定按钮  
+				@Override  
+				public void onClick(DialogInterface dialog, int which) {//确定按钮的响应事件  
+					//finish();  
+					Map<String, Object> m = mData.get(pos);
+					String name = (String)m.get("title");
+					deviceConfig d = (deviceConfig)m.get(name);
+					String stat = (String)m.get("info");
+					log("name=="+name);
+					delDev(d);
+				}  
+			})
+			.setNegativeButton("取消",new DialogInterface.OnClickListener() {//添加返回按钮  
+				@Override  
+				public void onClick(DialogInterface dialog, int which) {//响应事件  
+					log("cancel");
+				}  
+			})
+			.show();//在按键响应事件中显示此对话框  
+	}  
+  
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -183,13 +245,8 @@ public class MainActivity extends Activity {
         super.onStart();
 		initView();
 		bindService();
-		//if(mS != null)
-		//	freshMdata();
-/*
-        Message m = new Message();
-        m.what = 2;
-        mH.sendMessage(m);
-*/
+		if(mS != null)
+			freshMdata();
 	}
 
     @Override
@@ -204,28 +261,42 @@ public class MainActivity extends Activity {
 		unbindService();
 	}
 
+	private void freshUi() {
+		Message m = new Message();
+        m.what = 1;
+        mH.sendMessage(m);
+	}
+	private void startServer() {
+		Message m = new Message();
+        m.what = 0;
+        mH.sendMessage(m);
+	}
+
+	private void initNet() {
+		new Thread() {
+			@Override
+			public void run() {
+				if(mS != null)
+					mS.start();
+					//boolean ret = mS.start();
+			}
+        }.start();
+	}
+
+
 	private void freshMdata() {
 		new Thread() {
 				@Override
 				public void run(){
-					boolean ret = mS.start();
-					if(!ret )
-						log("mS.start failed");
-					log("onServiceConnected getData");
-					//mData = mS.getDeviceList();
 					getDevice();
 					log("onServiceConnected getData end");
-					//adapter.setListData(mData); 				
-                    Message m = new Message();
-                    m.what = 1;
-                    mH.sendMessage(m);
+					freshUi();
 					for(int i = 0;i < mData.size();i++) {
 						Map<String, Object> map = mData.get(i);
 						String name = (String)map.get("title");
 						deviceConfig d = (deviceConfig)map.get(name);
 						mS.syncLocalNode(d.deviceId);
 					}
-					//mHandler.sendEmptyMessageDelayed(, 0);
 				}
          }.start();
 		
@@ -234,15 +305,9 @@ public class MainActivity extends Activity {
 	private ServiceConnection mSc = new ServiceConnection() {
 		public void onServiceConnected(ComponentName name, IBinder service) {
 			mS = ((MainService.MainServiceBinder)service).getService();
-			freshMdata();
-/*
-            Message m = new Message();
-            m.what = 0;
-            mH.sendMessage(m);
-            m = new Message();
-            m.what = 2;
-            mH.sendMessage(m);
-*/
+			initNet();
+			if(mS != null)
+				freshMdata();
 		}
 
 		public void onServiceDisconnected(ComponentName name) {

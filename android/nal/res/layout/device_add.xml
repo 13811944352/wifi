@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-	android:id="@+id/widget32"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:background = "@color/skyblue"
+	android:background = "@color/snow"
 	xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout
 	android:id="@+id/type_select"
@@ -12,8 +11,10 @@
 	android:orientation="vertical"
 	android:layout_alignParentTop="true"
 	android:layout_alignParentLeft="true">
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
 	<TextView
-		android:id="@+id/widget34"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="&#35774;&#22791;&#31867;&#21035;"
@@ -23,17 +24,11 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 	/>
+	</LinearLayout>
 	<TextView
-		android:id="@+id/widget36"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="&#35774;&#22791;&#20449;&#24687;"
-		android:textSize="16sp" />
-	<TextView
-		android:id="@+id/widget37"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="&#35774;&#22791;ID" />
+		android:text="请输入设备ID:" />
 	<EditText
 		android:id="@+id/device_id"
 		android:layout_width="fill_parent"
@@ -41,12 +36,6 @@
 		android:maxLength = "32"
 		android:textSize="18sp" />
 	<TextView
-		android:id="@+id/widget39"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="&#35774;&#22791;&#21517;" />
-	<TextView
-		android:id="@+id/widget40"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="&#32473;&#20320;&#30340;&#35774;&#22791;&#36215;&#20010;&#23481;&#26131;&#28857;&#30340;&#21517;&#23383;&#65292;&#19981;&#36229;&#36807;30&#20010;&#23383;&#31526;" />
@@ -57,23 +46,107 @@
 		android:maxLength = "60"
 		android:textSize="18sp" />
 	<TextView
-		android:id="@+id/widget43"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="&#25551;&#36848;" />
-	<TextView
-		android:id="@+id/widget44"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="&#19981;&#36229;&#36807;30&#20010;&#23383;&#31526;" />
+		android:text="设备描述"/>
 	<EditText
 		android:id="@+id/device_desc"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:maxLength = "60"
 		android:textSize="18sp" />
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="安装地址" />
+	<EditText
+		android:id="@+id/input_addr"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:maxLength = "60"
+		android:textSize="18sp" />
+
 	<LinearLayout
-		android:id="@+id/widget53"
+		android:id="@+id/tempset"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="供回水温" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="入口" />
+		<EditText
+			android:id="@+id/device_temp_in"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:inputType="number"
+			android:maxLength = "2" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="出口" />
+		<EditText
+			android:id="@+id/device_temp_out"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:inputType="number"
+			android:maxLength = "2"
+			android:layout_gravity="right" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/specifications"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="管道规格" />
+		<Spinner
+			android:id="@+id/specifications_select"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:entries="@array/specifications"
+		/>
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/gap"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="管道间距" />
+		<Spinner
+			android:id="@+id/gap_select"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:entries="@array/gap"
+		/>
+	</LinearLayout>
+	
+	<LinearLayout
+		android:id="@+id/material"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="管道材质" />
+		<Spinner
+			android:id="@+id/material_select"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:entries="@array/material"
+		/>
+	</LinearLayout>
+
+	<LinearLayout
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
 		<Button

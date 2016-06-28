@@ -31,6 +31,11 @@ public class node extends base{
     private static final String N_TS = "n_temps";
     private static final String N_TE = "n_tempe";
 
+    private static final String N_HTYPE= "n_homeType";
+    private static final String N_HDIRE  = "n_homeDire";
+    private static final String N_HFLOOR  = "n_homeFloor";
+    private static final String N_HFITM  = "n_homeFitment";
+
 	private String getString(ResultSet rs,String id) {
 		try {
 			return rs.getString(id);
@@ -53,8 +58,9 @@ public class node extends base{
         }
 		nodeConfig old = getNode(n.deviceId,n.nodeId);
 		String sql = null;
-        sql = String.format("INSERT INTO node (d_did,n_id,n_name,n_desc,n_config,n_type,n_time,n_temp,     		n_start0,n_start1,n_start2,n_start3,n_start4,n_start5,n_start6,      		n_end0,n_end1,n_end2,n_end3,n_end4,n_end5,n_end6,      		n_temps0,n_temps1,n_temps2,n_temps3,n_temps4,n_temps5,n_temps6,      		n_tempe0,n_tempe1,n_tempe2,n_tempe3,n_tempe4,n_tempe5,n_tempe6      		) VALUES('%s','%s','%s','%s',%d,%d,%d,%d,  		%d,%d,%d,%d,%d,%d,%d,  		%d,%d,%d,%d,%d,%d,%d,  		%d,%d,%d,%d,%d,%d,%d,  		%d,%d,%d,%d,%d,%d,%d)",       		n.deviceId,n.nodeId,n.nodeName,n.nodeDesc,n.nodeConfig,n.nodeType,n.nodeTime,n.nodeTemp, 		n.nodeStart[0],n.nodeStart[1],n.nodeStart[2],n.nodeStart[3],n.nodeStart[4],n.nodeStart[5],n.nodeStart[6],  		n.nodeEnd[0],n.nodeEnd[1],n.nodeEnd[2],n.nodeEnd[3],n.nodeEnd[4],n.nodeEnd[5],n.nodeEnd[6],  		n.nodeTempS[0],n.nodeTempS[1],n.nodeTempS[2],n.nodeTempS[3],n.nodeTempS[4],n.nodeTempS[5],n.nodeTempS[6], 		n.nodeTempE[0],n.nodeTempE[1],n.nodeTempE[2],n.nodeTempE[3],n.nodeTempE[4],n.nodeTempE[5],n.nodeTempE[6]);
+        sql = String.format("INSERT INTO node (d_did,n_id,n_name,n_desc,n_config,n_type,n_time,n_temp,n_start0,n_start1,n_start2,n_start3,n_start4,n_start5,n_start6,n_end0,n_end1,n_end2,n_end3,n_end4,n_end5,n_end6,n_temps0,n_temps1,n_temps2,n_temps3,n_temps4,n_temps5,n_temps6,n_tempe0,n_tempe1,n_tempe2,n_tempe3,n_tempe4,n_tempe5,n_tempe6 ,n_homeType,n_homeDire,n_homeFloor,n_homeFitment) VALUES('%s','%s','%s','%s',%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d)",n.deviceId,n.nodeId,n.nodeName,n.nodeDesc,n.nodeConfig,n.nodeType,n.nodeTime,n.nodeTemp,n.nodeStart[0],n.nodeStart[1],n.nodeStart[2],n.nodeStart[3],n.nodeStart[4],n.nodeStart[5],n.nodeStart[6],n.nodeEnd[0],n.nodeEnd[1],n.nodeEnd[2],n.nodeEnd[3],n.nodeEnd[4],n.nodeEnd[5],n.nodeEnd[6],n.nodeTempS[0],n.nodeTempS[1],n.nodeTempS[2],n.nodeTempS[3],n.nodeTempS[4],n.nodeTempS[5],n.nodeTempS[6],n.nodeTempE[0],n.nodeTempE[1],n.nodeTempE[2],n.nodeTempE[3],n.nodeTempE[4],n.nodeTempE[5],n.nodeTempE[6],n.homeType,n.homeDire,n.homeFloor,n.homeFitment);
 
+		o("sql = "+ sql);
 /*
             n.deviceId, 
             n.nodeType,
@@ -125,6 +131,10 @@ public class node extends base{
 	            n.nodeTemp= getInt(cr,N_TEMP);
 		        n.nodeDesc= getString(cr,N_DESC);
 		        n.nodeTime= getInt(cr,N_TIME);
+		        n.homeType= getInt(cr,N_HTYPE);
+		        n.homeDire= getInt(cr,N_HDIRE);
+		        n.homeFloor= getInt(cr,N_HFLOOR);
+		        n.homeFitment= getInt(cr,N_HFITM);
 			    for(int i = 0;i<7;i++) {
 				    n.nodeStart[i] = getInt(cr,N_S+i);
 				    n.nodeEnd[i] = getInt(cr,N_E+i);

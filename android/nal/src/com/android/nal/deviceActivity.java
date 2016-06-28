@@ -49,6 +49,7 @@ public class deviceActivity extends Activity {
 	Intent mIntent;
 	//nodeConfig[] mN;
 
+	TextView title;
 	Button b1,b2,b3,b4;
 	Button back;
 	MySpinnerButton menu;
@@ -132,7 +133,7 @@ public class deviceActivity extends Activity {
 
 	void initCallBack() {
 		back.setOnClickListener(new backClick());
-		menu.setOnClickListener(new menuClick());
+		//menu.setOnClickListener(new menuClick());
 		b1.setOnClickListener(new vClick());
 		b2.setOnClickListener(new vClick());
 		b3.setOnClickListener(new vClick());
@@ -154,9 +155,10 @@ public class deviceActivity extends Activity {
 		b3 = (Button)findViewById(R.id.his_data);
 		b4 = (Button)findViewById(R.id.trans);
 		back = (Button)findViewById(R.id.back);
+		title = (TextView)findViewById(R.id.title);
 		menu = (MySpinnerButton)findViewById(R.id.menu);
 		ArrayList<String> temp = new ArrayList<String>();
-		temp.add("主控界面");
+		temp.add("总控页面");
 		temp.add("历史数据");
 		temp.add("设备共享");
 		temp.add("个人中心");
@@ -170,12 +172,16 @@ public class deviceActivity extends Activity {
                 switch (arg0)
                 {
                 case 0:
+					title.setText("         总控页面");
                     break;
                 case 1:
+					title.setText("         历史数据");
                     break;
                 case 2:
+					title.setText("         设备共享");
                     break;
                 case 3:
+					title.setText("         个人中心");
                     break;
                 case 4:
                     break;

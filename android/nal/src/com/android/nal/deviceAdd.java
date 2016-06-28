@@ -73,12 +73,8 @@ public class deviceAdd extends Activity {
 		toast.show();
 	}
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-		mC = this;
+	void initView() {
 		setContentView(R.layout.device_add);
-		mA = this;
 		Button add = (Button)findViewById(R.id.save);
 		Button cancel = (Button)findViewById(R.id.cancel);
 		id = (EditText)findViewById(R.id.device_id);
@@ -97,8 +93,6 @@ public class deviceAdd extends Activity {
 		material= (LinearLayout)findViewById(R.id.material);
 
 		setTempSet(true);
-
-
 		material_select.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
 				material_v = arg2;			
@@ -139,7 +133,7 @@ public class deviceAdd extends Activity {
 			}
 		});
         type.setVisibility(View.VISIBLE);
-		
+
         add.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 				if(deviceType != 0 && deviceType != 1) {
@@ -180,16 +174,24 @@ public class deviceAdd extends Activity {
                 }.start();
             }
         });
+
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 				mA.finish();
             }
         });
+	}
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+		mC = this;
+		mA = this;
 	}
     @Override
     public void onStart() {
         super.onStart();
+		initView();
 	}
 
     @Override

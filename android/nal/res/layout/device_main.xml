@@ -9,17 +9,32 @@
 	android:weightSum="1">
 <LinearLayout
 	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
 	android:orientation="vertical"
+	android:layout_height="60dp"
 	android:layout_x="0dp"
-	android:layout_y="65dp">
+	android:layout_y="85dp">
+<!--
 <ImageView
 	android:id="@+id/home"
 	android:background="@drawable/device_main_home"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:layout_gravity="center_horizontal" />
+-->
 <TextView
+	android:layout_y="25dp"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text=" "
+	android:layout_gravity="center_horizontal" />
+<TextView
+	android:layout_y="25dp"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text=""
+	android:layout_gravity="center_horizontal" />
+<TextView
+	android:layout_y="25dp"
 	android:id="@+id/d_name"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
@@ -29,29 +44,42 @@
 <LinearLayout
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
-	android:layout_x="0dp"
-	android:layout_y="130dp"
-	android:layout_weight="0.16">
-<Button
+	android:layout_weight="0.12">
+<ImageButton
 	android:id="@+id/n01"
-	android:background="@drawable/device_main_online"
+	android:src="@drawable/device_main_online"
+	android:background="#00000000"
+	android:scaleType="fitCenter"
 	android:layout_width="wrap_content"
 	android:layout_height="fill_parent"
 	android:text="n01"
-	android:layout_weight="0.93" />
-<Button
+	android:layout_weight="1" />
+<ImageButton
 	android:id="@+id/n02"
-	android:background="@drawable/device_main_online"
+	android:src="@drawable/device_main_online"
+	android:background="#00000000"
+	android:scaleType="fitCenter"
 	android:layout_width="wrap_content"
 	android:layout_height="fill_parent"
 	android:text="n02"
 	android:layout_weight="1" />
-<Button
+<ImageButton
 	android:id="@+id/n03"
-	android:background="@drawable/device_main_online"
+	android:src="@drawable/device_main_online"
+	android:background="#00000000"
+	android:scaleType="fitCenter"
 	android:layout_width="wrap_content"
 	android:layout_height="fill_parent"
 	android:text="n03"
+	android:layout_weight="1" />
+<ImageButton
+	android:id="@+id/n04"
+	android:src="@drawable/device_main_online"
+	android:background="#00000000"
+	android:scaleType="fitCenter"
+	android:layout_width="wrap_content"
+	android:layout_height="fill_parent"
+	android:text="n04"
 	android:layout_weight="1" />
 </LinearLayout>
 <LinearLayout
@@ -65,46 +93,71 @@
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="TextView"
+	android:layout_gravity="center_vertical" 
 	android:layout_weight="1" />
 <TextView
 	android:id="@+id/n_name_02"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="TextView"
+	android:layout_gravity="center_vertical" 
 	android:layout_weight="1" />
 <TextView
 	android:id="@+id/n_name_03"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="TextView"
+	android:layout_gravity="center_vertical" 
+	android:layout_weight="1" />
+<TextView
+	android:id="@+id/n_name_04"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="TextView"
+	android:layout_gravity="center_vertical" 
 	android:layout_weight="1" />
 </LinearLayout>
 <LinearLayout
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:layout_x="0dp"
-	android:layout_y="203dp"
-	android:layout_weight="0.15">
-<Button
-	android:id="@+id/n04"
-	android:background="@drawable/device_main_online"
-	android:layout_width="wrap_content"
-	android:layout_height="fill_parent"
-	android:text="n04"
-	android:layout_weight="1" />
-<Button
+	android:layout_y="130dp"
+	android:layout_weight="0.16">
+<ImageButton
 	android:id="@+id/n05"
-	android:background="@drawable/device_main_online"
+	android:src="@drawable/device_main_online"
+	android:background="#00000000"
+	android:scaleType="fitCenter"
 	android:layout_width="wrap_content"
 	android:layout_height="fill_parent"
 	android:text="n05"
 	android:layout_weight="1" />
-<Button
+<ImageButton
 	android:id="@+id/n06"
-	android:background="@drawable/device_main_online"
+	android:src="@drawable/device_main_online"
+	android:background="#00000000"
+	android:scaleType="fitCenter"
 	android:layout_width="wrap_content"
 	android:layout_height="fill_parent"
 	android:text="n06"
+	android:layout_weight="1" />
+<ImageButton
+	android:id="@+id/n07"
+	android:src="@drawable/device_main_online"
+	android:background="#00000000"
+	android:scaleType="fitCenter"
+	android:layout_width="wrap_content"
+	android:layout_height="fill_parent"
+	android:text="n07"
+	android:layout_weight="1" />
+<ImageButton
+	android:id="@+id/n08"
+	android:src="@drawable/device_main_online"
+	android:background="#00000000"
+	android:scaleType="fitCenter"
+	android:layout_width="wrap_content"
+	android:layout_height="fill_parent"
+	android:text="n08"
 	android:layout_weight="1" />
 </LinearLayout>
 <LinearLayout
@@ -113,62 +166,157 @@
 	android:layout_x="0dp"
 	android:layout_y="254dp">
 <TextView
-	android:id="@+id/n_name_04"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="TextView"
-	android:layout_weight="1" />
-<TextView
 	android:id="@+id/n_name_05"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="TextView"
+	android:gravity="center" 
 	android:layout_weight="1" />
 <TextView
 	android:id="@+id/n_name_06"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="TextView"
+	android:gravity="center" 
 	android:layout_weight="1" />
-</LinearLayout>
-
-<LinearLayout
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:layout_x="0dp"
-	android:layout_y="203dp">
-<Button
-	android:id="@+id/n07"
-	android:background="@drawable/device_main_online"
-	android:layout_width="wrap_content"
-	android:layout_height="137dp"
-	android:text="n07"
-	android:layout_weight="1" />
-<Button
-	android:id="@+id/n08"
-	android:background="@drawable/device_main_online"
-	android:layout_width="wrap_content"
-	android:layout_height="fill_parent"
-	android:text="n08"
-	android:layout_weight="1" />
-
-</LinearLayout>
-<LinearLayout
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:layout_x="0dp"
-	android:layout_y="254dp">
 <TextView
 	android:id="@+id/n_name_07"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="TextView"
+	android:gravity="center" 
 	android:layout_weight="1" />
 <TextView
 	android:id="@+id/n_name_08"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="TextView"
+	android:gravity="center" 
 	android:layout_weight="1" />
 </LinearLayout>
+
+
+
+
+<LinearLayout
+    layout_marginTop="50dp"
+    android:id="@+id/smart"
+    android:layout_width="fill_parent"
+    android:layout_height="71dp"
+    android:layout_marginTop="110dp">
+    <RadioButton
+		android:checked="true"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="New RadioButton"
+        android:id="@+id/rb1"
+        android:layout_marginLeft="30dp"
+        android:textColorHint="@color/red"
+        android:layout_marginBottom="30dp" 
+    />
+    <RadioButton
+		android:checked="true"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="New RadioButton"
+        android:id="@+id/rb2"
+        android:layout_weight="1"
+        android:layout_marginLeft="30dp" 
+        android:textColorHint="@color/red" 
+        android:layout_marginBottom="30dp" 
+    />
+    <RadioButton
+		android:checked="true"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="New RadioButton"
+        android:id="@+id/rb3"
+        android:layout_weight="1"
+        android:layout_marginLeft="30dp" 
+        android:textColorHint="@color/red" 
+        android:layout_marginBottom="30dp" 
+    />
+    <RadioButton
+		android:checked="true"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="New RadioButton"
+        android:id="@+id/rb3"
+        android:layout_weight="1"
+        android:layout_marginLeft="30dp" 
+        android:textColorHint="@color/red" 
+        android:layout_marginBottom="30dp" 
+    />
+    <RadioButton
+		android:checked="true"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="New RadioButton"
+        android:id="@+id/rb4"
+        android:layout_weight="1"
+        android:layout_marginLeft="30dp" 
+        android:textColorHint="@color/red" 
+        android:layout_marginBottom="30dp" 
+    />
+</LinearLayout>
+
+
+<LinearLayout
+    android:id="@+id/smart"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  舒适"
+        android:id="@+id/rb1"
+        android:layout_marginLeft="30dp" 
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  节能"
+        android:layout_weight="1"
+        android:layout_marginLeft="30dp" 
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  离家"
+        android:layout_weight="1"
+        android:layout_marginLeft="30dp" 
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  定时"
+        android:layout_weight="1"
+        android:layout_marginLeft="30dp" 
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  手动"
+        android:layout_weight="1"
+        android:layout_marginLeft="30dp" 
+    />
+</LinearLayout>
+
+
+
+<!--
+<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_x="0dp"
+	android:layout_y="203dp">
+</LinearLayout>
+<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_x="0dp"
+	android:layout_y="254dp">
+</LinearLayout>
+-->
 </LinearLayout>

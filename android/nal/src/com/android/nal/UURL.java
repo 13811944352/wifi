@@ -2,9 +2,9 @@ package com.android.nal;
 
 public class UURL {
 	//public static String ip = "123.57.3.108";
-//	public static String ip = "10.100.157.147";
+	//public static String ip = "10.100.157.147";
 	//public static String ip = "10.100.157.166";
-	//public static String ip = "192.168.1.123";
+	//public static String ip = "192.168.1.108";
 	//public static String ip = "192.168.1.166";
 	//public static String ip = "192.168.1.138";
 	public static String ip = "182.92.154.195";
@@ -17,8 +17,10 @@ public class UURL {
 	public static String setNode= url+"setnode.jsp?";
 	public static String reg = url+"reg.jsp?";
 	public static String regDev = url+"regDevice.jsp?";
+	public static String delDev = url+"delDevice.jsp?";
 	public static String login = url+"login.jsp?";
 	public static String history = url+"history.jsp?";
+	public static String capt= url+"capt.jsp?";
 
 	public static String makeURL(String u) {
         if(!u.startsWith("http://"))

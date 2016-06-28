@@ -195,6 +195,7 @@ public class nodeActivity extends Activity {
 
 	void initView() {
 		setContentView(R.layout.node_main);
+/*
 		initNodeName();
 
 		smart = (LinearLayout) findViewById(R.id.smart);
@@ -206,7 +207,7 @@ public class nodeActivity extends Activity {
 		et = (EditText)findViewById(R.id.node_temp);
 
 		done = (Button)findViewById(R.id.done);
-		timer = (Button)findViewById(R.id.timer);
+		//timer = (Button)findViewById(R.id.timer);
 		String[] m={"手动","智能"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,m);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -336,6 +337,7 @@ public class nodeActivity extends Activity {
                 mA.finish();
             }
         });
+*/
 	}
 
 	private int getSetTemp() {

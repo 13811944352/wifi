@@ -19,11 +19,11 @@
     android:layout_height="wrap_content"
     android:layout_weight="1" />
 <TextView
-    android:id="@+id/widget36"
+    android:id="@+id/title"
     android:layout_width="wrap_content"
     android:layout_height="39dp"
-    android:text="            nuoiss"
-	android:textColor="#000"  
+    android:text="         总控页面"
+	android:textColor="@color/snow"  
     android:textSize="25sp"
     android:layout_gravity="center_horizontal"
     android:layout_weight="5" />
@@ -53,6 +53,7 @@
 			android:layout_height="wrap_content"
 			android:layout_weight="2"
 			android:background="@color/red"
+			android:visibility="gone"
 			android:orientation="horizontal" >
 
         <Button

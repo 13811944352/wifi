@@ -38,4 +38,18 @@
         <item>星期6</item>
         <item>星期7</item>
     </string-array>
+    <string-array name="specifications">
+        <item>16管径</item>
+        <item>20管径</item>
+        <item>25管径</item>
+    </string-array>
+    <string-array name="gap">
+        <item>150间距</item>
+        <item>200间距</item>
+        <item>300间距</item>
+    </string-array>
+    <string-array name="material">
+        <item>PE-RT</item>
+        <item>PB</item>
+    </string-array>
 </resources>

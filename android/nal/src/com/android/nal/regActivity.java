@@ -31,6 +31,7 @@ public class regActivity extends Activity {
 	regActivity mA = null;
 
 	Button enroll; 
+	Button cancel; 
 	Button captButton;
 
 
@@ -62,6 +63,18 @@ public class regActivity extends Activity {
 			new Thread() {
 				@Override
 				public void run() {
+					boolean ret = netConfig.getInstance().capt(n);
+					if(ret = false) {
+						//showToast("send err.plz retry");
+						Message m = new Message();
+						m.what = 11;
+						mH.sendMessage(m);
+						
+						return ;
+					}
+						Message m = new Message();
+						m.what = 10;
+						mH.sendMessage(m);
 					int i = 60;
 					while(true) {
 						try {
@@ -74,13 +87,13 @@ public class regActivity extends Activity {
 							captButton.setOnClickListener(null);
 						}else {
 							captButton.setOnClickListener(getCapt);
-							Message m = new Message();
+							m = new Message();
 							m.what = 3;
 							mH.sendMessage(m);
 							break;
 						}
 						String s = "剩余点击时间:"+i;
-						Message m = new Message();
+						m = new Message();
 						m.what = 2;
 						m.obj = s;
 						mH.sendMessage(m);
@@ -98,6 +111,17 @@ public class regActivity extends Activity {
 
 		captButton = (Button)findViewById(R.id.captButton);
 		captButton.setOnClickListener(getCapt);
+
+		cancel= (Button)findViewById(R.id.canel);
+		cancel.setOnClickListener(
+			new View.OnClickListener() {
+				public void onClick(View v) {
+					Intent i = new Intent();
+					i.setClass(regActivity.this,LoginActivity.class);
+					mA.finish();
+				}
+			}
+		);
 
 		enroll = (Button)findViewById(R.id.enen);
 		enroll.setOnClickListener(
@@ -126,7 +150,7 @@ public class regActivity extends Activity {
 						showToast("plz input same password");
 						return ;
 					}
-/*
+
 					if(capt == null) {
 						showToast("plz input capt");
 						return ;
@@ -136,12 +160,12 @@ public class regActivity extends Activity {
 						showToast("plz input capt");
 						return ;
 					}
-*/
+
 					new Thread() {
 						@Override
 						public void run() {
-							//String token = netConfig.getInstance().reg(n,p,capt);
-							String token = netConfig.getInstance().reg(n,p);
+							String token = netConfig.getInstance().reg(n,p,capt);
+							//String token = netConfig.getInstance().reg(n,p);
 							if(token == null) {
 								Message m = new Message();
 								m.what = 1;
@@ -184,6 +208,12 @@ public class regActivity extends Activity {
 				case(3):
 					onCaptReset();
 					break;
+				case(10):
+					onCaptSucess();
+					break;
+				case(11):
+					onCaptFail();
+					break;
 				case(1):
 				default:
 					onRegFail();
@@ -192,6 +222,12 @@ public class regActivity extends Activity {
 		}
 		
 	};
+	private void onCaptSucess() {
+		showToast("capt sucess");
+	}
+	private void onCaptFail() {
+		showToast("capt Fail");
+	}
 
 	private void onCaptReset() {
 		captButton.setBackgroundResource(R.drawable.capt);

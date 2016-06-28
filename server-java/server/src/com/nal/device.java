@@ -15,7 +15,30 @@ public class device extends base{
 	public String writeDevice(String json) throws Exception{
         deviceConfig d = deviceConfig.j2d(json);
 		return writeDevice(d);// throws Exception{
-		
+	}
+
+	public String delDevice(String u,String json) throws Exception{
+        deviceConfig d = deviceConfig.j2d(json);
+		return delDevice(u,d);// throws Exception{
+	}
+
+	public String delDevice(String u,deviceConfig  d) throws Exception{
+		if(d == null)
+			return "deviceConfig.j2d err";
+        String sql = null;
+
+		String ret = new user_per(mPC).del(u,d.deviceId);
+		sql = String.format("delete from device where deviceID='%s'",d.deviceId);
+        Statement mStat = null;//conn.createStatement();
+        try {
+            mStat = conn.createStatement();
+            mStat.executeUpdate(sql);
+        }catch(SQLException e) {
+            return ""+false;
+        }finally{
+			close(mStat);
+		}
+        return "true";
 	}
 
 	public String writeDevice(deviceConfig  d) throws Exception{
@@ -27,13 +50,12 @@ public class device extends base{
 		deviceConfig old = getDevice(d.deviceId);
 
 		if(old != null) {
-			if(old.equals(d))
-				return "deviceConfig is in";
-		}
+				//return "deviceConfig is in";
+		} else {
 
 
-		if(old == null)
-            sql = String.format("INSERT INTO device (type,deviceID,deviceName,deviceDesc,deviceAddr,deviceTempIn,deviceTempOut,deviceSpec,deviceGap,deviceMaterial) VALUES(%d,'%s','%s','%s','%s',%d,%d,%d,%d,%d);",d.deviceType,d.deviceId,d.deviceName,d.deviceDesc,d.deviceAddr,d.deviceTempIn,d.deviceTempOut,d.deviceSpec,d.deviceGap,d.deviceMaterial);
+		//if(old == null) 
+        sql = String.format("INSERT INTO device (type,deviceID,deviceName,deviceDesc,deviceAddr,deviceTempIn,deviceTempOut,deviceSpec,deviceGap,deviceMaterial) VALUES(%d,'%s','%s','%s','%s',%d,%d,%d,%d,%d);",d.deviceType,d.deviceId,d.deviceName,d.deviceDesc,d.deviceAddr,d.deviceTempIn,d.deviceTempOut,d.deviceSpec,d.deviceGap,d.deviceMaterial);
 		//if(old.equals(d))
         //    return "deviceConfig is in";
         Statement mStat = null;//conn.createStatement();
@@ -45,6 +67,7 @@ public class device extends base{
 			return ""+e;
 		} finally {
 			close(mStat);
+		}
 		}
         HttpServletRequest hr = (HttpServletRequest)mPC.getRequest();
         String token = hr.getHeader("tt");

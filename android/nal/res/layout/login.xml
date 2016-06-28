@@ -69,6 +69,7 @@
                 android:layout_marginLeft="20dip"  
                 android:layout_toRightOf="@id/account"  
                 android:background="@null"  
+				android:inputType="textPassword"
                 android:hint="请输入密码"  
                 android:textSize="15sp" />  
     </LinearLayout>  

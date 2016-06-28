@@ -84,11 +84,26 @@ public class netConfig {
 		return token;
 	}
 
+	public boolean capt(String uname) {
+		String result = HttpUtil.httpGet(UURL.capt+"phone="+uname);
+		log("http capt result:"+result);
+		JSONObject json = null;// = JSONObject.fromObject(ret)
+		try {
+			json = new JSONObject(result);
+			String err = json.getString("err");
+			if(!err.equals("no error"))
+				return true;
+		} catch (Exception e) {
+			return false;
+		}
+		return false;
+
+	}
 	public String reg(String uname,String pwd,String capt) {
 		String token = null;
 		String md5 = MD5.md5String(pwd);
 		log("md5:"+md5);
-		String result = HttpUtil.httpGet(UURL.reg+"uname="+uname+"&hash="+md5.toLowerCase()+"capt="+capt);
+		String result = HttpUtil.httpGet(UURL.reg+"uname="+uname+"&hash="+md5.toLowerCase()+"&capt="+capt);
 		log("http reg result:"+result);
 		JSONObject json = null;  
 		try {
@@ -158,6 +173,24 @@ public class netConfig {
 		}
 		return list;
 	}
+
+	public boolean delDeviceConfig(deviceConfig d){
+		String json = d.d2j(d);
+		String result = HttpUtil.httpGetT(UURL.delDev+"json="+json);
+		log("http del result:"+result);
+		try {
+			JSONObject jo = new JSONObject(result);
+			String err = jo.getString("err");
+			if(err.equals("true"))
+				return true;
+		}catch(Exception e) {
+			return false;
+		}
+		
+		return false;
+
+	}
+
 
 	public boolean regDeviceConfig(deviceConfig d) {
 		String json = d.d2j(d);

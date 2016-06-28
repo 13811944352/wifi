@@ -40,6 +40,7 @@ public class nodeActivity1 extends Activity {
 	String mId;
 	nodeConfig mN = null;
 	MainService mS = null;
+	boolean isModify = false;
 
 	private void showToast(String msg){
 		Toast toast=Toast.makeText(mC, msg ,Toast.LENGTH_SHORT); 
@@ -53,6 +54,15 @@ public class nodeActivity1 extends Activity {
 		n.nodeConfig  = -1;
 		return n;
 	}
+    void updateNode() {
+        new Thread() {
+                @Override
+                public void run(){
+                    log("mN:"+mN.n2j(mN));
+                    mS.syncNetNode(mN);
+                }
+         }.start();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,7 +85,7 @@ public class nodeActivity1 extends Activity {
 			initView();
 		}
 	}
-
+/*
 	String getTemp() {
 		String temp = mS.doQuery(mD.deviceId,"temp"+(mId));
 		return temp;
@@ -84,24 +94,18 @@ public class nodeActivity1 extends Activity {
 		int result = mS.doSet(mD.deviceId,"tempcfg"+(mId),type,value);
 		return result;
 	}
-
+*/
 	void initNodeName() {
 		final TextView nodename = (TextView)findViewById(R.id.nodename);
 		nodename.setText(mN.nodeName);
 		if(mN.nodeName.equals("")) {
 			nodename.setText("未命名");
 		}
-		Button temp = (Button)findViewById(R.id.temp);
-		temp.setText(getTemp());
-
 		Button nodename_modify = (Button)findViewById(R.id.nodename_modify);
 		final EditText ett = new EditText(mC);
 		nodename_modify.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View arg0) {
-                    //Intent i = new Intent();
-                    //i.setClass(nodeActivity1.this,nodeActivity1.class);
-                    //mC.startActivity(i);
 					new AlertDialog.Builder(mC).
 						setTitle("给房间改名:").
 						setIcon(android.R.drawable.ic_dialog_info).
@@ -110,9 +114,10 @@ public class nodeActivity1 extends Activity {
     						public void onClick(DialogInterface arg0,int arg1){
 								mN.nodeName = ett.getText().toString();  
 								nodename.setText(mN.nodeName);
-								log("mN=="+mN.deviceId+"-"+mN.nodeId+"-"+mN.nodeName);
-								localConfig.getInstance().setNodeConfig(mN);
+								//log("mN=="+mN.deviceId+"-"+mN.nodeId+"-"+mN.nodeName);
+								//localConfig.getInstance().setNodeConfig(mN);
 								//localConfig.getInstance().getNodeConfig(mD.deviceId,mId);
+								isModify = true;
 							}
 						}).
 						setNegativeButton("取消", null).
@@ -121,35 +126,63 @@ public class nodeActivity1 extends Activity {
 		});
 	}
 
+/*
+	int home_type_v = 0;
+	int direction_v = 0;//(Spinner)findViewById(R.id.nodetype);
+	int floor_v = 0;// (Spinner)findViewById(R.id.nodetype);
+	int home_design_v = 0;//(Spinner)findViewById(R.id.nodetype);
+*/
+
 	void initView() {
 		setContentView(R.layout.node_no_temp);
-		//initNodeName();
-/*
-		final LinearLayout smart = (LinearLayout) findViewById(R.id.smart);
-		final LinearLayout nosmart = (LinearLayout) findViewById(R.id.nosmart);
-		Spinner mode_select = (Spinner)findViewById(R.id.mode_select);;
-		String[] m={"手动","智能"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,m);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mode_select.setAdapter(adapter);
+		initNodeName();
+		Spinner home_type = (Spinner)findViewById(R.id.home_type);
+		Spinner direction = (Spinner)findViewById(R.id.direction);
+		Spinner floor = (Spinner)findViewById(R.id.floor);
+		Spinner home_design = (Spinner)findViewById(R.id.home_design);
 
-		Spinner nodetype = (Spinner)findViewById(R.id.nodetype);
-		String[] mm={"卧室","客厅","书房","卫生间","其他"};
-		adapter =  new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,mm);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		nodetype.setAdapter(adapter);
-
-		int type = mN.nodeType;
-		if(type == -1)
-			nodetype.setSelection(0,true);
-		else
-			nodetype.setSelection(type,true);
-
-        nodetype.setOnItemSelectedListener(new OnItemSelectedListener() {
+        home_type.setOnItemSelectedListener(new OnItemSelectedListener() {
 				public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
 					log("onItemSelected arg2=="+arg2);
-					mN.nodeType = arg2;
-					localConfig.getInstance().setNodeConfig(mN);
+					mN.homeType = arg2;
+								isModify = true;
+					//localConfig.getInstance().setNodeConfig(mN);
+				}
+
+                public void onNothingSelected(AdapterView<?> arg0) {
+                }
+            }
+        );
+        direction.setOnItemSelectedListener(new OnItemSelectedListener() {
+				public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+					log("onItemSelected arg2=="+arg2);
+					mN.homeDire= arg2;
+								isModify = true;
+					//localConfig.getInstance().setNodeConfig(mN);
+				}
+
+                public void onNothingSelected(AdapterView<?> arg0) {
+                }
+            }
+        );
+        floor.setOnItemSelectedListener(new OnItemSelectedListener() {
+				public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+					log("onItemSelected arg2=="+arg2);
+					mN.homeFloor= arg2;
+								isModify = true;
+					//localConfig.getInstance().setNodeConfig(mN);
+				}
+
+                public void onNothingSelected(AdapterView<?> arg0) {
+                }
+            }
+        );
+        home_design.setOnItemSelectedListener(new OnItemSelectedListener() {
+				public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+					log("onItemSelected arg2=="+arg2);
+					mN.nodeTemp= arg2;
+								isModify = true;
+					//localConfig.getInstance().setNodeConfig(mN);
 				}
 
                 public void onNothingSelected(AdapterView<?> arg0) {
@@ -157,149 +190,43 @@ public class nodeActivity1 extends Activity {
             }
         );
 
-		int mode = mN.nodeConfig;//- 100;
-
-		if(mode > 100) {
-			mode_select.setSelection(1,true);
-			nosmart.setVisibility(View.GONE);
-			smart.setVisibility(View.VISIBLE);
-
-		}else {
-			mode_select.setSelection(0,true);
-			smart.setVisibility(View.GONE);
-			nosmart.setVisibility(View.VISIBLE);
-		}
-        //mode_select.setVisibility(View.VISIBLE);
-        mode_select.setOnItemSelectedListener(new OnItemSelectedListener() {
-               public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
-					if(arg2 == 0) {
-						smart.setVisibility(View.GONE);
-						nosmart.setVisibility(View.VISIBLE);
-					}
-					if(arg2 == 1) {
-						nosmart.setVisibility(View.GONE);
-						smart.setVisibility(View.VISIBLE);
-					}
-                }
- 
-                public void onNothingSelected(AdapterView<?> arg0) {
-                }
-            }
-        );
-        //mode_select.setVisibility(View.VISIBLE);
-		final Button safe = (Button)findViewById(R.id.safe);
-		final Button jieneng = (Button)findViewById(R.id.jieneng);
-		final Button fangdong = (Button)findViewById(R.id.fangdong);
+		//final EditText et = (EditText)findViewById(R.id.node_temp);
 		final Button done = (Button)findViewById(R.id.done);
-		final EditText et = (EditText)findViewById(R.id.node_temp);
-		if(mode == 101) {
-				safe.setBackgroundResource(R.drawable.node_main_safe_select);
-				jieneng.setBackgroundResource(R.drawable.node_main_jieneng);
-				fangdong.setBackgroundResource(R.drawable.node_main_fangdong);
-		}
-		else if(mode == 102) {
-				safe.setBackgroundResource(R.drawable.node_main_safe);
-				jieneng.setBackgroundResource(R.drawable.node_main_jieneng_select);
-				fangdong.setBackgroundResource(R.drawable.node_main_fangdong);
-		}
-		else if(mode == 103) {
-				safe.setBackgroundResource(R.drawable.node_main_safe);
-				jieneng.setBackgroundResource(R.drawable.node_main_jieneng);
-				fangdong.setBackgroundResource(R.drawable.node_main_fangdong_select);
-		}else {
-			if(mode == -1) {
-				et.setText("-1");
-			} else 
-				et.setText(""+(mode));
-		}
-
-
-        safe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-				safe.setBackgroundResource(R.drawable.node_main_safe_select);
-				jieneng.setBackgroundResource(R.drawable.node_main_jieneng);
-				fangdong.setBackgroundResource(R.drawable.node_main_fangdong);
-                //mA.finish();
-				mN.nodeConfig = 101;
-				int v = -1;
-				if(mN.nodeType == 0) 
-					v = 20;
-				if(mN.nodeType == 1) 
-					v = 18;
-				if(mN.nodeType == 2) 
-					v = 18;
-				if(mN.nodeType == 3) 
-					v = 16;
-				if(mN.nodeType == 4) 
-					v = 18;
-				setTemp(2,""+v);
-				localConfig.getInstance().setNodeConfig(mN);
-            }
-        });
-        jieneng.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-				safe.setBackgroundResource(R.drawable.node_main_safe);
-				jieneng.setBackgroundResource(R.drawable.node_main_jieneng_select);
-				fangdong.setBackgroundResource(R.drawable.node_main_fangdong);
-				mN.nodeConfig = 102;
-				int v = -1;
-				if(mN.nodeType == 0) 
-					v = 18;
-				if(mN.nodeType == 1) 
-					v = 16;
-				if(mN.nodeType == 2) 
-					v = 16;
-				if(mN.nodeType == 3) 
-					v = 14;
-				if(mN.nodeType == 4) 
-					v = 18;
-				setTemp(2,""+v);
-				localConfig.getInstance().setNodeConfig(mN);
-            }
-        });
-        fangdong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-				safe.setBackgroundResource(R.drawable.node_main_safe);
-				jieneng.setBackgroundResource(R.drawable.node_main_jieneng);
-				fangdong.setBackgroundResource(R.drawable.node_main_fangdong_select);
-				mN.nodeConfig = 103;
-				int v = 5;
-*/
-/*
-				if(mN.nodeType == 0) 
-					v = 20;
-				if(mN.nodeType == 1) 
-					v = 18;
-				if(mN.nodeType == 2) 
-					v = 18;
-				if(mN.nodeType == 3) 
-					v = 16;
-				if(mN.nodeType == 4) 
-					v = 18;
-*/
-/*
-				setTemp(2,""+v);
-				localConfig.getInstance().setNodeConfig(mN);
-            }
-        });
         done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                if(isModify) {
+                    //String  s = et.getText().toString();
+                    //int temp = getSetTemp();// = -1;
+                    mN.nodeTime = 18;
+                    //log("set temp :"+temp);
+                    updateNode();
+                    //if(mN.nodeTime == 0)
+                    //    setTemp(2,""+temp);
+                }
+                try {
+                    Thread.sleep(1000);
+                } catch(Exception e) {
+                    ;
+                }
+                mA.finish();
+            }
+
+/*
             @Override
             public void onClick(View arg0) {
                 //mA.finish();
 				String  s = et.getText().toString();
 				int i = -1;
-				//try {
+				try {
 					i=Integer.parseInt(s);
-				//}catch(ece)
+				}catch(ece)
 				mN.nodeConfig = i;
-				setTemp(2,""+i);
+				//setTemp(2,""+i);
 				localConfig.getInstance().setNodeConfig(mN);
             }
-        });
-
+*/  
+      });
 
 		Button back = (Button)findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -308,6 +235,7 @@ public class nodeActivity1 extends Activity {
                 mA.finish();
             }
         });
+/*
 		Button menu = (Button)findViewById(R.id.menu);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override

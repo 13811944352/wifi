@@ -18,6 +18,38 @@ import android.widget.ImageView;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable; 
+import android.content.res.Resources;
+import android.graphics.RectF;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Bitmap;  
+import android.graphics.BitmapFactory;  
+import android.graphics.Canvas;  
+import android.graphics.Color;  
+import android.graphics.Paint;  
+import android.graphics.Paint.Align;  
+import android.graphics.Paint.FontMetricsInt;  
+import android.graphics.Rect;  
+import android.graphics.RectF;  
+import android.graphics.Typeface;  
+import android.graphics.drawable.BitmapDrawable;  
+import android.graphics.drawable.Drawable;  
+import android.graphics.drawable.GradientDrawable;  
+
+import android.graphics.Color;  
+
 import com.android.nal.utils.l;
 import com.android.nal.service.MainService;
 import com.android.nal.local.localConfig;
@@ -76,20 +108,53 @@ public class deviceView1 extends viewBase{
 	}
 */	
 
+
+	void setImage(ImageButton b,int id,String s) {
+		Bitmap bm = drawTextToBitmap(mC,id,s,b);
+		//b.setImageResource(s);
+		b.setImageBitmap(bm);
+	}
+
+	public Bitmap drawTextToBitmap(Context gContext,   int gResId,   String gText,View v) {  
+		Resources resources = gContext.getResources();  
+		float scale = resources.getDisplayMetrics().density;  
+		Bitmap src=BitmapFactory.decodeResource(resources, gResId).copy(Bitmap.Config.ARGB_8888, true);
+		int w = src.getWidth();  
+		int h = src.getHeight();
+		Bitmap newb = Bitmap.createBitmap( w, h, Config.ARGB_8888 );
+		Canvas cv = new Canvas( newb );
+		cv.drawBitmap( src, 0, 0, null );
+		Paint p= new Paint( Paint.ANTI_ALIAS_FLAG);  
+		p.setStrokeWidth(3);  
+		p.setTextSize(60);  
+		p.setTextAlign(Align.LEFT);
+		p.setColor( Color.RED);  
+
+
+		Rect bounds = new Rect(); 
+		p.getTextBounds(gText, 0, gText.length(), bounds);  
+		FontMetricsInt fontMetrics = p.getFontMetricsInt();
+		int baseline = (h - fontMetrics.bottom + fontMetrics.top) / 2 - fontMetrics.top;
+		cv.drawText(gText,w/ 2 - bounds.width() / 2, baseline, p); 
+		return newb;
+} 
+
 	void initView() {
 		//mLL.setVisibility(View.VISIBLE);
 		//setContentView(R.layout.device_main);
+
 		TextView t = (TextView)findViewById(IDHelper.getViewID(mC,"d_name"));
 		t.setText(mD.deviceName);
-		Button b;
+		ImageButton b;
+		//Button b;
 		for(int x = 0 ;x < 8;x++) {
 			final int nodeId = (x+1);
 			log("id == :"+R.id.n01);
 			log("id1 == :"+IDHelper.getViewID(mC, "n0"+nodeId));
-			b = (Button) findViewById(IDHelper.getViewID(mC, "n0"+(x+1)));
+			b = (ImageButton) findViewById(IDHelper.getViewID(mC, "n0"+(x+1)));
 			t = (TextView)findViewById(IDHelper.getViewID(mC,"n_name_0"+(x+1)));
-			b.setBackgroundResource(R.drawable.device_main_no);
-			b.setBackgroundResource(R.drawable.device_main_online);
+			setImage(b,R.drawable.device_main_online,"offline");
+			//b.setBackgroundResource(R.drawable.device_main_online);
 			final nodeConfig n = mN[x];//netConfig.getInstance().getNodeConfig(mD.deviceId,""+(x+1));
 			if(n == null || n.nodeName == null || n.nodeName.equals("")) {
 				t.setText("未命名");
@@ -100,20 +165,28 @@ public class deviceView1 extends viewBase{
 			String temp = mS.doQuery(mD.deviceId,"temp"+(x+1));
 			do{
 			if(temp != null) {
-				b.setText(""+temp);
+				//b.setText(""+temp);
 				if(n == null) {
-					b.setBackgroundResource(R.drawable.device_main_online);
+					setImage(b,R.drawable.device_main_online,temp);
+					//b.setBackgroundResource(R.drawable.device_main_online);
 					break;
 				}
-				if(n.nodeConfig == 0)
-					b.setBackgroundResource(R.drawable.device_main_online);
-				else {
-					if(n.nodeTemp == -101)
-						b.setBackgroundResource(R.drawable.device_main_online_blue);
-					if(n.nodeTemp == -102)
-						b.setBackgroundResource(R.drawable.device_main_online_yellow);
-					if(n.nodeTemp == -103)
-						b.setBackgroundResource(R.drawable.device_main_online_red);
+				if(n.nodeConfig == 0) {
+					setImage(b,R.drawable.device_main_online,temp);
+					//b.setBackgroundResource(R.drawable.device_main_online);
+				} else {
+					if(n.nodeTemp == -101) {
+						setImage(b,R.drawable.device_main_online_blue,temp);
+						//b.setBackgroundResource(R.drawable.device_main_online_blue);
+					}
+					if(n.nodeTemp == -102) {
+						setImage(b,R.drawable.device_main_online_yellow,temp);
+						//b.setBackgroundResource(R.drawable.device_main_online_yellow);
+					}
+					if(n.nodeTemp == -103) {
+						setImage(b,R.drawable.device_main_online_red,temp);
+						//b.setBackgroundResource(R.drawable.device_main_online_red);
+					}
 				}
 			}
 			}while(false);
@@ -121,11 +194,11 @@ public class deviceView1 extends viewBase{
 			b.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
-					log("x=="+((Button)arg0).getText());
+					//log("x=="+((Button)arg0).getText());
 					Intent i = new Intent();
-					if(mD.deviceType == 1)
+					if(mD.deviceType == 0)
 						i.setClass(mC,nodeActivity.class);
-					if(mD.deviceType == 2)
+					if(mD.deviceType == 1)
 						i.setClass(mC,nodeActivity1.class);
 					log("mD:"+mD.d2j(mD));
 					log("id:"+nodeId);
@@ -140,6 +213,7 @@ public class deviceView1 extends viewBase{
 				}
 			});
 		}
+
 	}
 
 	private Handler tH = new Handler() {

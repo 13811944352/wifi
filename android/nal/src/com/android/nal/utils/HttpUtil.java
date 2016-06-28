@@ -84,8 +84,8 @@ public class HttpUtil {
 		String result = null;
 		HttpURLConnection conn = null;
 		try {
-			//URL url = new URL(URLEncoder.encode(uri));
-			URL url = new URL(uri);
+			//URL url = new URL(URLEncoder.encode(uri,"utf-8"));
+			URL url = new URL(uri.trim());
 			conn = (HttpURLConnection) url.openConnection();
 			String token = localConfig.getInstance().getToken();
 			log("httpGetT set tt:"+token);
@@ -97,6 +97,8 @@ public class HttpUtil {
 			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 			//conn.setRequestProperty("Connection", "close");
 			int code = conn.getResponseCode();
+			String ss = conn.getResponseMessage();
+			log( "http rs = " + ss);
 			log( "http code = " + code);
 			if(code==200){//如果上报成功, 才删除所有归档数据. 否则应保留归档数据,等待下次上报
 				result = getHttpResult(conn.getInputStream());

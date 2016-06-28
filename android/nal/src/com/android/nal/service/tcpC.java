@@ -34,6 +34,7 @@ import android.content.Intent;
 import android.os.Binder; 
 import android.os.IBinder;
 import java.math.BigInteger;
+import com.android.nal.utils.util;
 
 public class tcpC { // extends Thread {
     private static tcpC mC;
@@ -146,6 +147,7 @@ public class tcpC { // extends Thread {
 		if(reg.devId == null || reg.devId.equals("")) {
 			return false;
 		}
+		reg.devId = reg.devId+"@"+util.getUUID();
 		byte[] b = reg.toByte();
 		byte[] a = getHead(0x01,b.length);
         byte[] ret = merge(a,b);
@@ -174,7 +176,7 @@ public class tcpC { // extends Thread {
 
 	public String doQuery(String did,String var) {
 		log("now do Query did == "+did+" var == "+var);
-		msgQuery q = new msgQuery(did,var,localConfig.getInstance().getUname());
+		msgQuery q = new msgQuery(did,var,localConfig.getInstance().getUname()+"@"+util.getUUID());
 		byte[] b = q.toByte();
 		byte[] a = getHead(0x1a,b.length);
         byte[] ret = merge(a,b);
@@ -207,6 +209,7 @@ public class tcpC { // extends Thread {
 		if(h.devId == null || h.devId.equals("")) {
 			return false;
 		}
+		h.devId = h.devId+"@"+util.getUUID();
 		byte[] b = h.toByte();
 
 		byte[] a = getHead(0x03,b.length);
@@ -235,7 +238,8 @@ public class tcpC { // extends Thread {
 		q.var = var;
 		q.value = value;
 		q.did = did;
-		q.uname = localConfig.getInstance().getUname();
+		q.uname = localConfig.getInstance().getUname()+"@"+util.getUUID();
+		//reg.devId = reg.devId+"@"+util.getUUID();
 		q.type = type;
 		byte[] b = q.toByte();
 		byte[] a = getHead(0x1c,b.length);

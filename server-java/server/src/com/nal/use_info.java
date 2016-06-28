@@ -38,7 +38,15 @@ public class use_info extends base{
 		return s+hash;
 	}
 
-	public String reg(userInfo info) throws Exception {
+	public String reg(userInfo info,String capt) throws Exception {
+		capt c = new capt(mPC);
+		if(!c.check(info.uname,capt))
+			return "capt err";
+		return reg(info);
+	}	
+	
+
+	private String reg(userInfo info) throws Exception {
         String sql = "select * from use_info where uname='"+info.uname+"'";// and nodeID = '"+nid+"'";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
