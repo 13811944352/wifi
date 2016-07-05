@@ -25,6 +25,8 @@ import com.android.nal.local.localConfig;
 import com.android.nal.net.netConfig;
 import android.widget.Toast;
 import android.support.v4.view.ViewPager;
+
+import java.lang.Override;
 import java.util.List;
 import java.util.ArrayList;
 import android.os.Bundle;
@@ -45,15 +47,45 @@ public class deviceActivity extends Activity {
 	Context mC = null;
 	deviceActivity mA = null;
 	deviceConfig mD;
+	nodeConfig mN[];
 	MainService mS;
 	Intent mIntent;
-	//nodeConfig[] mN;
 
-	TextView title;
+	
+	public void updata(deviceConfig d,nodeConfig n[]) {
+		android.util.Log.d("erer","activity updata");
+		mD = d;
+		mN = n;
+	}
+
+	void initNode(deviceConfig d,final boolean first){
+		mD = d;
+		new Thread() {
+			@Override
+			public void run(){
+				if(mN == null)
+					mN = new nodeConfig[8];
+				for(int i = 0;i<8;i++) {
+					mN[i] = netConfig.getInstance().getNodeConfig(mD.deviceId,""+(i+1));
+					if(mN[i] == null)
+						mN[i] = new nodeConfig(mD.deviceId,""+(i+1));
+				}
+				Message m = new Message();
+				m.what = 0;
+				if(first)
+					m.what = 1;
+				if(mH != null)
+					mH.sendMessage(m);
+			}
+		}.start();
+	}
+
+	ImageView title;
 	Button b1,b2,b3,b4;
 	Button back;
 	MySpinnerButton menu;
-	viewBase v1,v2,v3,v4;
+	viewBase v1,v2,v3,v4,v5;
+	viewBase vv1,vv2,vv3,vv4;
 	private ViewPager viewPager;
 	private List<View> lists;// = new ArrayList<View>();
 	MyAdapter myAdapter;
@@ -68,38 +100,82 @@ public class deviceActivity extends Activity {
         super.onCreate(savedInstanceState);
 		mC = this;
 		mA = this;
+		initNode(mD,true);
 		mIntent = getIntent(); 
 		String xx = mIntent.getStringExtra("device");  
 		mD = deviceConfig.j2d(xx);
 		mS = MainActivity.getService();
-		//mN = new nodeConfig[8];
-		log("deviceActivity1 getIntent:"+xx);
+		log("deviceActivity1 getIntent:" + xx);
 	}
     @Override
     public void onResume() {
-		init();
+		initNode(mD,false);
         super.onResume();
 	}
 
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+	}
+
+	void end() {
+		if(mD.deviceType == 0) {
+			if(v1!=null)
+				v1.destroyView();
+			if(v2!=null)
+				v2.destroyView();
+			if(v3!=null)
+				v3.destroyView();
+			if(v4!=null)
+				v4.destroyView();
+			if(v5!=null)
+				v5.destroyView();
+		}
+		if(mD.deviceType == 1) {
+			if(vv1!=null)
+				vv1.destroyView();
+			if(vv2!=null)
+				vv2.destroyView();
+			if(vv3!=null)
+				vv3.destroyView();
+			if(vv4!=null)
+				vv4.destroyView();
+		}
+	}
+
+
+	void fresh() {
+		if(mD.deviceType == 0) {
+			if(v1!=null)
+				v1.setData(mD,mN);
+			if(v2!=null)
+				v2.setData(mD,mN);
+			if(v3!=null)
+				v3.setData(mD,mN);
+			if(v4!=null)
+				v4.setData(mD,mN);
+			if(v5!=null)
+				v5.setData(mD,mN);
+		}
+		if(mD.deviceType == 1) {
+			if(vv1!=null)
+				vv1.setData(mD,mN);
+			if(vv2!=null)
+				vv2.setData(mD,mN);
+			if(vv3!=null)
+				vv3.setData(mD,mN);
+			if(vv4!=null)
+				vv4.setData(mD,mN);
+		}
+	}
 
 	void init() {
 		initViewBase();
 		initView();
 		initCallBack();
+		viewPager.setCurrentItem(0);
 	}
 
-	void initViewBase() {
-		v1 = new deviceView1(mC,R.layout.device_main,mIntent,mH);
-		v3 = new aboutView(mC,R.layout.about);
-		v2 = new historyView(mC,R.layout.history,mIntent);
-		v4 = new transView(mC,R.layout.trans,mIntent);
-		lists = new ArrayList<View>();
-        lists.add(v1.getView());
-        lists.add(v2.getView());
-        lists.add(v4.getView());
-        lists.add(v3.getView());
-        myAdapter = new MyAdapter(lists);
-	}
 
 	class backClick implements View.OnClickListener{
 		@Override
@@ -115,29 +191,8 @@ public class deviceActivity extends Activity {
         }
 	}
 
-	class vClick implements View.OnClickListener{
-		@Override
-        public void onClick(View v) {
-			int x = v.getId();
-			if(x == R.id.main_ctl) 
-				viewPager.setCurrentItem(0);
-			if(x == R.id.default_ctl) 
-				viewPager.setCurrentItem(3);
-			if(x == R.id.his_data) 
-				viewPager.setCurrentItem(1);
-			if(x == R.id.trans) 
-				viewPager.setCurrentItem(2);
-
-        }
-	}
-
 	void initCallBack() {
 		back.setOnClickListener(new backClick());
-		//menu.setOnClickListener(new menuClick());
-		b1.setOnClickListener(new vClick());
-		b2.setOnClickListener(new vClick());
-		b3.setOnClickListener(new vClick());
-		b4.setOnClickListener(new vClick());
 	}
 
 	ISpinnerCallback callBack = new ISpinnerCallback() {
@@ -148,47 +203,150 @@ public class deviceActivity extends Activity {
 		}
 	};
 
+
+	void initViewBase() {
+		if(mD.deviceType == 0) {
+			if(v1 == null)
+				v1 = new deviceView1(mC,R.layout.device_main,mD ,mN,mS);
+			if(v2 == null)
+				v2 = new historyView(mC,R.layout.history,mD ,mN,mS);
+			if(v3 == null)
+				v3 = new transView(mC,R.layout.trans,mD ,mN,mS);
+			if(v4 == null)
+				v4 = new aboutView(mC,R.layout.about,mD ,mN,mS);
+			if(v5 == null)
+				v5 = new systemView(mC,R.layout.system,mD,mN,mS,mA);
+			if(lists == null) {
+				lists = new ArrayList<View>();
+				lists.add(v1.getView());
+				lists.add(v2.getView());
+				lists.add(v3.getView());
+				lists.add(v4.getView());
+				lists.add(v5.getView());
+				myAdapter = new MyAdapter(lists);
+			}
+		}
+		if(mD.deviceType == 1) {
+			if(vv1 == null)
+				vv1 = new deviceView1(mC,R.layout.device_main,mD ,mN,mS);
+			if(vv2 == null)
+				vv2 = new transView(mC,R.layout.trans,mD ,mN,mS);
+			if(vv3 == null)
+				vv3 = new aboutView(mC,R.layout.about,mD ,mN,mS);
+			if(vv4 == null)
+				vv4 = new systemViewNoTemp(mC,R.layout.node_no_temp,mD,mN,mS,mA);
+			if(lists == null) {
+				lists = new ArrayList<View>();
+				lists.add(vv1.getView());
+				lists.add(vv2.getView());
+				lists.add(vv3.getView());
+				lists.add(vv4.getView());
+				myAdapter = new MyAdapter(lists);
+			}
+		}
+	}
+
 	void initView() {
 		setContentView(R.layout.device_main1);
-		b1 = (Button)findViewById(R.id.main_ctl);
-		b2 = (Button)findViewById(R.id.default_ctl);
-		b3 = (Button)findViewById(R.id.his_data);
-		b4 = (Button)findViewById(R.id.trans);
 		back = (Button)findViewById(R.id.back);
-		title = (TextView)findViewById(R.id.title);
+		title = (ImageView)findViewById(R.id.title);
 		menu = (MySpinnerButton)findViewById(R.id.menu);
-		ArrayList<String> temp = new ArrayList<String>();
-		temp.add("总控页面");
-		temp.add("历史数据");
-		temp.add("设备共享");
-		temp.add("个人中心");
-		menu.setText(temp,callBack);
+		if(mD.deviceType == 0) {
+			ArrayList<String> list = new ArrayList<String>();
+			list.add("总控页面");
+			list.add("历史数据");
+			list.add("设备共享");
+			list.add("个人中心");
+			list.add("系统设置");
+			menu.setText(list,callBack);
+		}
+		if(mD.deviceType == 1) {
+			ArrayList<String> list = new ArrayList<String>();
+			list.add("房间设置");
+			list.add("设备共享");
+			list.add("个人中心");
+			list.add("系统设置");
+			menu.setText(list,callBack);
+		}
 		viewPager = (ViewPager)findViewById(R.id.viewPager);
         viewPager.setAdapter(myAdapter);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageSelected(int arg0) {                                 //当滑动式，顶部的imageView是通过animation缓慢的滑动
                 // TODO Auto-generated method stub
+				String t = null;
+				int id = 0;
+				viewBase v = null;
                 switch (arg0)
                 {
                 case 0:
-					title.setText("         总控页面");
+					if(mD.deviceType == 0) {
+						//id = getResources().getDrawable(R.drawable.device_main_main);
+						id = R.drawable.device_main_main;
+						t = ("         总控页面");
+						v = v1;
+					}
+					if(mD.deviceType == 1) {
+						t = ("         房间设置");
+						v = vv1;
+					}
                     break;
                 case 1:
-					title.setText("         历史数据");
+					if(mD.deviceType == 0) {
+						id = R.drawable.device_main_his;
+						t = ("         历史数据");
+						v = v2;
+					}
+					if(mD.deviceType == 1) {
+						t = ("         设备共享");
+						v = vv2;//.initView();
+					}
                     break;
                 case 2:
-					title.setText("         设备共享");
+					if(mD.deviceType == 0) {
+						id = 0;
+						t = ("         设备共享");
+						v = v3;
+					}
+					if(mD.deviceType == 1) {
+						t = ("         个人中心");
+						v = vv3;//.initView();
+					}
+					//title.setText("         设备共享");
+					//v3.initView();
                     break;
                 case 3:
-					title.setText("         个人中心");
+					if(mD.deviceType == 0) {
+						id = 0;
+						t = ("         个人中心");
+						v = v4;
+					}
+					if(mD.deviceType == 1) {
+						t = ("			系统设置");
+						v = vv4;
+					}
                     break;
                 case 4:
+					if(mD.deviceType == 0) {
+						id = R.drawable.device_main_system;
+						t = ("			系统设置");
+						v = v5;
+					}
+					if(mD.deviceType == 1) {
+						//t = null;//("			系统设置");
+						//v = vv4;//.initView();
+					}
+                    break;
+                default :
                     break;
                 }
+				//title.setText(t);
+				//title.setBackgroundResource(id);
+				title.setBackgroundResource(id);
+				v.initView();
             }
 
-            @Override
+			@Override
             public void onPageScrolled(int arg0, float arg1, int arg2) {
                 // TODO Auto-generated method stub
 
@@ -203,28 +361,18 @@ public class deviceActivity extends Activity {
 		});
 	}
 
-    @Override
-    public void onStart() {
-        super.onStart();
-		//init();
-	}
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-	}
 
 	private Handler mH = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			switch(msg.what) {
 				case(0):
-					myAdapter.notifyDataSetChanged();				
-					//onRegSucess();
+					fresh();
 					break;
 				case(1):
+					init();
+					break;
 				default:
-					//onRegFail();
 					break;
 			}
 		}
@@ -232,7 +380,7 @@ public class deviceActivity extends Activity {
 	};
 
     private void log(String line) {
-        l.d(line);
+		android.util.Log.d("erer","activity updata");
     }  
 
 }

@@ -8,7 +8,7 @@
     android:layout_height="wrap_content">  
     <ImageView 
 		android:background="@drawable/loginbar"
-		android:layout_width="wrap_content"  
+		android:layout_width="match_parent"
         android:layout_height="wrap_content"  />
     </LinearLayout>  
 
@@ -101,7 +101,8 @@
             android:layout_width="fill_parent"  
             android:layout_height="wrap_content" >
 
-        <LinearLayout 
+        <LinearLayout
+            android:layout_marginTop="20dp"
         android:orientation="vertical" 
         android:layout_width="fill_parent" 
         android:layout_height="fill_parent" 
@@ -112,11 +113,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="3.0dip"
-            android:textSize="11sp"   
+            android:textSize="20sp"
             android:text="忘记密码?"   
             android:background="@null"/>
             </LinearLayout>
-        <LinearLayout 
+        <LinearLayout
+            android:layout_marginTop="20dp"
         android:orientation="vertical" 
         android:layout_width="fill_parent" 
         android:layout_height="fill_parent" 
@@ -127,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"
             android:layout_marginRight="3.0dip"
-            android:textSize="11sp"   
+            android:textSize="20sp"
             android:text="新用户注册"   
             android:background="@null" />
             </LinearLayout>

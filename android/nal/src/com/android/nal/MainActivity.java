@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 	Context mC = null;
 	Activity mA = null;
 	public static MainService mS = null;
-    SimpleAdapter adapter = null;//new SimpleAdapter(this,getDevice(),R.layout.ll,
+    SimpleAdapter adapter = null;
 	List<Map<String, Object>> mData = new ArrayList<Map<String, Object>>();
 	IStatus cb = new IStatus() {
 		@Override
@@ -59,16 +59,6 @@ public class MainActivity extends Activity {
         @Override
         public void handleMessage(Message msg) {
             switch(msg.what) {
-                case(0):
-					log("Handler 0");
-					if(mS != null)
-						mS.start();
-                    break;
-				case(2):
-					log("Handler 2");
-					if(mS != null) {
-						getDevice();
-					}
                 case(1):
 					log("Handler 1");
 					adapter.notifyDataSetChanged();  
@@ -129,7 +119,7 @@ public class MainActivity extends Activity {
 					log("no temp1");
 					showToast("device offline");
 				} 
-				if(stat.equals("online")) {
+				//if(stat.equals("online")) {
 					Intent i = new Intent();
 					//if(localConfig.getInstance().isDeviceInit(d.deviceId))
 						i.setClass(MainActivity.this,deviceActivity.class);
@@ -137,7 +127,7 @@ public class MainActivity extends Activity {
 					//	i.setClass(MainActivity.this,deviceInitActicity.class);
 					i.putExtra("device",d.d2j(d));
 					mC.startActivity(i);
-				}
+				//}
 				log("temp1 =="+stat);
 			}
 		});
@@ -145,14 +135,6 @@ public class MainActivity extends Activity {
 		listView.setOnItemLongClickListener(new OnItemLongClickListener() {  
             @Override  
             public boolean onItemLongClick(AdapterView<?> parent, View view,int pos,long id){
-/*
-				Map<String, Object> m = mData.get(pos);
-				String name = (String)m.get("title");
-				deviceConfig d = (deviceConfig)m.get(name);
-				String stat = (String)m.get("info");
-                index = arg2;  
-                return false;  
-*/
 				showDelDialog(pos);
 				return true;
 
@@ -219,7 +201,8 @@ public class MainActivity extends Activity {
 			log("devie == null");
 			return null;
 		}
-		mData.clear();
+		//mData.clear();
+		List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
 		for(deviceConfig d:device)  
         {  
 			log("now add one");
@@ -235,7 +218,11 @@ public class MainActivity extends Activity {
 			map.put("img", R.drawable.ll_dev);
 			map.put("del", R.drawable.ll_del);
 			map.put(d.deviceName,d);
-			mData.add(map);
+			data.add(map);
+			mData.clear();
+			mData.addAll(data);
+			//mData.add(map);
+			freshUi();
         } 
 		return null;
 	}
@@ -257,18 +244,13 @@ public class MainActivity extends Activity {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
+		super.onDestroy();
 		unbindService();
 	}
 
 	private void freshUi() {
 		Message m = new Message();
         m.what = 1;
-        mH.sendMessage(m);
-	}
-	private void startServer() {
-		Message m = new Message();
-        m.what = 0;
         mH.sendMessage(m);
 	}
 

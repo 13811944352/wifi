@@ -40,7 +40,6 @@ import android.widget.EditText;
 import java.text.SimpleDateFormat; 
 
 public class historyView extends viewBase{
-	Context mC = null;
 	LineGraphicView tu;
 	ArrayList<Double> temp1 = new ArrayList<Double>();
 	ArrayList<Double> temp2 = new ArrayList<Double>();
@@ -51,25 +50,16 @@ public class historyView extends viewBase{
 	ArrayList<Double> temp7 = new ArrayList<Double>();
 	ArrayList<Double> temp8 = new ArrayList<Double>();
 	ArrayList<String> time = new ArrayList<String>();
-    deviceConfig mD;
-    //MainService mS;
+
 
 	//ArrayList<Double>[] temp = new ArrayList<Double>[8];
 
-	public historyView(Context c,int id,Object o) {
-        super(c,id,null);
-        mC = c;
+	public historyView(Context c,int id,deviceConfig d,nodeConfig n[],MainService s) {
+		super(c,id,d,n,s);
         //mS = MainActivity.getService();
-        Intent intent = (Intent)o;
-        String xx = intent.getStringExtra("device");  
-        mD = deviceConfig.j2d(xx);
-		setMH(tH);
-		initNode(mD);
+        //setMH(tH);
+		//initNode(mD);
         //initView();
-    }
-
-    View findViewById(int id) {
-        return v.findViewById(id);
     }
 
 	String getYestoday() {
@@ -161,7 +151,14 @@ public class historyView extends viewBase{
 								log("l temp:"+j);
 								String v = getString(json,"temp"+j);
 								log("has temp:"+v);
-								setData(l,Double.parseDouble(v));
+								Double s = 0.0;
+								try {
+									s = Double.parseDouble(v);
+					
+								} catch (java.lang.NumberFormatException e) {
+
+								}
+								setData(l,s);
 								log("has temp:"+"end");
 							}
 							}
@@ -233,17 +230,18 @@ public class historyView extends viewBase{
 */
 	}
 
-	void initView() {
+	@Override
+	public void initView() {
 		tu = (LineGraphicView) findViewById(R.id.line_graphic);
 		for(int x = 0 ;x < 8;x++) {
             final int id = x;
             TextView t = (TextView)findViewById(IDHelper.getViewID(mC,"n"+(x+1)));
 			t.setText("fangjian"+id);
-			if(mN == null) {
+			if(mN != null) {
 				log("mN[x].nodeName =="+mN[x].nodeName);
 				t.setText(mN[x].nodeName);
 			}
-			t.setText("fangjian"+id);
+			//t.setText("fangjian"+id);
 			CheckBox c = (CheckBox)findViewById(IDHelper.getViewID(mC,"c"+(x+1)));
 			c.setChecked(true);  
 			c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){ 

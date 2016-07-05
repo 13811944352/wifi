@@ -15,12 +15,10 @@ import java.util.ArrayList;
 import com.lenovo.lps.sus.SUS;
 
 public class aboutView extends viewBase{
-	Context mC = null;
 	Button update;
-	public aboutView(Context c,int id) {
-        super(c,id,null);
-        mC = c;
-        initView();
+	public aboutView(Context c,int id,deviceConfig d,nodeConfig n[],MainService s) {
+		super(c,id,d,n,s);
+        //initView();
     }
 
     class updateClick implements View.OnClickListener{
@@ -36,10 +34,11 @@ public class aboutView extends viewBase{
         }
     }  
 
-	void initView() {
+	@Override
+	public void initView() {
+
 		update = (Button)findViewById(R.id.update);
 		update.setOnClickListener(new updateClick());
-
 	}
 
 }

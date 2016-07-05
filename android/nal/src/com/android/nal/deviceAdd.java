@@ -9,6 +9,7 @@ import android.os.IBinder;
 import android.os.Handler;
 import android.os.Message;
 import android.content.ComponentName;
+import android.util.Log;
 import android.widget.Button;
 import android.view.View;
 import android.widget.Button;
@@ -160,6 +161,7 @@ public class deviceAdd extends Activity {
 						d.deviceMaterial=material_v;
 						String json = d.d2j(d);
 						log("json:"+json);
+						Log.e("===",json);
 						boolean ret = netConfig.getInstance().regDeviceConfig(d);
 						if(ret == true ) {
 							Message m = new Message();
@@ -216,14 +218,14 @@ public class deviceAdd extends Activity {
 	};
 
 	private void onRegSucess() {
-		showToast("reg sucess");
+		showToast("设备添加成功");
 		//Intent i = new Intent();
 		//i.setClass(deviceAdd.this,MainActivity.class);
 		//mC.startActivity(i);
 		mA.finish();
 	}
 	private void onRegFail() {
-		showToast("reg Fail");
+		showToast("设备添加失败");
 	}
 	private void onRegFail(String s) {
 		showToast(s);

@@ -42,37 +42,27 @@ import com.android.nal.local.localConfig;
 import com.android.nal.net.netConfig;
 
 public class transView extends viewBase{
-    Context mC = null;
-    deviceConfig mD; 
-    MainService mS;
-	Button trans; 
+	Button trans;
 	TextView deviceaName;
 	EditText uname;
 	transView mA = null;
 
-    public transView(Context c,int id,Object o) {
-        super(c,id,null);
-        mC = c;
-        mS = MainActivity.getService();
-        Intent intent = (Intent)o;
-        String xx = intent.getStringExtra("device");  
-        mD = deviceConfig.j2d(xx);
+    public transView(Context c,int id,deviceConfig d,nodeConfig n[],MainService s) {
+        super(c,id,d,n,s);
         initView();
     }   
 
-    View findViewById(int id) {
-        return v.findViewById(id);
-    }  
 
-    private void showToast(String msg){
-        Toast toast=Toast.makeText(mC, msg ,Toast.LENGTH_SHORT); 
-        toast.show();
-    }  
 
     public void initView() {
 		trans =  (Button)findViewById(R.id.ok);
 		deviceaName = (TextView)findViewById(R.id.deviceName);
 		uname = (EditText)findViewById(R.id.user);
+        if(mD !=  null) {
+            log("trans"+mD.d2j(mD));
+        } else {
+            log("trans null");
+        }
 		deviceaName.setText(mD.deviceName);
 		
 /*

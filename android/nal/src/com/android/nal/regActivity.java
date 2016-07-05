@@ -241,14 +241,14 @@ public class regActivity extends Activity {
 	}
 
 	private void onRegSucess() {
-		showToast("reg sucess");
+		showToast("注册成功");
 		Intent i = new Intent();
 		i.setClass(regActivity.this,MainActivity.class);
 		mC.startActivity(i);
 		mA.finish();
 	}
 	private void onRegFail() {
-		showToast("reg Fail");
+		showToast("注册失败");
 	}
 
     private void log(String line) {

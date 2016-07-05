@@ -24,9 +24,10 @@ public final class nodeConfig{
 	public int			homeFloor;
 	public int			homeFitment;
 
-	public nodeConfig() {
-		deviceId = null;
-		nodeId = null;
+	//public nodeConfig() {
+	public nodeConfig(String did,String nid) {
+		deviceId = did;
+		nodeId = nid;
 		nodeName = "";
 		nodeDesc = "";
 		nodeConfig = 0;
@@ -43,7 +44,7 @@ public final class nodeConfig{
 		nodeConfig n = null;//new nodeConfig();
 		try {
 			JSONObject o = new JSONObject(json);
-			n = new nodeConfig();
+			n = new nodeConfig("","");
 			n.deviceId = o.getString("deviceId");
 			n.nodeId = o.getString("nodeId");
 			n.nodeName = o.getString("nodeName");

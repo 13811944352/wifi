@@ -26,6 +26,7 @@
     android:textSize="25sp"
     android:layout_gravity="center_horizontal"
     android:layout_weight="5" />
+<!--
 <Button
     android:id="@+id/menu"
     android:background="@drawable/device_main_menu"
@@ -33,6 +34,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="right"
     android:layout_weight="1" />
+-->
 </LinearLayout>
 
 <LinearLayout
@@ -87,14 +89,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 	<EditText  
-		android:id="@+id/uname"  
+		android:id="@+id/temp"  
         android:layout_width="fill_parent"  
         android:layout_height="wrap_content"  
         android:layout_centerVertical="true"  
         android:layout_marginLeft="20dip"  
         android:layout_toRightOf="@id/account"  
 		android:maxLength="2"
-		android:text="22"
+		android:text="0"
         android:textSize="22sp" />
 <LinearLayout
     android:layout_x="0dp"
@@ -104,6 +106,7 @@
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content">
             <Button
+				android:id="@+id/up"  
                 android:layout_width="22dp"
                 android:layout_height="22dp"  
 				android:background="@drawable/arrow_up"
@@ -111,6 +114,7 @@
                 android:layout_marginLeft="20dip"  
                 android:textSize="15sp" />
             <Button
+				android:id="@+id/down"  
                 android:layout_width="22dp"
                 android:layout_height="22dp"  
 				android:background="@drawable/arrow_down"
@@ -122,87 +126,91 @@
 
 <LinearLayout
 	layout_marginTop="50dp"
-	android:id="@+id/smart"
-	android:layout_width="fill_parent"
-	android:layout_height="71dp"
-    android:layout_marginTop="110dp">
-    <RadioButton
+    android:layout_width="fill_parent"
+	android:layout_height="75dp"
+    android:layout_marginTop="110dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp">
+    <CheckBox
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:text="New RadioButton"
         android:id="@+id/rb1"
-        android:layout_marginLeft="30dp"
         android:textColorHint="@color/red"
-        android:layout_marginBottom="30dp" 
-	/>
-    <RadioButton
+        android:layout_weight="1"
+        android:button="@null"
+        android:background="@drawable/check_box_style"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical" />
+    <CheckBox
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:text="New RadioButton"
         android:id="@+id/rb2"
         android:layout_weight="1"
-        android:layout_marginLeft="20dp"
-        android:textColorHint="@color/red" 
-        android:layout_marginBottom="30dp" 
-	/>
-    <RadioButton
+        android:textColorHint="@color/red"
+        android:background="@drawable/check_box_style"
+        android:button="@null"
+        android:layout_gravity="center_horizontal" />
+    <CheckBox
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:text="New RadioButton"
         android:id="@+id/rb3"
         android:layout_weight="1"
-        android:layout_marginLeft="20dp"
-        android:textColorHint="@color/red" 
-        android:layout_marginBottom="30dp" 
-	/>
-    <RadioButton
+        android:textColorHint="@color/red"
+        android:button="@null"
+        android:background="@drawable/check_box_style"
+        android:layout_gravity="center_horizontal" />
+    <CheckBox
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:text="New RadioButton"
         android:id="@+id/rb4"
         android:layout_weight="1"
-        android:layout_marginLeft="20dp"
-        android:textColorHint="@color/red" 
-        android:layout_marginBottom="30dp" 
-	/>
+        android:textColorHint="@color/red"
+        android:button="@null"
+        android:background="@drawable/check_box_style"
+        android:layout_gravity="center_horizontal" />
+
+    <CheckBox
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/rb5"
+        android:layout_weight="1"
+        android:textColorHint="@color/red"
+        android:button="@null"
+        android:background="@drawable/check_box_style"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
 <LinearLayout
-	android:id="@+id/smart"
-	android:layout_width="fill_parent"
+    android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
->
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="  舒适"
-        android:id="@+id/rb1"
-        android:layout_weight="1"
-        android:layout_marginLeft="30dp" 
-	/>
+        android:layout_weight="1" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="  节能"
-        android:id="@+id/rb2"
-        android:layout_weight="1"
-        android:layout_marginLeft="30dp" 
-	/>
+        android:layout_weight="1" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="  离家"
-        android:id="@+id/rb3"
-        android:layout_weight="1"
-        android:layout_marginLeft="30dp" 
-	/>
+        android:text="防冻"
+        android:layout_weight="1" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="  手动"
-        android:id="@+id/rb4"
+        android:layout_weight="1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" 定时"
         android:layout_weight="1"
-        android:layout_marginLeft="30dp" 
-	/>
+        android:id="@+id/textView" />
 </LinearLayout>
 
 <LinearLayout
@@ -222,7 +230,7 @@
     android:layout_weight="1"
     android:textSize="22sp" />
 <Button
-	android:id="@+id/timer"
+	android:id="@+id/save"
     android:background="@color/red"
     android:text="保存"
     android:textColor="@color/snow"

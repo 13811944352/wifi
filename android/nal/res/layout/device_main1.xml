@@ -18,15 +18,17 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1" />
-<TextView
+<ImageView
     android:id="@+id/title"
     android:layout_width="wrap_content"
     android:layout_height="39dp"
-    android:text="         总控页面"
+    android:text="总控页面"
 	android:textColor="@color/snow"  
-    android:textSize="25sp"
-    android:layout_gravity="center_horizontal"
-    android:layout_weight="5" />
+    android:textSize="22sp"
+    android:layout_gravity="center"
+    android:layout_weight="5"
+    android:background="@drawable/device_main_main"
+    android:adjustViewBounds="false" />
 <com.android.nal.MySpinnerButton 
     android:id="@+id/menu"
     android:background="@drawable/device_main_menu"

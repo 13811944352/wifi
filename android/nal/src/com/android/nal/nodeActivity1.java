@@ -48,9 +48,7 @@ public class nodeActivity1 extends Activity {
 	}
 
 	private nodeConfig initNodeConfig(deviceConfig d,String id) {
-		nodeConfig n = new nodeConfig();
-		n.deviceId = d.deviceId;
-		n.nodeId = id;
+		nodeConfig n = new nodeConfig(d.deviceId,id);
 		n.nodeConfig  = -1;
 		return n;
 	}

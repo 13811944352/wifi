@@ -17,105 +17,242 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"/>
 </LinearLayout>
-<LinearLayout
-	android:id="@+id/widget66"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content">
-<TextView
-	android:id="@+id/n1"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="n1" />
-<CheckBox
-	android:id="@+id/c1"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="开关" />
-<TextView
-	android:id="@+id/n2"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="n2" />
-<CheckBox
-	android:id="@+id/c2"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="开关" />
-</LinearLayout>
-<LinearLayout
-	android:id="@+id/widget66"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content">
-<TextView
-	android:id="@+id/n3"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="n3" />
-<CheckBox
-	android:id="@+id/c3"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="开关" />
-<TextView
-	android:id="@+id/n4"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="n4" />
-<CheckBox
-	android:id="@+id/c4"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="开关" />
-</LinearLayout>
-<LinearLayout
-	android:id="@+id/widget66"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content">
-<TextView
-	android:id="@+id/n5"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="n5" />
-<CheckBox
-	android:id="@+id/c5"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="开关" />
-<TextView
-	android:id="@+id/n6"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="n6" />
-<CheckBox
-	android:id="@+id/c6"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="开关" />
-</LinearLayout>
-<LinearLayout
-	android:id="@+id/widget66"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content">
-<TextView
-	android:id="@+id/n7"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="n7" />
-<CheckBox
-	android:id="@+id/c7"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="开关" />
-<TextView
-	android:id="@+id/n8"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="n8" />
-<CheckBox
-	android:id="@+id/c8"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="开关" />
-</LinearLayout>
+<TableLayout  
+    android:layout_width="wrap_content"  
+    android:layout_height="wrap_content"  
+    android:background="@color/snow"
+    android:stretchColumns="*"  
+    android:layout_marginLeft="20dip"
+    android:layout_marginRight="20dip"
+    android:text="title" > 
+
+    <TableRow>  
+        <LinearLayout  
+        android:layout_width="wrap_content"  
+        android:layout_height="fill_parent"  
+        android:background="@drawable/table_frame_gray"  
+        android:orientation="vertical" >
+         <TextView  
+			android:id="@+id/n1"
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:padding="5dp"  
+            android:text="n1" />
+        </LinearLayout>
+        <LinearLayout  
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:background="@drawable/table_frame_gray"  
+            android:orientation="vertical" >
+            <CheckBox
+				android:id="@+id/c1"
+                android:button="@null"
+                android:background="@drawable/check_box"
+                android:layout_width="wrap_content"  
+                android:layout_height="fill_parent"  
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal" />
+		</LinearLayout>
+    </TableRow>
+    <TableRow>  
+        <LinearLayout  
+        android:layout_width="wrap_content"  
+        android:layout_height="fill_parent"  
+        android:background="@drawable/table_frame_gray"  
+        android:orientation="vertical" >
+         <TextView  
+			android:id="@+id/n2"
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:padding="5dp"  
+            android:text="n2" />
+        </LinearLayout>
+        <LinearLayout  
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:background="@drawable/table_frame_gray"  
+            android:orientation="vertical" >
+            <CheckBox
+				android:id="@+id/c2"
+                android:button="@null"
+                android:background="@drawable/check_box"
+                android:layout_width="wrap_content"  
+                android:layout_height="fill_parent"  
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal" />
+		</LinearLayout>
+    </TableRow>
+    <TableRow>  
+        <LinearLayout  
+        android:layout_width="wrap_content"  
+        android:layout_height="fill_parent"  
+        android:background="@drawable/table_frame_gray"  
+        android:orientation="vertical" >
+         <TextView  
+			android:id="@+id/n3"
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:padding="5dp"  
+            android:text="n3" />
+        </LinearLayout>
+        <LinearLayout  
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:background="@drawable/table_frame_gray"  
+            android:orientation="vertical" >
+            <CheckBox
+				android:id="@+id/c3"
+                android:button="@null"
+                android:background="@drawable/check_box"
+                android:layout_width="wrap_content"  
+                android:layout_height="fill_parent"  
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal" />
+		</LinearLayout>
+    </TableRow>
+    <TableRow>  
+        <LinearLayout  
+        android:layout_width="wrap_content"  
+        android:layout_height="fill_parent"  
+        android:background="@drawable/table_frame_gray"  
+        android:orientation="vertical" >
+         <TextView  
+			android:id="@+id/n4"
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:padding="5dp"  
+            android:text="n4" />
+        </LinearLayout>
+        <LinearLayout  
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:background="@drawable/table_frame_gray"  
+            android:orientation="vertical" >
+            <CheckBox
+				android:id="@+id/c4"
+                android:button="@null"
+                android:background="@drawable/check_box"
+                android:layout_width="wrap_content"  
+                android:layout_height="fill_parent"  
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal" />
+		</LinearLayout>
+    </TableRow>
+    <TableRow>  
+        <LinearLayout  
+        android:layout_width="wrap_content"  
+        android:layout_height="fill_parent"  
+        android:background="@drawable/table_frame_gray"  
+        android:orientation="vertical" >
+         <TextView  
+			android:id="@+id/n5"
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:padding="5dp"  
+            android:text="n5" />
+        </LinearLayout>
+        <LinearLayout  
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:background="@drawable/table_frame_gray"  
+            android:orientation="vertical" >
+            <CheckBox
+				android:id="@+id/c5"
+                android:button="@null"
+                android:background="@drawable/check_box"
+                android:layout_width="wrap_content"  
+                android:layout_height="fill_parent"  
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal" />
+		</LinearLayout>
+    </TableRow>
+    <TableRow>  
+        <LinearLayout  
+        android:layout_width="wrap_content"  
+        android:layout_height="fill_parent"  
+        android:background="@drawable/table_frame_gray"  
+        android:orientation="vertical" >
+         <TextView  
+			android:id="@+id/n6"
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:padding="5dp"  
+            android:text="n6" />
+        </LinearLayout>
+        <LinearLayout  
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:background="@drawable/table_frame_gray"  
+            android:orientation="vertical" >
+            <CheckBox
+				android:id="@+id/c6"
+                android:button="@null"
+                android:background="@drawable/check_box"
+                android:layout_width="wrap_content"  
+                android:layout_height="fill_parent"  
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal" />
+		</LinearLayout>
+    </TableRow>
+    <TableRow>  
+        <LinearLayout  
+        android:layout_width="wrap_content"  
+        android:layout_height="fill_parent"  
+        android:background="@drawable/table_frame_gray"  
+        android:orientation="vertical" >
+         <TextView  
+			android:id="@+id/n7"
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:padding="5dp"  
+            android:text="n7" />
+        </LinearLayout>
+        <LinearLayout  
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:background="@drawable/table_frame_gray"  
+            android:orientation="vertical" >
+            <CheckBox
+				android:id="@+id/c7"
+                android:button="@null"
+                android:background="@drawable/check_box"
+                android:layout_width="wrap_content"  
+                android:layout_height="fill_parent"  
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal" />
+		</LinearLayout>
+    </TableRow>
+    <TableRow>  
+        <LinearLayout  
+        android:layout_width="wrap_content"  
+        android:layout_height="fill_parent"  
+        android:background="@drawable/table_frame_gray"  
+        android:orientation="vertical" >
+         <TextView  
+			android:id="@+id/n8"
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:padding="5dp"  
+            android:text="n8" />
+        </LinearLayout>
+        <LinearLayout  
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:background="@drawable/table_frame_gray"  
+            android:orientation="vertical" >
+            <CheckBox
+				android:id="@+id/c8"
+                android:button="@null"
+                android:background="@drawable/check_box"
+                android:layout_width="wrap_content"  
+                android:layout_height="fill_parent"  
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal" />
+		</LinearLayout>
+    </TableRow>
+
+</TableLayout>
+
+
 </LinearLayout>
 

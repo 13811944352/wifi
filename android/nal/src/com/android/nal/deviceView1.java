@@ -60,58 +60,64 @@ import android.webkit.WebViewClient;
 import android.webkit.WebSettings ;
 import android.widget.LinearLayout;
 
+import java.lang.Exception;
+import java.lang.Override;
+
+import android.os.HandlerThread;
+import android.os.Looper;
+
 public class deviceView1 extends viewBase{
-	Context mC = null;
-	//deviceConfig mD;
-	//nodeConfig mN[] ;//= new ;
-	MainService mS;
-	Handler mmH;
-
-/*
-	private void showToast(String msg){
-		Toast toast=Toast.makeText(mC, msg ,Toast.LENGTH_SHORT); 
-		toast.show();
-	}
-
-
-	View findViewById(int id) {
-		return v.findViewById(id);
-	}
-*/
-	public deviceView1(Context c,int id,Object o,Handler h) {
-		super(c,id,null);
-		mC = c;
+	String temp[];
+	//public deviceView1(Context c,int id,Object o,Handler h) {
+	public deviceView1(Context c,int id,deviceConfig d,nodeConfig n[],MainService s) {
+		super(c,id,d,n,s);
+		//mC = c;
 		mS = MainActivity.getService();
-		Intent intent = (Intent)o;
-		String xx = intent.getStringExtra("device");  
-		mD = deviceConfig.j2d(xx);
-		mmH = h;
-		setMH(tH);
-		initNode(mD);
-		//mLL = (LinearLayout) findViewById(R.id.device_main);
-		//mLL.setVisibility(View.GONE);
+		temp = new String[8];
+		for(int i = 0;i<8;i++){
+			temp[i] = "syncing";
+		}
+		freshConnect();
+		//freshConnect();
+		//initHandle();
 	}
-/*
-	void initNode(){
+	
+	boolean quit = true;
+
+	void quitThread(){
+		quit = true;
+	}
+
+	void freshConnect() {
+		if(quit = false)
+			return;
+		quit = false;
+		log("thread start");
 		new Thread() {
-			@Override
-			public void run(){
-				mN = new nodeConfig[8];
-				for(int i = 0;i<8;i++)
-					mN[i] = netConfig.getInstance().getNodeConfig(mD.deviceId,""+(i+1));
-				//initView();
-				Message m = new Message();
-				m.what = 0;
-				mH.sendMessage(m);
+            @Override
+            public void run() {
+				while(true) {
+					for (int x = 0; x < 8; x++) {
+						String t = mS.doQuery(mD.deviceId, "temp" + (x + 1));
+						log("get "+x+" temp:"+t);
+						temp[x] = t;
+						freshUITemp();
+					}
+					if(quit)
+						break;
+					try {
+						Thread.sleep(30*1000) ;
+					} catch(Exception e) {
+
+					}
+				}
 			}
 		}.start();
+		log("thread");
 	}
-*/	
-
 
 	void setImage(ImageButton b,int id,String s) {
 		Bitmap bm = drawTextToBitmap(mC,id,s,b);
-		//b.setImageResource(s);
 		b.setImageBitmap(bm);
 	}
 
@@ -137,24 +143,49 @@ public class deviceView1 extends viewBase{
 		int baseline = (h - fontMetrics.bottom + fontMetrics.top) / 2 - fontMetrics.top;
 		cv.drawText(gText,w/ 2 - bounds.width() / 2, baseline, p); 
 		return newb;
-} 
+	}
 
-	void initView() {
-		//mLL.setVisibility(View.VISIBLE);
-		//setContentView(R.layout.device_main);
 
+	void freshUITemp(){
+		Message m = new Message();
+		m.what = 0;
+		uiHandle.sendMessage(m);
+	}
+
+
+/*
+	void syncTemp() {
+		for (int x = 0; x < 8; x++) {
+			String t = mS.doQuery(mD.deviceId, "temp" + (x + 1));
+			log("get "+x+" temp:"+t);
+			temp[x] = t;
+		}
+	}
+*/
+	String getTemp(int id) {
+		return temp[id];
+	}
+
+	@Override
+	public void destroyView() {
+		quit = true;
+	}
+
+	@Override
+	public void initView() {
+		log("initView");
+
+		log("initView 2");
 		TextView t = (TextView)findViewById(IDHelper.getViewID(mC,"d_name"));
 		t.setText(mD.deviceName);
+		log("initView 3");
 		ImageButton b;
 		//Button b;
 		for(int x = 0 ;x < 8;x++) {
 			final int nodeId = (x+1);
-			log("id == :"+R.id.n01);
-			log("id1 == :"+IDHelper.getViewID(mC, "n0"+nodeId));
 			b = (ImageButton) findViewById(IDHelper.getViewID(mC, "n0"+(x+1)));
 			t = (TextView)findViewById(IDHelper.getViewID(mC,"n_name_0"+(x+1)));
 			setImage(b,R.drawable.device_main_online,"offline");
-			//b.setBackgroundResource(R.drawable.device_main_online);
 			final nodeConfig n = mN[x];//netConfig.getInstance().getNodeConfig(mD.deviceId,""+(x+1));
 			if(n == null || n.nodeName == null || n.nodeName.equals("")) {
 				t.setText("未命名");
@@ -162,29 +193,28 @@ public class deviceView1 extends viewBase{
 				t.setText(n.nodeName);
 			}
 
-			String temp = mS.doQuery(mD.deviceId,"temp"+(x+1));
+			String tt = getTemp(x);
 			do{
-			if(temp != null) {
+			if(tt != null) {
 				//b.setText(""+temp);
 				if(n == null) {
-					setImage(b,R.drawable.device_main_online,temp);
-					//b.setBackgroundResource(R.drawable.device_main_online);
+					setImage(b,R.drawable.device_main_online,tt);
 					break;
 				}
 				if(n.nodeConfig == 0) {
-					setImage(b,R.drawable.device_main_online,temp);
+					setImage(b,R.drawable.device_main_online,tt);
 					//b.setBackgroundResource(R.drawable.device_main_online);
 				} else {
 					if(n.nodeTemp == -101) {
-						setImage(b,R.drawable.device_main_online_blue,temp);
+						setImage(b,R.drawable.device_main_online_blue,tt);
 						//b.setBackgroundResource(R.drawable.device_main_online_blue);
 					}
 					if(n.nodeTemp == -102) {
-						setImage(b,R.drawable.device_main_online_yellow,temp);
+						setImage(b,R.drawable.device_main_online_yellow,tt);
 						//b.setBackgroundResource(R.drawable.device_main_online_yellow);
 					}
 					if(n.nodeTemp == -103) {
-						setImage(b,R.drawable.device_main_online_red,temp);
+						setImage(b,R.drawable.device_main_online_red,tt);
 						//b.setBackgroundResource(R.drawable.device_main_online_red);
 					}
 				}
@@ -215,15 +245,62 @@ public class deviceView1 extends viewBase{
 		}
 
 	}
+/*
+	HandlerThread ht = null;
+	private Handler mH;
+	void initHandle() {
+        ht = new HandlerThread("deviceView");
+        try{
+            ht.start();
+        }catch(IllegalThreadStateException e){
+            e.printStackTrace();
+        }
+		mH = new devicehandle(ht.getLooper());
+		//freshUITemp();
+		//freshUITemp_delay();
+	}
 
-	private Handler tH = new Handler() {
+	private class devicehandle extends Handler {
+		public devicehandle(Looper looper) {
+			super(looper);
+		}
+
 		@Override
 		public void handleMessage(Message msg) {
+			onHandleIntent(msg);
+		}
+
+		void onHandleIntent(Message message) {
+			int m = message.what;
+			switch (m) {
+				case (0):
+					log("case 0");
+					syncTemp();
+					freshUITemp();
+					freshTemp_delay();
+					break;
+				default:
+					break;
+			}
+		}
+	}
+*/
+
+	private Handler uiHandle = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+/*
+			if(msg.getTarget() == null)
+				if(mH != null)
+					mH.getLooper().quitSafely();
+*/
 			switch(msg.what) {
+				case(1):
+					//syncTemp();
+					//freshUITemp_delay();
+					break;
 				case(0):
 					initView();
-					break;
-				case(1):
 				default:
 					break;
 			}
@@ -231,11 +308,5 @@ public class deviceView1 extends viewBase{
 		
 	};
 
-/*
-
-    private void log(String line) {
-        l.d(line);
-    }  
-*/
 }
 

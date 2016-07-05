@@ -36,37 +36,101 @@ public class viewBase {//extends WebView{
 	nodeConfig mN[] ;
 	deviceConfig mD;
 	Context mC;
-	Handler mH;
+	//Handler mH;
+    MainService mS;
+	deviceActivity mA;
+	
 
+    public viewBase(Context c,int id,deviceConfig d,nodeConfig n[],MainService s) {
+        mC = c;
+        LayoutInflater inflater = LayoutInflater.from(c);
+        v = inflater.inflate(id, null);
+        mD = d;
+        mN = new nodeConfig[8];
+        if(n != null) {
+            for (int i = 0; i < 8; i++)
+                mN[i] = n[i];
+        }
+        mS = s;
+    }
+
+    public viewBase(Context c,int id,deviceConfig d,nodeConfig n[],MainService s,deviceActivity a) {
+        mC = c;
+        LayoutInflater inflater = LayoutInflater.from(c);
+        v = inflater.inflate(id, null);
+        mD = d;
+        mN = new nodeConfig[8];
+        if(n != null) {
+            for (int i = 0; i < 8; i++)
+                mN[i] = n[i];
+        }
+        mS = s;
+        mA = a;
+/*
+        LayoutInflater inflater = LayoutInflater.from(c);
+        v = inflater.inflate(id, null);
+        mD = d;
+        mN = new nodeConfig[8];
+        if(n != null) {
+            for (int i = 0; i < 8; i++)
+                mN[i] = n[i];
+*/  
+    }
+
+	public void setData(deviceConfig d,nodeConfig n[]) {
+		mD = d;
+		mN = n;
+	}
+
+	public void updata() {
+		if(mA != null)
+			mA.updata(mD,mN);
+	}
+
+	nodeConfig[] getN() {
+		return mN;
+	}
+
+	deviceConfig getD(){
+		return mD;
+	}
+
+	public void initView() {
+		return;
+	}
+	public void destroyView() {
+		return;
+	}
+	
+/*
     public viewBase(Context c,int id,Handler h) {
 		mC = c;
 		mH = h;
 		LayoutInflater inflater = LayoutInflater.from(c);
 		v = inflater.inflate(id, null);
-		show();
     }
-
 	void setMH(Handler h) {
 		mH = h;
 	}
+*/
 
 	public View getView() {
 		return v;
 	}
 
-	public void show() {
-	}
 
-    private void showToast(String msg){
+    void showToast(String msg){
         Toast toast=Toast.makeText(mC, msg ,Toast.LENGTH_SHORT);
         toast.show();
     }   
 
 
     View findViewById(int id) {
+        if(v == null)
+            log("v not init");
         return v.findViewById(id);
     } 
-
+/*
     void initNode(deviceConfig d){
 		mD = d;
         new Thread() {
@@ -84,6 +148,7 @@ public class viewBase {//extends WebView{
             }
         }.start();
     }
+*/
 /*
     private Handler mH = new Handler() {
         @Override
