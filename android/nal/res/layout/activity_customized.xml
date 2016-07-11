@@ -9,7 +9,7 @@
 	<TextView
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:text="Customized Text" 
+	    android:text="首先输入无线连接的帐号和密码。\n点击模组【nReload】按键模组自动重启后，【nLink】灯快闪时候，点击开始。\n 配置完成后,模组自动重启切换到 STA 模式去连接路由器。\n a) nLink 灯慢闪校验配置信息是否正确,正确情况下,模块 nLink 灯常亮提 示已连接到此路由器,APP 提示配置成功\nb) 错误情况下 nLink 灯一直慢闪,需要重新按以上流程配置 "
 	    android:gravity="center"/>
 
     <TableLayout

@@ -1,8 +1,9 @@
 package com.android.nal;
 
+import com.android.nal.utils.l;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
-import com.android.nal.utils.l;
 
 public final class deviceConfig{
 	public int			deviceType;

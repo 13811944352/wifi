@@ -1,15 +1,16 @@
 package com.android.nal.local;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+
 import com.android.nal.deviceConfig;
+import com.android.nal.mainApp;
 import com.android.nal.nodeConfig;
 import com.android.nal.nodeConfig1;
-import android.content.Context;
-import com.android.nal.mainApp;
-import java.util.List;
 
-import android.content.SharedPreferences;  
-import android.content.SharedPreferences.Editor;
-import android.app.Activity;
+import java.util.List;
 
 public class localConfig {
 	private Context mC = null;

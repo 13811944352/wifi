@@ -1,32 +1,12 @@
 package com.android.nal;
 
 import android.content.Context;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.view.View;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.util.Log;
-import android.os.Handler;
-import android.os.Message;
-
-import com.android.nal.utils.l;
-import com.android.nal.service.MainService;
-import com.android.nal.local.localConfig;
-import com.android.nal.net.netConfig;
 import android.widget.Toast;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.webkit.WebSettings ;
-import android.widget.LinearLayout;
+
+import com.android.nal.service.MainService;
+import com.android.nal.utils.l;
 
 
 public class viewBase {//extends WebView{

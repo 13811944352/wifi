@@ -1,40 +1,15 @@
 package com.android.nal.service;
 
-import com.android.nal.deviceConfig;
-import com.android.nal.nodeConfig;
-import com.android.nal.local.*;
 import com.android.nal.UURL;
+import com.android.nal.local.*;
 import com.android.nal.service.proxy.*;
-import com.android.nal.utils.l;
-import android.content.Context;
-import com.android.nal.mainApp;
-import java.util.List;
-
-import android.content.SharedPreferences;  
-import android.content.SharedPreferences.Editor;
-import android.app.Activity;
-
-import java.io.IOException; 
-import java.io.DataOutputStream; 
-import java.io.DataInputStream; 
-import java.net.InetSocketAddress; 
-import java.net.Socket; 
-import java.nio.ByteBuffer; 
-import java.nio.CharBuffer; 
-import java.nio.channels.SocketChannel; 
-import java.nio.charset.CharacterCodingException; 
-import java.nio.charset.Charset; 
-import java.nio.charset.CharsetDecoder; 
-import android.app.Notification; 
-import android.app.NotificationManager; 
-import android.app.PendingIntent; 
-import android.app.Service; 
-import android.content.Context; 
-import android.content.Intent; 
-import android.os.Binder; 
-import android.os.IBinder;
-import java.math.BigInteger;
 import com.android.nal.utils.util;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.math.BigInteger;
+import java.net.Socket;
 
 public class tcpC { // extends Thread {
     private static tcpC mC;

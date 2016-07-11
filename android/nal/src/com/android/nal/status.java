@@ -1,9 +1,8 @@
 package com.android.nal;
 
 
-import com.android.nal.utils.l;
 import com.android.nal.utils.HttpUtil;
-import com.android.nal.local.localConfig;
+import com.android.nal.utils.l;
 
 public class status {
 	private static status mstatus;

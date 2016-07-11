@@ -14,20 +14,22 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 */
-import android.os.Looper;
-import android.os.HandlerThread;
-import android.app.Service;// 服务的类
-import android.os.IBinder;
-import android.os.Binder;
-import android.content.Intent;
 
-import com.android.nal.utils.l;
-//import com.android.nal.Istatus;
+import android.app.Service;
+import android.content.Intent;
+import android.os.Binder;
+import android.os.HandlerThread;
+import android.os.IBinder;
+import android.os.Looper;
+
 import com.android.nal.deviceConfig;
-import com.android.nal.nodeConfig;
 import com.android.nal.net.netConfig;
-import com.android.nal.local.localConfig;
+import com.android.nal.nodeConfig;
+import com.android.nal.utils.l;
+
 import java.util.ArrayList;
+
+//import com.android.nal.Istatus;
 
 public class MainService extends Service {
     private static HandlerThread mHt = null;

@@ -1,17 +1,5 @@
 package com.android.nal;
 
-import com.hiflying.smartlink.ISmartLinker;
-import com.hiflying.smartlink.OnSmartLinkListener;
-import com.hiflying.smartlink.SmartLinkedModule;
-import com.hiflying.smartlink.v3.SnifferSmartLinker;
-import com.hiflying.smartlink.v7.MulticastSmartLinker;
-
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.os.Bundle;
-import android.os.Handler;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -20,12 +8,24 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.hiflying.smartlink.ISmartLinker;
+import com.hiflying.smartlink.OnSmartLinkListener;
+import com.hiflying.smartlink.SmartLinkedModule;
+import com.hiflying.smartlink.v3.SnifferSmartLinker;
+import com.hiflying.smartlink.v7.MulticastSmartLinker;
 
 public class CustomizedActivity extends Activity implements OnSmartLinkListener{
 	

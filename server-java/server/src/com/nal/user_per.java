@@ -2,7 +2,6 @@ package com.nal;
 
 import java.sql.*;
 import java.util.ArrayList;
-import net.sf.json.JSONObject;
 import net.sf.json.*;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.http.HttpServletRequest;
@@ -13,10 +12,12 @@ public class user_per extends base {
 	}
 
 	public String del(String uname,String did) {
+		Connection conn=getCon();
 		String sql = String.format("delete from user_per where uname = '%s' and deviceId = '%s'",uname,did);
 		try {
 			Statement mStat = conn.createStatement();
 			mStat.executeUpdate(sql);
+			closeAll(null, mStat, conn);
 		}catch(SQLException e) {
 			return ""+false;
 		}
@@ -25,10 +26,13 @@ public class user_per extends base {
 	}
 
 	public String del(String uname,String did,int per) {
+		Connection conn=getCon();
 		String sql = String.format("delete from user_per where uname = '%s' and deviceId = '%s' and per = %d",uname,did,per);
+		
 		try {
 			Statement mStat = conn.createStatement();
 			mStat.executeUpdate(sql);
+			closeAll(null, mStat, conn);
 		}catch(SQLException e) {
 			return ""+false;
 		}
@@ -36,6 +40,7 @@ public class user_per extends base {
 	}
 
 	public String add(String uname,String deviceId,int per) {
+		Connection conn=getCon();
 		String sql = null;
 		int p = getPer(uname,deviceId);
 		if(p == -1)
@@ -49,12 +54,13 @@ public class user_per extends base {
 		} catch (SQLException e) {
 			return  ""+e;
 		} finally {
-			close(mStat);
+			closeAll(null, mStat, conn);
 		}
 		return "true";
 	}
 
     public int getPer(String uname,String did) { // throws SQLException{
+    	Connection conn=getCon();
         String sql = "select * from user_per where uname = '"+uname+"' and deviceId= '"+did+" '";    
         int per;
         int max = -1; 
@@ -80,14 +86,14 @@ public class user_per extends base {
 		} catch (SQLException e) {
 			return  -1;
 		} finally {
-			close(rs);
-			close(mStat);
+			closeAll(rs, mStat, conn);
 		}
         return max;
     } 
 
     public ArrayList<String> getDevice(String uname,int per) throws java.io.IOException,SQLException{
-        String sql = "select * from user_per where uname = '"+uname+"' and per >= '"+per+" '";    
+    	Connection conn=getCon();
+    	String sql = "select * from user_per where uname = '"+uname+"' and per >= '"+per+" '";    
         ArrayList<String> index = new ArrayList<String>();
         int num = 0;
         Statement mStat = conn.createStatement();
@@ -101,8 +107,7 @@ public class user_per extends base {
             String i = rs.getString("deviceID").trim();
             index.add(i);
         }
-        rs.close();
-        mStat.close();
+        closeAll(rs, mStat, conn);
         return index;
     }
 

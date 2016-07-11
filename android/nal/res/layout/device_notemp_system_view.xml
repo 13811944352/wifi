@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background ="@color/snow"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<!--
+<LinearLayout
+    android:id="@+id/widget33"
+    android:layout_x="0dp"
+    android:layout_y="0dp"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+<Button
+    android:id="@+id/back"
+    android:background="@drawable/device_main_back"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1" />
+<TextView
+    android:id="@+id/widget36"
+    android:layout_width="wrap_content"
+    android:layout_height="39dp"
+    android:text="nuoiss"
+    android:layout_gravity="center_horizontal"
+    android:layout_weight="5" />
+<Button
+    android:id="@+id/menu"
+    android:background="@drawable/device_main_menu"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right"
+    android:layout_weight="1" />
+</LinearLayout>
+-->
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:orientation="vertical"
+		android:layout_height="60dp"
+		android:layout_x="0dp"
+		android:layout_y="85dp" >
+
+		<TextView
+			android:layout_y="25dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text=""
+			android:layout_gravity="center_horizontal" />
+
+		<TextView
+			android:layout_y="25dp"
+			android:id="@+id/textView6"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="d_name"
+			android:layout_gravity="center_horizontal" />
+	</LinearLayout>
+
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_x="0dp"
+		android:layout_y="0dp"
+		android:layout_gravity="center_horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="30dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginRight="30dp"
+		android:background="@drawable/content_bg" >
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:text="安装地址"
+			android:layout_weight="1"
+			android:layout_gravity="center"
+			android:gravity="center_vertical|center_horizontal" />
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/content_bg"
+			android:layout_gravity="center"
+			android:gravity="center_vertical|center_horizontal"
+			android:textSize="22sp" />
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_gravity="center_horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1.3"
+			android:visibility="invisible">
+
+			<Button
+				android:id="@+id/button8"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:background="@drawable/arrow_up"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="20dip"
+				android:textSize="15sp" />
+
+			<Button
+				android:id="@+id/button9"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:background="@drawable/arrow_down"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="20dip"
+				android:textSize="15sp" />
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_x="0dp"
+		android:layout_y="0dp"
+		android:layout_gravity="center_horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="30dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginRight="30dp"
+		android:background="@drawable/content_bg" >
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:text="供回水温"
+			android:layout_weight="1"
+			android:layout_gravity="center"
+			android:gravity="center_vertical|center_horizontal" />
+
+		<EditText
+			android:id="@+id/editText2"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:maxLength="2"
+			android:text="0"
+			android:textSize="22sp"
+			android:layout_weight="1" />
+
+		<LinearLayout
+			android:layout_x="0dp"
+			android:layout_y="0dp"
+			android:orientation="vertical"
+			android:layout_gravity="center_horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1">
+
+			<Button
+				android:id="@+id/button4"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:background="@drawable/arrow_up"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="20dip"
+				android:textSize="15sp" />
+
+			<Button
+				android:id="@+id/button5"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:background="@drawable/arrow_down"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="20dip"
+				android:textSize="15sp" />
+		</LinearLayout>
+
+		<EditText
+			android:id="@+id/editText"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:maxLength="2"
+			android:text="0"
+			android:textSize="22sp"
+			android:layout_weight="1" />
+
+		<LinearLayout
+			android:layout_x="0dp"
+			android:layout_y="0dp"
+			android:orientation="vertical"
+			android:layout_gravity="center_horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1">
+
+			<Button
+				android:id="@+id/button2"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:background="@drawable/arrow_up"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="20dip"
+				android:textSize="15sp" />
+
+			<Button
+				android:id="@+id/button3"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:background="@drawable/arrow_down"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="20dip"
+				android:textSize="15sp" />
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_x="0dp"
+		android:layout_y="0dp"
+		android:layout_gravity="center_horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="30dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginRight="30dp"
+		android:background="@drawable/content_bg" >
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:text="管道规格"
+			android:layout_weight="1"
+			android:layout_gravity="center"
+			android:gravity="center_vertical|center_horizontal" />
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/content_bg"
+			android:layout_gravity="center"
+			android:gravity="center_vertical|center_horizontal"
+			android:text="16管径"
+			android:textSize="22sp"
+			android:id="@+id/specifications" />
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_gravity="center_horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1.3" >
+
+			<Button
+				android:id="@+id/specifications_up"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:background="@drawable/arrow_up"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="20dip"
+				android:textSize="15sp" />
+
+			<Button
+				android:id="@+id/specifications_down"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:background="@drawable/arrow_down"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="20dip"
+				android:textSize="15sp" />
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_x="0dp"
+		android:layout_y="0dp"
+		android:layout_gravity="center_horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="30dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginRight="30dp"
+		android:background="@drawable/content_bg" >
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:text="管道间距"
+			android:layout_weight="1"
+			android:layout_gravity="center"
+			android:gravity="center_vertical|center_horizontal" />
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/content_bg"
+			android:layout_gravity="center"
+			android:gravity="center_vertical|center_horizontal"
+			android:text="150间距"
+			android:textSize="22sp"
+			android:id="@+id/gap" />
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_gravity="center_horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1.3" >
+
+			<Button
+				android:id="@+id/gap_up"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:background="@drawable/arrow_up"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="20dip"
+				android:textSize="15sp" />
+
+			<Button
+				android:id="@+id/gap_down"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:background="@drawable/arrow_down"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="20dip"
+				android:textSize="15sp" />
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_x="0dp"
+		android:layout_y="0dp"
+		android:layout_gravity="center_horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="30dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginRight="30dp"
+		android:background="@drawable/content_bg" >
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:text="管道材质"
+			android:layout_weight="1"
+			android:layout_gravity="center"
+			android:gravity="center_vertical|center_horizontal" />
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/content_bg"
+			android:layout_gravity="center"
+			android:gravity="center_vertical|center_horizontal"
+			android:text="PE-RT"
+			android:textSize="22sp"
+			android:id="@+id/material" />
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_gravity="center_horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1.3" >
+
+			<Button
+				android:id="@+id/material_up"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:background="@drawable/arrow_up"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="20dip"
+				android:textSize="15sp" />
+
+			<Button
+				android:id="@+id/material_down"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:background="@drawable/arrow_down"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="20dip"
+				android:textSize="15sp" />
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<Button
+    android:id="@+id/done"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="确定" />
+	</LinearLayout>
+</LinearLayout>
+

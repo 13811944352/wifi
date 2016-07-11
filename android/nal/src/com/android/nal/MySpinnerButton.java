@@ -1,57 +1,24 @@
 package com.android.nal;
 
 
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Handler;
-import android.os.Message;
-import android.content.ComponentName;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.SimpleAdapter;
-
-import com.android.nal.utils.l;
-import com.android.nal.service.MainService;
-import com.android.nal.local.localConfig;
-import com.android.nal.net.netConfig;
-import android.widget.Toast;
-import android.widget.ListView;
-import android.widget.LinearLayout;
-import android.support.v4.view.ViewPager;
-import java.util.List;
-import java.util.ArrayList;
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.TextView;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.DisplayMetrics;
-import android.graphics.Matrix;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.BaseAdapter;
 import android.widget.AdapterView;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import android.util.AttributeSet;
 
 public class MySpinnerButton extends Button {  
   
@@ -62,14 +29,14 @@ public class MySpinnerButton extends Button {
     public MySpinnerButton(Context context, AttributeSet attrs, int defStyle) {  
         super(context, attrs, defStyle);  
         this.context = context;  
-        // ÉèÖÃ¼àÌýÊÂ¼þ  
+        // ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½Â¼ï¿½  
         setOnClickListener(new MySpinnerButtonOnClickListener());  
     }  
   
     public MySpinnerButton(Context context, AttributeSet attrs) {  
         super(context, attrs);  
         this.context = context;  
-        // ÉèÖÃ¼àÌýÊÂ¼þ  
+        // ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½Â¼ï¿½  
         setOnClickListener(new MySpinnerButtonOnClickListener());  
     }  
   
@@ -78,7 +45,7 @@ public class MySpinnerButton extends Button {
         this.context = context;  
 		mName = name;
 		mCall = call;
-        // ÉèÖÃ¼àÌýÊÂ¼þ  
+        // ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½Â¼ï¿½  
         setOnClickListener(new MySpinnerButtonOnClickListener());  
     }  
 
@@ -89,7 +56,7 @@ public class MySpinnerButton extends Button {
 	}
     
     /** 
-     * MySpinnerButtonµÄµã»÷ÊÂ¼þ 
+     * MySpinnerButtonï¿½Äµï¿½ï¿½ï¿½Â¼ï¿½ 
      * @author haozi 
      * 
      */  
@@ -106,25 +73,25 @@ public class MySpinnerButton extends Button {
     }  
       
     /** 
-     * MySpinnerButtonµÄÏÂÀ­ÁÐ±í 
+     * MySpinnerButtonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ 
      * @author haozi 
      * 
      */  
     class MySpinnerDropDownItems extends PopupWindow{  
           
         private Context context;  
-        private LinearLayout mLayout;  // ÏÂÀ­ÁÐ±íµÄ²¼¾Ö  
-        private ListView mListView;    // ÏÂÀ­ÁÐ±í¿Ø¼þ  
+        private LinearLayout mLayout;  // ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Ä²ï¿½ï¿½ï¿½  
+        private ListView mListView;    // ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Ø¼ï¿½  
         private ArrayList<HashMap<String, String>> mData;  
           
         public MySpinnerDropDownItems(Context context){  
             super(context);  
               
             this.context = context;  
-            // ÏÂÀ­ÁÐ±íµÄ²¼¾Ö  
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Ä²ï¿½ï¿½ï¿½  
             mLayout = new LinearLayout(context);  
             mLayout.setOrientation(LinearLayout.VERTICAL);  
-            // ÏÂÀ­ÁÐ±í¿Ø¼þ  
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Ø¼ï¿½  
             mListView = new ListView(context);  
             mListView.setLayoutParams(new LayoutParams(MySpinnerButton.this.getLayoutParams().width, LayoutParams.WRAP_CONTENT));  
             //mListView.setCacheColorHint(Color.TRANSPARENT);  
@@ -134,7 +101,7 @@ public class MySpinnerButton extends Button {
                 mHashmap.put("spinner_dropdown_item_textview", mName.get(i));  
                 mData.add(mHashmap);  
             }  
-            // ÎªlistViewÉèÖÃÊÊÅäÆ÷  
+            // ÎªlistViewï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
             //mListView.setAdapter(new MyAdapter(context,   
             //        mData, R.layout.spinner_dropdown_item,   
             //        new String[]{"spinner_dropdown_item_textview"}, new int[]{R.id.spinner_dropdown_item_textview}));  
@@ -148,9 +115,9 @@ public class MySpinnerButton extends Button {
             //mListView.setAdapter(new MyAdapter(context,   
             //        mData, R.layout.spinner_dropdown_item, null,null));
             //        new String[]{"spinner_dropdown_item_textview"}, new int[]{R.id.spinner_dropdown_item_textview}));  
-            // ÉèÖÃlistViewµÄµã»÷ÊÂ¼þ  
+            // ï¿½ï¿½ï¿½ï¿½listViewï¿½Äµï¿½ï¿½ï¿½Â¼ï¿½  
             mListView.setOnItemClickListener(new MyListViewOnItemClickedListener());  
-            // °ÑÏÂÀ­ÁÐ±íÌí¼Óµ½layoutÖÐ¡£  
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Óµï¿½layoutï¿½Ð¡ï¿½  
             mLayout.addView(mListView);  
               
             setWidth(LayoutParams.WRAP_CONTENT);  
@@ -162,7 +129,7 @@ public class MySpinnerButton extends Button {
         }  
           
         /**  
-         * ÎÒµÄÊÊÅäÆ÷  
+         * ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
          * @author haozi  
          *  
          */    
@@ -176,9 +143,9 @@ public class MySpinnerButton extends Button {
             private LayoutInflater mLayoutInflater;    
                 
             /**  
-             * ÎÒµÄÊÊÅäÆ÷µÄ¹¹Ôì·½·¨  
-             * @param context µ÷ÓÃ·½µÄÉÏÏÂÎÄ  
-             * @param data Êý¾Ý  
+             * ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ì·½ï¿½ï¿½  
+             * @param context ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
+             * @param data ï¿½ï¿½ï¿½  
              * @param resource  
              * @param from   
              * @param to  
@@ -194,7 +161,7 @@ public class MySpinnerButton extends Button {
             }    
                 
             /**  
-             * ÏµÍ³ÔÚ»æÖÆListViewÖ®Ç°£¬½«»áÏÈµ÷ÓÃgetCount·½·¨À´»ñÈ¡ItemµÄ¸öÊý  
+             * ÏµÍ³ï¿½Ú»ï¿½ï¿½ï¿½ListViewÖ®Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Èµï¿½ï¿½ï¿½getCountï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Itemï¿½Ä¸ï¿½ï¿½ï¿½  
              */    
             public int getCount() {    
                     
@@ -212,19 +179,19 @@ public class MySpinnerButton extends Button {
             }    
             
             /**  
-             * Ã¿»æÖÆÒ»¸ö Item¾Í»áµ÷ÓÃÒ»´ÎgetView·½·¨£¬  
-             * ÔÚ´Ë·½·¨ÄÚ¾Í¿ÉÒÔÒýÓÃÊÂÏÈ¶¨ÒåºÃµÄxmlÀ´È·¶¨ÏÔÊ¾µÄÐ§¹û²¢·µ»ØÒ»¸öView¶ÔÏó×÷ÎªÒ»¸öItemÏÔÊ¾³öÀ´¡£  
-             * Ò² ÕýÊÇÔÚÕâ¸ö¹ý³ÌÖÐÍê³ÉÁËÊÊÅäÆ÷µÄÖ÷Òª×ª»»¹¦ÄÜ£¬°ÑÊý¾ÝºÍ×ÊÔ´ÒÔ¿ª·¢ÕßÏëÒªµÄÐ§¹ûÏÔÊ¾³öÀ´¡£  
-             * Ò²ÕýÊÇgetViewµÄÖØ¸´µ÷ÓÃ£¬Ê¹µÃListViewµÄÊ¹ÓÃ¸ü Îª¼òµ¥ºÍÁé»î¡£  
-             * ÕâÁ½¸ö·½·¨ÊÇ×Ô¶¨ListViewÏÔÊ¾Ð§¹ûÖÐ×îÎªÖØÒªµÄ£¬Í¬Ê±Ö»ÒªÖØÐ´ºÃÁË¾ÍÁ½¸ö·½·¨£¬ListView¾ÍÄÜÍêÈ«°´¿ª·¢ÕßµÄÒªÇóÏÔÊ¾¡£  
-             * ¶ø getItemºÍgetItemId·½·¨½«»áÔÚµ÷ÓÃListViewµÄÏìÓ¦·½·¨µÄÊ±ºò±»µ÷ÓÃµ½¡£  
-             * ËùÒÔÒª±£Ö¤ListViewµÄ¸÷¸ö·½·¨ÓÐÐ§µÄ»°£¬ÕâÁ½¸ö·½·¨Ò²µÃÖØÐ´¡£  
+             * Ã¿ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ Itemï¿½Í»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½getViewï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
+             * ï¿½Ú´Ë·ï¿½ï¿½ï¿½ï¿½Ú¾Í¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½ï¿½Ãµï¿½xmlï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Viewï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÒ»ï¿½ï¿½Itemï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
+             * Ò² ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª×ªï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ýºï¿½ï¿½ï¿½Ô´ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
+             * Ò²ï¿½ï¿½ï¿½ï¿½getViewï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½Ã£ï¿½Ê¹ï¿½ï¿½ListViewï¿½ï¿½Ê¹ï¿½Ã¸ï¿½ Îªï¿½òµ¥ºï¿½ï¿½ï¿½î¡£  
+             * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ListViewï¿½ï¿½Ê¾Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Òªï¿½Ä£ï¿½Í¬Ê±Ö»Òªï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ListViewï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Òªï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½  
+             * ï¿½ï¿½ getItemï¿½ï¿½getItemIdï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ListViewï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ò±»µï¿½ï¿½Ãµï¿½ï¿½ï¿½  
+             * ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ö¤ListViewï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½  
              */    
             public View getView(int position, View contentView, ViewGroup parent) {    
                     
                 contentView = this.mLayoutInflater.inflate(this.mResource, parent, false);      
             
-                // ÉèÖÃcontentViewµÄÄÚÈÝºÍÑùÊ½£¬ÕâÀïÖØµãÊÇÉèÖÃcontentViewÖÐÎÄ×ÖµÄ´óÐ¡    
+                // ï¿½ï¿½ï¿½ï¿½contentViewï¿½ï¿½ï¿½ï¿½ï¿½Ýºï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½contentViewï¿½ï¿½ï¿½ï¿½ï¿½ÖµÄ´ï¿½Ð¡    
                 //for(int index=0; index<this.mTo.length; index++){    
                 //    TextView textView = (TextView) contentView.findViewById(this.mTo[index]);    
                 //    textView.setText(this.mData.get(position).get(this.mFrom[index]).toString());    
@@ -235,7 +202,7 @@ public class MySpinnerButton extends Button {
         }   
           
         /** 
-         * listViewµÄµã»÷ÊÂ¼þ 
+         * listViewï¿½Äµï¿½ï¿½ï¿½Â¼ï¿½ 
          * @author haozi 
          * 
          */  

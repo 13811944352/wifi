@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:id="@+id/widget32"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+	android:id="@+id/widget33"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+</LinearLayout>
+<LinearLayout
+	android:id="@+id/widget34"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+<Button
+	android:id="@+id/timetemp"
+	android:background="@drawable/node_main_temp_no"
+	android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_marginTop="60dp"
+    android:layout_marginLeft="150dp"
+	android:text="Button" />
+</LinearLayout>
+<LinearLayout
+	android:id="@+id/widget36"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/widget37"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="星期几:" />
+<Spinner
+    android:id="@+id/week"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:entries="@array/week"
+/>
+</LinearLayout>
+<LinearLayout
+	android:id="@+id/widget39"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+<TextView
+	android:id="@+id/widget40"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="&#26102;&#38388;&#27573;&#19968;" />
+
+</LinearLayout>
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:id="@+id/t_s1"
+	android:layout_weight="2"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="00:00" />
+<TextView
+	android:id="@+id/t_e1"
+	android:layout_weight="2"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="00:00" />
+<TextView
+	android:id="@+id/t1"
+	android:layout_weight="1"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="6" />
+</LinearLayout>
+<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<Button
+	android:id="@+id/b_s1"
+	android:layout_weight="2"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="设置开始时间" />
+<Button
+	android:id="@+id/b_e1"
+	android:layout_weight="2"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="设置结束时间" />
+<Button
+	android:id="@+id/b_t1"
+	android:layout_weight="1"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="设置温度" />
+</LinearLayout>
+<LinearLayout
+	android:id="@+id/widget39"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+<TextView
+	android:id="@+id/widget40"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="其余时间:" />
+
+</LinearLayout>
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<!--
+<TextView
+	android:id="@+id/t_s2"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="00:00" />
+<Button
+	android:id="@+id/b_s2"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="&#35774;&#32622;&#24320;&#22987;&#26102;&#38388;" />
+<TextView
+	android:id="@+id/t_e2"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="00:00" />
+<Button
+	android:id="@+id/b_e2"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="&#35774;&#32622;&#32467;&#26463;&#26102;&#38388;" />
+!-->
+<TextView
+	android:id="@+id/t2"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:maxLength="2"
+	android:numeric="integer" 
+	android:text="0" />
+</LinearLayout>
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<Button
+	android:id="@+id/b_t2"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="设置温度" />
+</LinearLayout>
+<LinearLayout
+	android:id="@+id/widget41"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<Button
+	android:id="@+id/timesave"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="确认" />
+<Button
+	android:id="@+id/timecancel"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="取消" />
+</LinearLayout>
+</LinearLayout>
+

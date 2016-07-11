@@ -1,17 +1,10 @@
 package com.android.nal;
 
 import android.content.Context;
-import android.widget.Button;
 import android.view.View;
+import android.widget.Button;
 
-import com.android.nal.utils.l;
 import com.android.nal.service.MainService;
-import com.android.nal.local.localConfig;
-import com.android.nal.net.netConfig;
-import java.util.ArrayList;
-
-
-
 import com.lenovo.lps.sus.SUS;
 
 public class aboutView extends viewBase{

@@ -1,7 +1,14 @@
 #!/bin/bash  -ex
-export CLASSPATH=/usr/share/tomcat7/lib/jsp-api.jar:/var/lib/tomcat7/webapps/nal/WEB-INF/lib/json-lib-2.4-jdk15.jar:/usr/share/tomcat7/lib/servlet-api.jar:$CLASSPATH
+export NAL_PATH=../../nal/WEB-INF/lib/
+
+export CLASSPATH=$NAL_PATH/druid-1.0.20.jar:$NAL_PATH/ojdbc14.jar:/usr/share/tomcat7/lib/jsp-api.jar:/var/lib/tomcat7/webapps/nal/WEB-INF/lib/json-lib-2.4-jdk15.jar:/usr/share/tomcat7/lib/servlet-api.jar:$CLASSPATH
 javac  com/nal/*.java
-jar cvf nal.jar com/nal/*.class
+javac  com/dbtools/*.java
+jar cvf nal.jar com/nal/*.class 
+jar cvf dbtool.jar  com/dbtools/*.class
+cp com/nal/*.class /var/lib/tomcat7/webapps/nal/WEB-INF/classes/
+cp com/dbtools/*.class /var/lib/tomcat7/webapps/nal/WEB-INF/classes/
 cp nal.jar /var/lib/tomcat7/webapps/nal/WEB-INF/lib
+cp dbtool.jar /var/lib/tomcat7/webapps/nal/WEB-INF/lib
 /etc/init.d/tomcat7 restart
 

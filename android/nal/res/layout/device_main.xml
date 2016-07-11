@@ -1,308 +1,95 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	android:id="@+id/device_main"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:orientation="vertical"
-	android:background = "@color/snow"
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:weightSum="1">
-<LinearLayout
-	android:layout_width="fill_parent"
-	android:orientation="vertical"
-	android:layout_height="60dp"
-	android:layout_x="0dp"
-	android:layout_y="85dp">
-
-	<TextView
-	android:layout_y="25dp"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text=""
-	android:layout_gravity="center_horizontal" />
-<TextView
-	android:layout_y="25dp"
-	android:id="@+id/d_name"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="d_name"
-	android:layout_gravity="center_horizontal" />
-</LinearLayout>
-<LinearLayout
-	android:layout_width="fill_parent"
-	android:layout_height="60dp"
-	android:layout_weight="0.16">
-<ImageButton
-	android:id="@+id/n01"
-	android:src="@drawable/device_main_online"
-	android:background="#00000000"
-	android:scaleType="fitCenter"
-	android:layout_width="wrap_content"
-	android:layout_height="fill_parent"
-	android:text="n01"
-	android:layout_weight="1" />
-<ImageButton
-	android:id="@+id/n02"
-	android:src="@drawable/device_main_online"
-	android:background="#00000000"
-	android:scaleType="fitCenter"
-	android:layout_width="wrap_content"
-	android:layout_height="fill_parent"
-	android:text="n02"
-	android:layout_weight="1" />
-<ImageButton
-	android:id="@+id/n03"
-	android:src="@drawable/device_main_online"
-	android:background="#00000000"
-	android:scaleType="fitCenter"
-	android:layout_width="wrap_content"
-	android:layout_height="fill_parent"
-	android:text="n03"
-	android:layout_weight="1" />
-</LinearLayout>
-<LinearLayout
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:layout_x="0dp"
-	android:layout_y="181dp">
-<TextView
-	android:id="@+id/n_name_01"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="TextView"
-	android:gravity="center" 
-	android:layout_gravity="center_vertical" 
-	android:layout_weight="1" />
-<TextView
-	android:id="@+id/n_name_02"
-	android:gravity="center" 
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="TextView"
-	android:layout_gravity="center_vertical" 
-	android:layout_weight="1" />
-<TextView
-	android:id="@+id/n_name_03"
-	android:gravity="center" 
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="TextView"
-	android:layout_gravity="center_vertical" 
-	android:layout_weight="1" />
-
-</LinearLayout>
-<LinearLayout
-	android:layout_width="fill_parent"
-	android:layout_height="60dp"
-	android:layout_x="0dp"
-	android:layout_y="130dp"
-	android:layout_weight="0.16"
-	android:layout_marginTop="20dp">
-<ImageButton
-	android:id="@+id/n04"
-	android:src="@drawable/device_main_online"
-	android:background="#00000000"
-	android:scaleType="fitCenter"
-	android:layout_width="wrap_content"
-	android:layout_height="fill_parent"
-	android:text="n04"
-	android:layout_weight="1" />
-<ImageButton
-	android:id="@+id/n05"
-	android:src="@drawable/device_main_online"
-	android:background="#00000000"
-	android:scaleType="fitCenter"
-	android:layout_width="wrap_content"
-	android:layout_height="fill_parent"
-	android:text="n05"
-	android:layout_weight="1" />
-<ImageButton
-	android:id="@+id/n06"
-	android:src="@drawable/device_main_online"
-	android:background="#00000000"
-	android:scaleType="fitCenter"
-	android:layout_width="wrap_content"
-	android:layout_height="fill_parent"
-	android:text="n06"
-	android:layout_weight="1" />
-</LinearLayout>
-<LinearLayout
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:layout_x="0dp"
-	android:layout_y="254dp">
-<TextView
-	android:id="@+id/n_name_04"
-	android:gravity="center" 
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="TextView"
-	android:layout_gravity="center_vertical" 
-	android:layout_weight="1" />
-<TextView
-	android:id="@+id/n_name_05"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="TextView"
-	android:gravity="center" 
-	android:layout_weight="1" />
-<TextView
-	android:id="@+id/n_name_06"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="TextView"
-	android:gravity="center" 
-	android:layout_weight="1" />
-</LinearLayout>
-
-<LinearLayout
-	android:layout_width="fill_parent"
-	android:layout_height="60dp"
-	android:layout_weight="0.16"
-	android:layout_marginTop="20dp">
-<ImageButton
-	android:id="@+id/n07"
-	android:src="@drawable/device_main_online"
-	android:background="#00000000"
-	android:scaleType="fitCenter"
-	android:layout_width="wrap_content"
-	android:layout_height="fill_parent"
-	android:text="n07"
-	android:layout_weight="1" />
-<ImageButton
-	android:id="@+id/n08"
-	android:src="@drawable/device_main_online"
-	android:background="#00000000"
-	android:scaleType="fitCenter"
-	android:layout_width="wrap_content"
-	android:layout_height="fill_parent"
-	android:text="n08"
-	android:layout_weight="1" />
-</LinearLayout>
-
-<LinearLayout
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:layout_x="0dp"
-	android:layout_y="254dp">
-<TextView
-	android:id="@+id/n_name_07"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="TextView"
-	android:gravity="center" 
-	android:layout_weight="1" />
-<TextView
-	android:id="@+id/n_name_08"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:text="TextView"
-	android:gravity="center" 
-	android:layout_weight="1" />
-</LinearLayout>
-
-
-<LinearLayout
-    layout_marginTop="50dp"
-    android:id="@+id/smart"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="71dp"
-	android:layout_marginTop="50dp"
-	android:layout_marginRight="30dp"
-	android:layout_marginLeft="30dp">
-    <RadioButton
-		android:checked="true"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="New RadioButton"
-        android:id="@+id/rb1"
-		android:textColorHint="@color/red"
-		android:layout_weight="1" />
-    <RadioButton
-		android:checked="true"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="New RadioButton"
-        android:id="@+id/rb2"
-        android:layout_weight="1"
-		android:textColorHint="@color/red"
-        android:layout_marginBottom="30dp" 
-    />
-    <RadioButton
-		android:checked="true"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="New RadioButton"
-        android:id="@+id/rb3"
-        android:layout_weight="1"
-		android:textColorHint="@color/red" />
-    <RadioButton
-		android:checked="true"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="New RadioButton"
-        android:id="@+id/rb3"
-        android:layout_weight="1"
-		android:textColorHint="@color/red" />
-    <RadioButton
-		android:checked="true"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="New RadioButton"
-        android:id="@+id/rb4"
-        android:layout_weight="1"
-		android:textColorHint="@color/red" />
-</LinearLayout>
-
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="bottom"
+    android:background="@color/snow">
 
 <LinearLayout
-    android:id="@+id/smart"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-	android:layout_marginRight="30dp"
-	android:layout_marginLeft="30dp">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="  舒适"
-        android:id="@+id/rb1"
-		android:layout_weight="1" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="  节能"
-        android:layout_weight="1" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="  离家"
-        android:layout_weight="1" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="  定时"
-        android:layout_weight="1" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="  手动"
-        android:layout_weight="1" />
+    android:background="@drawable/title"
+    android:layout_x="0dp"
+    android:layout_y="0dp">
+<Button
+    android:id="@+id/back"
+    android:background="@drawable/device_main_back"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1" />
+<ImageView
+    android:id="@+id/title"
+    android:layout_width="wrap_content"
+    android:layout_height="39dp"
+    android:text="总控页面"
+	android:textColor="@color/snow"  
+    android:textSize="22sp"
+    android:layout_gravity="center"
+    android:layout_weight="5"
+    android:background="@drawable/device_main_main"
+    android:adjustViewBounds="false" />
+<com.android.nal.MySpinnerButton 
+    android:id="@+id/menu"
+    android:background="@drawable/device_main_menu"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right"
+    android:layout_weight="1" />
 </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:layout_weight="4"
+        android:orientation="vertical" >
+		<android.support.v4.view.ViewPager
+			android:id="@+id/viewPager"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="3"
+		/>
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:background="@color/red"
+			android:visibility="gone"
+			android:orientation="horizontal" >
 
-<!--
-<LinearLayout
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:layout_x="0dp"
-	android:layout_y="203dp">
-</LinearLayout>
-<LinearLayout
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:layout_x="0dp"
-	android:layout_y="254dp">
-</LinearLayout>
--->
+        <Button
+            android:id="@+id/main_ctl"
+			android:background="@drawable/device_main_main_ctl"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+        />
+        <Button
+            android:id="@+id/his_data"
+			android:background="@drawable/device_main_his_data"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+        />
+        <Button
+            android:id="@+id/trans"
+            android:layout_weight="1"
+			android:text="分享"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+        />
+        <Button
+            android:id="@+id/default_ctl"
+			android:text="关于"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+        />
+		</LinearLayout>
+    </LinearLayout>
+    
 </LinearLayout>

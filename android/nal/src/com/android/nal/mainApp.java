@@ -2,9 +2,7 @@ package com.android.nal;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
+
 import com.lenovo.lps.sus.SUS;
 
 public class mainApp extends Application {

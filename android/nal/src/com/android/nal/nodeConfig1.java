@@ -1,8 +1,5 @@
 package com.android.nal;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public final class nodeConfig1{
 	public String		deviceId;
 	public String		nodeId;

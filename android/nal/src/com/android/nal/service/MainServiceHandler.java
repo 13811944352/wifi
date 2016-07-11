@@ -1,33 +1,10 @@
 package com.android.nal.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-import com.android.nal.IStatus;
-import com.android.nal.deviceConfig;
-import com.android.nal.nodeConfig;
 import com.android.nal.utils.l;
-import com.android.nal.net.netConfig;
-import com.android.nal.local.localConfig;
 
 public class MainServiceHandler extends Handler {
 	private MainService mService;

@@ -2,7 +2,6 @@ package com.nal;
 
 import java.sql.*;
 import java.util.ArrayList;
-import net.sf.json.JSONObject;
 import net.sf.json.*;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +22,7 @@ public class device extends base{
 	}
 
 	public String delDevice(String u,deviceConfig  d) throws Exception{
+		Connection conn=getCon();
 		if(d == null)
 			return "deviceConfig.j2d err";
         String sql = null;
@@ -36,12 +36,13 @@ public class device extends base{
         }catch(SQLException e) {
             return ""+false;
         }finally{
-			close(mStat);
+        	closeAll(null, mStat, conn);
 		}
         return "true";
 	}
 
 	public String writeDevice(deviceConfig  d) throws Exception{
+		Connection conn=getCon();
         //deviceConfig d = deviceConfig.j2d(json);
         if(d == null) {
             return "deviceConfig.j2d err"; 
@@ -56,7 +57,8 @@ public class device extends base{
 
 		//if(old == null) 
         sql = String.format("INSERT INTO device (type,deviceID,deviceName,deviceDesc,deviceAddr,deviceTempIn,deviceTempOut,deviceSpec,deviceGap,deviceMaterial) VALUES(%d,'%s','%s','%s','%s',%d,%d,%d,%d,%d);",d.deviceType,d.deviceId,d.deviceName,d.deviceDesc,d.deviceAddr,d.deviceTempIn,d.deviceTempOut,d.deviceSpec,d.deviceGap,d.deviceMaterial);
-		//if(old.equals(d))
+		System.out.println(sql);
+        //if(old.equals(d))
         //    return "deviceConfig is in";
         Statement mStat = null;//conn.createStatement();
 		
@@ -66,7 +68,7 @@ public class device extends base{
 		} catch(SQLException e) {
 			return ""+e;
 		} finally {
-			close(mStat);
+			closeAll(null, mStat, conn);
 		}
 		}
         HttpServletRequest hr = (HttpServletRequest)mPC.getRequest();
@@ -80,6 +82,7 @@ public class device extends base{
     }
 
     public deviceConfig getDevice(String did) { //SQLException {
+    	Connection conn=getCon();
         String sql = "select * from device where deviceID = '"+did+"'";    
 		
         JSONObject jo = null;
@@ -112,8 +115,7 @@ public class device extends base{
 		} catch (SQLException e) {
 			return null;
 		} finally {
-			close(rs);
-			close(mStat);
+			closeAll(rs, mStat, conn);
 		}
         return d;
     }

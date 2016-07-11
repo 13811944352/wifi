@@ -2,7 +2,6 @@ package com.nal;
 
 import java.sql.*;
 import java.util.ArrayList;
-import net.sf.json.JSONObject;
 import net.sf.json.*;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.http.HttpServletRequest;
@@ -53,6 +52,7 @@ public class node extends base{
 	}
 
 	public String setNode(nodeConfig n) {
+		Connection conn=getCon();
         if(n == null) {
             return "nodeConfig.j2n err"; 
         }
@@ -102,12 +102,13 @@ public class node extends base{
 		} catch(SQLException e) {
 			return ""+e;
 		} finally {
-			close(mStat);
+			closeAll(null, mStat, conn);
 		}
 		return "no err";
 	}
 
     public nodeConfig getNode(String did,String nid) { //SQLException {
+    	Connection conn=getCon();
         String sql = "select * from node where d_did = '"+did+"' and n_id = '"+nid+"'";    
 		System.out.println("getNode sql:"+sql);
         //JSONObject jo = null;
@@ -150,8 +151,7 @@ public class node extends base{
 			System.out.println("getNode sql e:"+e);
 			return null;
 		} finally {
-			close(cr);
-			close(mStat);
+			closeAll(cr, mStat, conn);
 		}
         return n;
     }

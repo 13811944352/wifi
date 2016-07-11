@@ -2,35 +2,22 @@ package com.android.nal;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.os.Handler;
 import android.os.Message;
-import android.content.ComponentName;
 import android.util.Log;
-import android.widget.Button;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.EditText;
-
-import com.android.nal.utils.l;
-import com.android.nal.service.MainService;
-import com.android.nal.local.localConfig;
-import com.android.nal.net.netConfig;
-import android.widget.Toast;
-import android.app.Activity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.android.nal.net.netConfig;
+import com.android.nal.utils.l;
 
 public class deviceAdd extends Activity {
 	Context mC = null;

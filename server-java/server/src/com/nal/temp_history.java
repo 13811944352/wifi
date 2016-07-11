@@ -2,7 +2,6 @@ package com.nal;
 
 import java.sql.*;
 import java.util.ArrayList;
-import net.sf.json.JSONObject;
 import net.sf.json.*;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +22,7 @@ public class temp_history extends base{
 
 	public String write(temp_historyConfig d) throws Exception{
         //temp_historyConfig d = temp_historyConfig.j2d(json);
+		Connection conn=getCon();
         if(d == null) {
             return "temp_historyConfig.j2d err"; 
         }
@@ -37,8 +37,7 @@ public class temp_history extends base{
 		} catch(SQLException e) {
 			return ""+e;
 		} finally {
-			close(mStat);
-			close(conn);
+			closeAll(null, mStat, conn);
 		}
         return "true";
 
@@ -87,6 +86,7 @@ public class temp_history extends base{
 	}
 
     public ArrayList<temp_historyConfig> read(String did,String time) { 
+    	Connection conn=getCon();
         String sql = "select * from temp_h where did = '"+did+"' and add_time >= '"+time+"'" ;    
         JSONObject jo = null;
         Statement mStat = null;//conn.createStatement();
@@ -109,8 +109,7 @@ public class temp_history extends base{
 			//return result;
 			//continue;
 		} finally {
-			close(rs);
-			close(mStat);
+			closeAll(rs, mStat, conn);
 		}
         return result;
    }

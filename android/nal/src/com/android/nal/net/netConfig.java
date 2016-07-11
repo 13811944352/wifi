@@ -1,25 +1,23 @@
 package com.android.nal.net;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
+import com.android.nal.UURL;
+import com.android.nal.deviceConfig;
+import com.android.nal.nodeConfig;
+import com.android.nal.temp_historyConfig;
+import com.android.nal.utils.HttpUtil;
+import com.android.nal.utils.MD5;
+import com.android.nal.utils.l;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import com.android.nal.deviceConfig;
-import com.android.nal.temp_historyConfig;
-import com.android.nal.nodeConfig;
-import com.android.nal.UURL;
-import com.android.nal.utils.HttpUtil;
-import com.android.nal.utils.l;
-import com.android.nal.utils.MD5;
-import com.android.nal.local.localConfig;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 
 public class netConfig {
 	private Context mC = null;

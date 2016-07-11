@@ -1,18 +1,18 @@
 package com.android.nal.local;
 
-import java.io.File;
-import java.util.*;
-
-import android.database.Cursor;
 import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
-import com.android.nal.utils.l;
-import com.android.nal.mainApp;
 import com.android.nal.deviceConfig;
+import com.android.nal.mainApp;
 import com.android.nal.nodeConfig;
 import com.android.nal.nodeConfig1;
+import com.android.nal.utils.l;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class localSqlite {
 	public static final String TAG = "task";

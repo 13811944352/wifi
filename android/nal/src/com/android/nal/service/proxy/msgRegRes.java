@@ -1,7 +1,5 @@
 package com.android.nal.service.proxy;
 
-import java.lang.reflect.Array;
-
 public class msgRegRes extends msg{
 	public int result;
 	public int sec;

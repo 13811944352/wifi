@@ -9,9 +9,9 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -34,11 +34,11 @@ public class LineGraphicView extends View {
 	private int blwidh;
 	private boolean isMeasure = true;
 	/**
-	 * YÖá×î´óÖµ
+	 * Yï¿½ï¿½ï¿½ï¿½ï¿½Öµ
 	 */
 	private int maxValue;
 	/**
-	 * YÖá¼ä¾àÖµ
+	 * Yï¿½ï¿½ï¿½ï¿½Öµ
 	 */
 	private int averageValue;
 	private int marginTop = 20;
@@ -47,7 +47,7 @@ public class LineGraphicView extends View {
 	private boolean init= false;
 
 	/**
-	 * ×Ý×ø±êÖµ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
 	 */
 
 	class Y{
@@ -65,9 +65,9 @@ public class LineGraphicView extends View {
 	private Y yData[] = null;//new Y[8];
 	
 	public ArrayList<String> xRawDatas;
-	public ArrayList<Integer> xList = new ArrayList<Integer>();// ¼ÇÂ¼Ã¿¸öxµÄÖµ
+	public ArrayList<Integer> xList = new ArrayList<Integer>();// ï¿½ï¿½Â¼Ã¿ï¿½ï¿½xï¿½ï¿½Öµ
 	/**
-	 * ºá×ø±êÖµ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
 	 */
 	private int spacingHeight;
 	public LineGraphicView(Context context)
@@ -124,9 +124,9 @@ public class LineGraphicView extends View {
 		mPaint.setStyle(Style.STROKE);
 
 		drawAllXLine(canvas);
-		// »­Ö±Ïß£¨×ÝÏò£©
+		// ï¿½ï¿½Ö±ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½
 		drawAllYLine(canvas);
-		// µãµÄ²Ù×÷ÉèÖÃ
+		// ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		for(int j = 0;j < 8;j++) {
 			if(yData[j].used == false)
@@ -178,7 +178,7 @@ public class LineGraphicView extends View {
 	}
 
 	/**
-	 *  »­ËùÓÐºáÏò±í¸ñ£¬°üÀ¨XÖá
+	 *  ï¿½ï¿½ï¿½ï¿½ï¿½Ðºï¿½ï¿½ï¿½ï¿½ñ£¬°ï¿½ï¿½ï¿½Xï¿½ï¿½
 	 */
 	private void drawAllXLine(Canvas canvas)
 	{
@@ -188,18 +188,18 @@ public class LineGraphicView extends View {
 		for (int i = 0; i < spacingHeight + 1; i++)
 		{
 
-			Log.i("erer","spacingHeight=="+spacingHeight);
+			Log.i("erer","spacingHeight=="+i);
 
 			
 			canvas.drawLine(blwidh, bheight - (bheight / spacingHeight) * i + marginTop, (canvasWidth - blwidh),
-					bheight - (bheight / spacingHeight) * i + marginTop, mPaint);// Y×ø±ê
+					bheight - (bheight / spacingHeight) * i + marginTop, mPaint);// Yï¿½ï¿½ï¿½
 			drawText(String.valueOf(averageValue * i), blwidh / 2, bheight - (bheight / spacingHeight) * i + marginTop,
 					canvas);
 		}
 	}
 
 	/**
-	 * »­ËùÓÐ×ÝÏò±í¸ñ£¬°üÀ¨YÖá	
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ£¬°ï¿½ï¿½ï¿½Yï¿½ï¿½	
 	 */
 	private void drawAllYLine(Canvas canvas)
 	{
@@ -216,9 +216,9 @@ public class LineGraphicView extends View {
 					+ (canvasWidth - blwidh) / yData[j].yRawData.size() * i, bheight + marginTop, mPaint);
 
 
-			Log.i("er","xRawDatas size =="+xRawDatas.size() +" i =="+i);
-			drawText(xRawDatas.get(i), blwidh + (canvasWidth - blwidh) / yData[j].yRawData.size() * i, bheight + dip2px(26),
-					canvas);// X×ø±ê
+			//Log.i("er","xRawDatas size =="+xRawDatas.size() +" i =="+i);
+			//drawText(xRawDatas.get(i), blwidh + (canvasWidth - blwidh) / yData[j].yRawData.size() * i, bheight + dip2px(26),
+			//		canvas);// Xï¿½ï¿½ï¿½
 		}
 		}
 	}
