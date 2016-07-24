@@ -184,6 +184,12 @@ public class netConfig {
 
 	public boolean delDeviceConfig(deviceConfig d){
 		String json = d.d2j(d);
+		Log.e("---", json);
+		try {
+			string=URLEncoder.encode(json,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		String result = HttpUtil.httpGetT(UURL.delDev+"json="+json);
 		log("http del result:"+result);
 		try {
@@ -224,7 +230,13 @@ public class netConfig {
 	}
 
 	public boolean setNodeConfig(nodeConfig n) {
-		String ret = HttpUtil.httpGetT(UURL.setNode+"node="+n.n2j(n));
+		String string =  n.n2j(n);
+		try {
+			string =URLEncoder.encode(string ,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String ret = HttpUtil.httpGetT(UURL.setNode+"node="+string);
 		log(ret);
 		JSONObject json = null;
 		JSONObject jo = null;

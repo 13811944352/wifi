@@ -120,7 +120,7 @@ public class HttpUtil {
 		HttpURLConnection conn = null;
 		try {
 			URL url = new URL(uri);
-			//URL url = new URL(URLEncoder.encode(uri));
+			//URL url = new URL(URLEncoder.encode(uri,"utf-8"));
 			conn = (HttpURLConnection) url.openConnection();
 			//String token = localConfig.getInstance().getToken();
 			//conn.setRequestProperty("tt",token);

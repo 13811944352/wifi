@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.CheckBox;
+import android.text.InputType;
+import android.util.Log;
 
 import com.android.nal.local.localConfig;
 import com.android.nal.net.netConfig;
@@ -19,11 +22,15 @@ import com.android.nal.utils.util;
 
 public class regActivity1 extends Activity {
 	Context mC = null;
-	MainService mS = null;
-	regActivity1 mA = null;
+	//MainService mS = null;
+	//regActivity1 mA = null;
 
-	Button back; 
-	Button captButton;
+	//Button back;
+	Button reg1_capt = null;
+	Button reg1_show = null;
+	EditText reg1_user = null;//(EditText)findViewById(R.id.uname);
+	EditText reg1_pwd = null;//(EditText)findViewById(R.id.pwd);
+	CheckBox reg1_check = null;
 
 
 	private void showToast(String msg){
@@ -34,10 +41,8 @@ public class regActivity1 extends Activity {
     private View.OnClickListener getCapt = new View.OnClickListener(){
         @Override
         public void onClick(View arg0) {
-			EditText uname = (EditText)findViewById(R.id.uname);
-			EditText pwd = (EditText)findViewById(R.id.pwd);
-			final String n = uname.getText().toString().trim();
-			final String p = pwd.getText().toString().trim();
+			final String n = reg1_user.getText().toString().trim();
+			final String p = reg1_pwd.getText().toString().trim();
 			if(n == null) {
 				showToast("plz input uname");
 				return ;
@@ -57,11 +62,25 @@ public class regActivity1 extends Activity {
 				}
 			}.start();
 			Intent i = new Intent();
-			i.setClass(regActivity1.this,regActivity2.class);
+			i.setClass(regActivity1.this, regActivity2.class);
 			mC.startActivity(i);
-			mA.finish();
+			//mA.finish();
 		}
-    }; 
+    };
+
+	private View.OnClickListener changeShow = new View.OnClickListener(){
+		@Override
+		public void onClick(View arg0) {
+			if(reg1_pwd.getInputType() == (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)) {
+				reg1_pwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+				reg1_show.setBackgroundResource(R.drawable.login_eye_show);
+			} else {
+				reg1_pwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+				reg1_show.setBackgroundResource(R.drawable.login_eye_hide);
+			}
+
+		}
+	};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,9 +88,15 @@ public class regActivity1 extends Activity {
 		mC = this;
 		setContentView(R.layout.reg1);
 
-		captButton = (Button)findViewById(R.id.captButton);
-		captButton.setOnClickListener(getCapt);
+		reg1_capt = (Button)findViewById(R.id.reg1_capt);
+		reg1_capt.setOnClickListener(getCapt);
 
+		reg1_show = (Button)findViewById(R.id.reg1_show);
+		reg1_show.setOnClickListener(changeShow);
+		reg1_user = (EditText)findViewById(R.id.reg1_user);
+		reg1_pwd = (EditText)findViewById(R.id.reg1_pwd);
+		reg1_check = (CheckBox)findViewById(R.id.reg1_check);
+/*
 		back = (Button)findViewById(R.id.back);
 		back.setOnClickListener(
 			new View.OnClickListener() {
@@ -82,7 +107,8 @@ public class regActivity1 extends Activity {
 				}
 			}
 		);
-		mA = this;
+*/
+		//mA = this;
 	}
     @Override
     public void onStart() {
